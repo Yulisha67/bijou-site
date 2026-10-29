@@ -29,7 +29,7 @@
 .coll__grid{grid-template-columns:repeat(3,310px);gap:50px 70px}
 }
 @media (min-width:900px){
-.record__disc{width:270px;top:-5px;left:97px}
+.record__disc{width:220px;top:-4px;left:80px}
 .record__sleeve{width:297px}
 }
 .case__name{font:500 30px/1.2 var(--serif)!important;letter-spacing:.01em}
