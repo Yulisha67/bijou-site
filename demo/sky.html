@@ -1,0 +1,333 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Anna & Kristof · Sky</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display+SC:wght@400;700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --navy:#2D4A6E;
+  --navy-d:#223A58;
+  --blue:#D2E3F0;
+  --blue-2:#C6DAEA;
+  --mist:#DCE6EE;
+  --white:#FFFFFF;
+  --ground:#D4E3EF;
+  
+  --f-cap:"Playfair Display",Georgia,serif;
+  --f-date:"Playfair Display SC",Georgia,serif;
+  --f-ser:"Cormorant Garamond",Georgia,serif;
+  --f-scr:"Great Vibes","Snell Roundhand",cursive;
+  --f-txt:"Cormorant Garamond",Georgia,serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:#fff;font-family:var(--f-txt);padding-inline:16px;padding-block:0 32px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+
+.inv{max-width:420px;margin:0 auto;container-type:inline-size;position:relative;overflow:clip;background:var(--blue)}
+.sky{position:sticky;top:0;height:100svh;margin-bottom:-100svh;overflow:hidden;z-index:0;pointer-events:none}
+.sky img{position:absolute;inset:-4% -8%;width:116%;height:108%;max-width:none;object-fit:cover;animation:drift 60s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(-3%,0,0) scale(1.02)}to{transform:translate3d(3%,-2%,0) scale(1.06)}}
+.inv > section,.inv > footer{position:relative;z-index:1}
+.inv::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:url(embedded/404e7fccc6.webp) 0 0/60cqw;mix-blend-mode:multiply;opacity:.9}
+
+/* type */
+.cap{font-family:var(--f-cap);font-style:italic;font-weight:400;color:#fff;margin:0;line-height:1.1;letter-spacing:0;text-wrap:balance;}
+.txt{}
+.txt{font-size:4cqw;line-height:1.45;font-weight:500;margin:0}
+.svg-white{color:#fff}
+
+/* ───── hero ───── */
+.hero{min-height:178cqw;display:grid;place-items:center;padding:14cqw 0 22cqw}
+.frame{position:relative;width:98cqw;opacity:.97;animation:rise 1.6s cubic-bezier(.2,.7,.2,1) both}
+.frame .fimg{display:block;width:100%;height:auto}
+.frame .names{position:absolute;left:16%;right:16%;top:34%;bottom:14%;display:grid;place-content:center;text-align:center}
+.frame .fimg{opacity:.8;position:relative}
+.frame .wash{position:absolute;left:4%;top:31%;width:92%;height:auto;opacity:.95}
+.frame .names .cap{font-family:var(--f-scr);font-weight:400;font-size:16cqw;line-height:1.05;letter-spacing:0;color:#fff;}
+.bow{position:absolute;right:-2cqw;bottom:-6cqw;width:36cqw;z-index:3;transform-origin:40% 20%;animation:sway 5s ease-in-out infinite}
+.bow svg{display:block;width:100%;height:auto;}
+@keyframes rise{from{opacity:0;transform:translateY(5cqw) scale(.96)}to{opacity:1;transform:none}}
+@keyframes sway{0%,100%{transform:rotate(0)}50%{transform:rotate(3deg)}}
+
+/* ───── dear family ───── */
+.dear{padding:0 0 10cqw}
+.disc{position:relative;width:108cqw;margin-left:-4cqw;aspect-ratio:1;border-radius:50%;background:#A9C3DB url(embedded/404e7fccc6.webp) 0 0/60cqw;background-blend-mode:multiply;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10cqw 16cqw 6cqw;text-align:center}
+.disc .cap{font-size:7.6cqw;align-self:stretch;text-align:left}
+.disc .cap span{display:block;padding-left:18cqw}
+.disc .txt{color:#fff;margin:4cqw 0 5cqw;max-width:56cqw}
+.swans{width:78cqw;animation:bob 6s ease-in-out infinite}
+.swans img{display:block;width:100%;height:auto}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1cqw)}}
+
+/* ───── date ───── */
+.date{padding:4cqw 0 8cqw;display:grid;justify-items:center}
+.dcard{position:relative;width:78cqw;margin:0 auto;padding:12cqw 9cqw 11cqw;text-align:center;color:var(--navy);transform:rotate(-1.2deg)}
+.dpaper{position:absolute;inset:0;background:#FBF8F1 url(embedded/404e7fccc6.webp) 0 0/60cqw;filter:url(#deckle);z-index:-1}
+.eyebrow{margin:0 0 2cqw;font-family:var(--f-date);font-size:3.4cqw;letter-spacing:.14em}
+.dcard .cap{color:var(--navy)}
+.dcard .cap.h{font-size:9cqw}
+.dcard .cap.d{font-family:var(--f-date);font-style:normal;font-size:9cqw;margin-top:1cqw}
+.dcard .rule{display:block;width:44cqw;margin:4cqw auto 0}
+.cal{width:100%;margin-top:5cqw;color:var(--navy)}
+.cal .mon{font-size:3.2cqw;margin-bottom:2cqw;font-weight:600}
+.cal .grid{display:grid;grid-template-columns:repeat(7,1fr);row-gap:2.2cqw;font-size:3cqw;font-weight:600;font-variant-numeric:tabular-nums}
+.cal .grid b{font-weight:500}
+.cal .grid .o{opacity:.45}
+.cal .grid .day{position:relative;font-weight:500}
+.cal .grid .day svg{position:absolute;left:50%;top:50%;width:6.4cqw;height:6.4cqw;transform:translate(-50%,-54%);overflow:visible}
+.cal .grid .day svg path{fill:none;stroke:var(--navy);stroke-width:1.2;stroke-dasharray:80;stroke-dashoffset:0;transition:stroke-dashoffset 1.6s ease .3s}
+.armed .date:not(.in) .day svg path{stroke-dashoffset:80}
+
+/* ───── location ───── */
+.loc{position:relative;padding:0;text-align:center;min-height:150cqw}
+.loc .castle{display:block;width:100%;aspect-ratio:820/1230;object-fit:cover;
+  -webkit-mask-image:linear-gradient(transparent 0,#000 16%,#000 78%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 16%,#000 78%,transparent 100%)}
+.loc > .cap{position:absolute;left:0;right:0;top:9cqw;font-size:9.4cqw;color:var(--navy);}
+.loc .info{position:relative;margin-top:-34cqw;padding:0 10cqw 12cqw;display:grid;gap:1.6cqw;justify-items:center}
+.loc .info .cap{font-family:var(--f-date);font-style:normal;font-size:5.4cqw;color:var(--navy);}
+.loc .info .txt{color:var(--navy);}
+.pill{display:inline-block;margin-top:2cqw;font-family:var(--f-ser);font-size:3.3cqw;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  color:#fff;background:var(--navy);border:0;border-radius:99px;padding:2.6cqw 9cqw;cursor:pointer;transition:background .25s}
+.pill:hover{background:var(--navy-d)}
+
+/* ───── timeline ───── */
+.tl{margin:0 4cqw;background:#A9C3DB url(embedded/404e7fccc6.webp) 0 0/60cqw;background-blend-mode:multiply;padding:12cqw 0 14cqw;text-align:center;overflow:hidden;border-radius:9cqw;}
+.tl > .cap{font-size:10cqw}
+.heartdot{display:block;width:3cqw;height:3cqw;margin:5cqw auto;color:var(--navy)}
+.slot{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:40cqw}
+.slot .t{display:grid;gap:1.4cqw;justify-items:center}
+.slot .t .cap{font-family:var(--f-date);font-style:normal;font-size:9.2cqw;color:var(--navy);}
+.slot .t .cap small{font-size:.62em}
+.slot .t .txt{font-size:4.8cqw;font-weight:600}
+.slot .ill{width:100%}
+.slot .ill img{display:block;width:100%;height:auto}
+.slot.a .t{grid-column:1}
+.slot.a{grid-template-columns:1fr 1.15fr}
+.slot.a .ill{grid-column:2;width:100%;justify-self:center}
+.slot.b{grid-template-columns:1.25fr 1fr}
+.slot.b .ill{grid-column:1;grid-row:1;width:112%;justify-self:start;margin-left:-4cqw}
+.slot.b .t{grid-column:2}
+.flame{transform-origin:70px 44px;animation:flick 1.8s ease-in-out infinite}
+@keyframes flick{0%,100%{transform:scale(1,1) rotate(0)}30%{transform:scale(.94,1.06) rotate(-2deg)}60%{transform:scale(1.04,.96) rotate(2deg)}}
+
+/* ───── rsvp ───── */
+.rsvp{margin:10cqw 4cqw 0;padding:0;text-align:center}
+.rcard{position:relative;border-radius:46cqw 46cqw 6cqw 6cqw;padding:22cqw 8cqw 11cqw;background:#FBF8F1 url(embedded/404e7fccc6.webp) 0 0/60cqw;color:var(--navy);
+  border:1px solid rgba(255,255,255,.9);}
+.rcard::before{content:"";position:absolute;inset:2.4cqw;border-radius:44cqw 44cqw 4cqw 4cqw;border:1px solid rgba(45,74,110,.18);pointer-events:none}
+.rcard > .cap{font-size:10cqw;color:var(--navy);}
+.rsvp-sub{margin:1.4cqw 0 8cqw;font-size:4cqw;font-weight:500;line-height:1.45}
+.rsvp-sub i{display:block;font-family:var(--f-date);font-style:normal;font-size:3.6cqw;letter-spacing:.08em;margin-bottom:1.4cqw}
+.form{display:grid;gap:6.4cqw;text-align:center}
+.field{display:grid;gap:1.6cqw;font-family:var(--f-date);font-size:3.2cqw;letter-spacing:.06em}
+.field input{width:100%;font-family:var(--f-txt);font-size:4.6cqw;font-weight:500;color:var(--navy);background:transparent;border:0;border-bottom:1.5px solid rgba(45,74,110,.45);border-radius:0;padding:1.6cqw 1cqw;text-align:center}
+.field input::placeholder{color:rgba(45,74,110,.45);font-style:italic}
+.field input:focus{outline:none;border-bottom-color:var(--navy)}
+.form fieldset{border:0;margin:0;padding:0}
+.form legend{width:100%;font-family:var(--f-date);font-size:3.2cqw;letter-spacing:.06em;color:var(--navy);margin:0 0 2.6cqw;padding:0}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:2cqw}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-block;min-width:13cqw;padding:2cqw 4.4cqw;border-radius:99px;border:1.2px solid rgba(45,74,110,.4);font-size:4cqw;font-weight:600;color:var(--navy);background:transparent;transition:background .2s,color .2s,border-color .2s}
+.chip input:checked + span{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip input:focus-visible + span{outline:2px solid var(--navy);outline-offset:2px}
+.form .pill{justify-self:stretch;margin-top:1cqw;padding:3.2cqw}
+.thanks{font-family:var(--f-cap);font-style:italic;font-size:7cqw;color:var(--navy);line-height:1.3;margin:0}
+
+/* ───── footer ───── */
+.foot{margin:0 3cqw;padding:20cqw 8cqw 16cqw;text-align:center;position:relative}
+.fwrap{position:relative;display:grid;place-items:center;padding:6cqw 0}
+.fwrap .wash{position:absolute;left:-16%;top:-14%;width:132%;height:128%;object-fit:fill;opacity:.9}
+.foot .cap{position:relative;color:#fff;font-size:8cqw;line-height:1.2}
+.foot .flourish{width:62cqw;margin:5cqw auto 0;color:var(--navy)}
+.foot .by{margin-top:10cqw;font-size:3cqw;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--navy)}
+
+/* reveal: visible at rest, armed by JS below the fold */
+.rv{transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity 1s ease}
+.armed .rv:not(.in){transform:translateY(16px);opacity:.001}
+@media (prefers-reduced-motion:reduce){.rv,.frame,.bow,.swans,.flame,.sky img{animation:none!important;transition:none!important}.armed .rv:not(.in){transform:none;opacity:1}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8E9AA8"/><stop offset=".35" stop-color="#F3F6F9"/><stop offset=".6" stop-color="#C3CCD6"/><stop offset="1" stop-color="#7F8B99"/></linearGradient>
+    <linearGradient id="satin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#EEF3F8"/><stop offset="1" stop-color="#C6D4E2"/></linearGradient>
+    <linearGradient id="satinB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E6EEF6"/><stop offset=".6" stop-color="#C9D8E7"/><stop offset="1" stop-color="#9FB5CB"/></linearGradient>
+    <radialGradient id="swB" cx=".45" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#F1F4F8"/><stop offset="1" stop-color="#C9D5E1"/></radialGradient>
+    <linearGradient id="swN" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCE4EC"/></linearGradient>
+    <linearGradient id="wax" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E9E2D4"/><stop offset=".4" stop-color="#FFFDF7"/><stop offset="1" stop-color="#D8CFBE"/></linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#FFE7B0" stop-opacity=".85"/><stop offset="1" stop-color="#FFE7B0" stop-opacity="0"/></radialGradient>
+    <linearGradient id="flameG" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#F3A34A"/><stop offset=".5" stop-color="#FFD886"/><stop offset="1" stop-color="#FFF6DC"/></linearGradient>
+    <radialGradient id="cherry" cx=".35" cy=".3" r=".7"><stop offset="0" stop-color="#F06A6A"/><stop offset=".6" stop-color="#B8252F"/><stop offset="1" stop-color="#7E141C"/></radialGradient>
+    <linearGradient id="cream" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E8DFCF"/><stop offset=".4" stop-color="#FFFCF5"/><stop offset="1" stop-color="#E1D6C3"/></linearGradient>
+    <linearGradient id="stand" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9C3B6"/><stop offset=".4" stop-color="#F8F5EF"/><stop offset="1" stop-color="#B9B2A4"/></linearGradient>
+    <filter id="deckle" x="-3%" y="-3%" width="106%" height="106%">
+      <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<main class="inv">
+  <div class="sky" aria-hidden="true"><img src="embedded/7a40d3b2f7.jpg" alt="" loading="lazy"></div>
+
+  <!-- 1 · names in a rococo cartouche -->
+  <section class="hero">
+    <div class="frame">
+      <img class="wash" src="embedded/08a9fd6944.webp" alt="" loading="lazy">
+      <img class="fimg" src="embedded/d61599b3ae.webp" alt="" loading="lazy">
+      <div class="names"><p class="cap">Anna<br>&amp;<br>Kristof</p></div>
+    </div>
+  </section>
+
+  <!-- 2 · dear family -->
+  <section class="dear">
+    <div class="disc rv">
+      <h2 class="cap">Dear family<span>and friends</span></h2>
+      <p class="txt">We are happy to invite you to share our wedding day!</p>
+      <div class="swans">
+        <img src="embedded/1cd6ea7cc3.webp" alt="Two swans with ribbons forming a heart" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · date & calendar -->
+  <section class="date rv">
+    <div class="dcard">
+      <div class="dpaper" aria-hidden="true"></div>
+      <p class="eyebrow">Save the date</p>
+      <p class="cap h">Date</p>
+      <p class="cap d">05.04.2027</p>
+      <svg class="rule" viewBox="0 0 160 12" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M4 6h56M100 6h56"/><path d="M80 10c-3-3-8-2.6-8-6 0-2 2-3.4 4-3.4 1.8 0 3.2 1.2 4 2.8.8-1.6 2.2-2.8 4-2.8 2 0 4 1.4 4 3.4 0 3.4-5 3-8 6z" fill="currentColor" stroke="none"/></svg>
+      <div class="cal" aria-label="April 2027, the 5th marked">
+        <div class="mon">April 2027</div>
+        <div class="grid" id="calGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · location -->
+  <section class="loc">
+    <img class="castle" src="embedded/298213a68f.jpg" alt="Watercolour of a white baroque palace with a grand flower-lined staircase by the sea" loading="lazy">
+    <h2 class="cap rv">Location</h2>
+    <div class="info rv">
+      <p class="cap">Villa Serena</p>
+      <p class="txt">Via del Lago 12, Bellagio, Lake Como</p>
+      <a class="pill" href="https://www.google.com/maps/search/?api=1&query=Bellagio+Lake+Como" target="_blank" rel="noopener">Open the map</a>
+    </div>
+  </section>
+
+  <!-- 5 · timeline -->
+  <section class="tl">
+    <h2 class="cap rv">Timeline</h2>
+    <svg class="heartdot" viewBox="0 0 20 18" aria-hidden="true"><path d="M10 17C4 12 1 9 1 5.5 1 3 3 1 5.5 1 7.5 1 9 2.2 10 4c1-1.8 2.5-3 4.5-3C17 1 19 3 19 5.5 19 9 16 12 10 17Z" fill="currentColor"/></svg>
+    <div class="slot a rv">
+      <div class="t"><p class="cap">4:00 <small>PM</small></p><p class="txt">Wedding Ceremony</p></div>
+      <div class="ill">
+        <img src="embedded/633d54473b.webp" alt="A lit candle in a silver candlestick tied with a ribbon" loading="lazy">
+      </div>
+    </div>
+    <svg class="heartdot" viewBox="0 0 20 18" aria-hidden="true"><path d="M10 17C4 12 1 9 1 5.5 1 3 3 1 5.5 1 7.5 1 9 2.2 10 4c1-1.8 2.5-3 4.5-3C17 1 19 3 19 5.5 19 9 16 12 10 17Z" fill="currentColor"/></svg>
+    <div class="slot b rv">
+      <div class="ill">
+        <img src="embedded/cab7088fa8.webp" alt="Layer cake with cherries on a silver stand" loading="lazy">
+      </div>
+      <div class="t"><p class="cap">6:00 <small>PM</small></p><p class="txt">Dinner &amp; Celebration</p></div>
+    </div>
+  </section>
+
+  <!-- 6 · rsvp -->
+  <section class="rsvp" id="rsvp">
+    <div class="rcard rv">
+      <h2 class="cap">RSVP</h2>
+      <p class="rsvp-sub"><i>Répondez s’il vous plaît</i>Kindly let us know by 1 March 2027 whether you can join us</p>
+      <form class="form" id="rsvpForm">
+        <label class="field" for="gName">Your name<input type="text" id="gName" name="name" placeholder="Anna Smith" autocomplete="name" required></label>
+        <fieldset>
+          <legend>Will you join us?</legend>
+          <div class="chips">
+            <label class="chip" for="aYes"><input type="radio" id="aYes" name="att" value="yes" checked><span>Joyfully accept</span></label>
+            <label class="chip" for="aNo"><input type="radio" id="aNo" name="att" value="no"><span>Regretfully decline</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>What would you like to drink?</legend>
+          <div class="chips">
+            <label class="chip" for="dWine"><input type="radio" id="dWine" name="drink" value="wine" checked><span>Wine</span></label>
+            <label class="chip" for="dChamp"><input type="radio" id="dChamp" name="drink" value="champagne"><span>Champagne</span></label>
+            <label class="chip" for="dNone"><input type="radio" id="dNone" name="drink" value="none"><span>Non-alcoholic</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Number of guests attending</legend>
+          <div class="chips">
+            <label class="chip" for="g1"><input type="radio" id="g1" name="guests" value="1" checked><span>1</span></label>
+            <label class="chip" for="g2"><input type="radio" id="g2" name="guests" value="2"><span>2</span></label>
+            <label class="chip" for="g3"><input type="radio" id="g3" name="guests" value="3"><span>3</span></label>
+          </div>
+        </fieldset>
+        <button class="pill" type="submit">Send my reply</button>
+      </form>
+      <p class="thanks" id="thanks" hidden>Thank you! We can't wait to see you.</p>
+    </div>
+  </section>
+
+  <!-- 7 · farewell -->
+  <footer class="foot">
+    <div class="fwrap rv"><img class="wash" src="embedded/08a9fd6944.webp" alt="" loading="lazy"><p class="cap">We can't wait<br>to celebrate<br>with you!</p></div>
+    <svg class="flourish" viewBox="0 0 260 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+      <path d="M4 26C40 30 70 20 96 22C112 24 116 34 106 36C96 38 94 26 108 20C124 13 140 24 130 30C122 35 116 24 128 18C150 8 186 30 256 22"/>
+      <path d="M118 16C122 8 132 6 136 12" stroke-width="1"/>
+    </svg>
+    <p class="by">Invitation by Bijou</p>
+  </footer>
+</main>
+
+<script>
+(() => {
+  // April 2027 calendar, Monday first, 5th marked with a drawn heart
+  const grid = document.getElementById('calGrid');
+  const heads = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+  let html = heads.map(h => `<b>${h}</b>`).join('');
+  const first = new Date(2027, 3, 1), lead = (first.getDay() + 6) % 7;
+  const prevDays = new Date(2027, 3, 0).getDate();
+  for (let i = lead - 1; i >= 0; i--) html += `<span class="o">${prevDays - i}</span>`;
+  for (let d = 1; d <= 30; d++) {
+    html += d === 5
+      ? `<span class="day">5<svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20C5 15 2 11.5 2 7.5 2 4.5 4.3 2.5 7 2.5 9.2 2.5 11 3.8 12 5.8 13 3.8 14.8 2.5 17 2.5 19.7 2.5 22 4.5 22 7.5 22 11.5 19 15 12 20Z"/></svg></span>`
+      : `<span>${d}</span>`;
+  }
+  let tail = (7 - (lead + 30) % 7) % 7;
+  for (let d = 1; d <= tail; d++) html += `<span class="o">${d}</span>`;
+  grid.innerHTML = html;
+
+  // rsvp
+  document.getElementById('rsvpForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const n = document.getElementById('gName').value.trim().split(' ')[0];
+    e.target.hidden = true;
+    const t = document.getElementById('thanks');
+    t.textContent = document.getElementById('aNo').checked ? `We'll miss you${n ? ', ' + n : ''}. Thank you for letting us know.` : `Thank you${n ? ', ' + n : ''}! We can't wait to see you.`;
+    t.hidden = false;
+  });
+
+  // reveals below the fold
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const els = [...document.querySelectorAll('.rv')];
+  els.forEach(el => { if (el.getBoundingClientRect().top < innerHeight * .9) el.classList.add('in'); });
+  document.body.classList.add('armed');
+  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { threshold: .2 });
+  els.forEach(el => { if (!el.classList.contains('in')) io.observe(el); });
+})();
+</script>
+
+<style id="bijou-phone-fit">@media (max-width:480px){html body{padding:0!important}}</style>
+<a href="../index.html" class="bijou-back" aria-label="Назад до сайту Bijou" style="position:fixed;z-index:9999;top:max(12px,env(safe-area-inset-top));left:12px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px 0 10px;border-radius:99px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#4a1f2a;font:500 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 14px -6px rgba(0,0,0,.35)"><span aria-hidden="true" style="font-size:18px;line-height:1">&#8249;</span>Bijou</a>
+<script>document.querySelector('.bijou-back').addEventListener('click',function(e){if(history.length>1&&document.referrer&&new URL(document.referrer).host===location.host){e.preventDefault();history.back();}});</script>
+</body></html>

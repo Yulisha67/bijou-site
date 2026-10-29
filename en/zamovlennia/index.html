@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Order — Bijou</title><meta name="description" content="Bijou — online invitations for weddings and events: a living website with guest replies, a map and the day’s schedule."><link rel="alternate" hreflang="uk" href="../../zamovlennia/index.html"><link rel="alternate" hreflang="en" href="../../en/zamovlennia/index.html"><link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;♡&lt;/text&gt;&lt;/svg&gt;"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600&family=Great+Vibes&display=swap" rel="stylesheet"><script>
+// Шаблон у екрані телефона гортається лише тоді, коли на нього навели мишку (повільно вниз,
+// в кінці — назад угору) або коли людина гортає його сама. Без наведення він стоїть на місці.
+window.bijouAutoscroll = function (box, { speed = 70 } = {}) {
+  if (box.dataset.bijouAs) return; // на головній ту саму рамку можуть передати двічі
+  box.dataset.bijouAs = '1';
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Замість знімка в телефоні показуємо живе анімоване запрошення (demo/<назва>.html),
+  // а знімок лишається, поки воно вантажиться. Вантажимо, лише коли телефон близько до екрана.
+  const img = box.querySelector('img');
+  const m = img && img.getAttribute('src').match(/^(.*?)covers\/([\w-]+)-full\.jpg$/);
+  let doc = null; // документ живого запрошення, коли воно завантажилось
+  if (m) {
+    const W = 390, inLink = !!box.closest('a');
+    const fr = document.createElement('iframe');
+    fr.title = img.alt; fr.tabIndex = -1; fr.setAttribute('scrolling', 'yes');
+    fr.style.cssText = `position:absolute;top:0;left:0;width:${W}px;border:0;transform-origin:0 0;opacity:0;transition:opacity .6s;pointer-events:auto`;
+    const fit = () => { const w = box.clientWidth, h = box.clientHeight; if (!w) return; const k = w / W; fr.style.height = h / k + 'px'; fr.style.transform = `scale(${k})`; };
+    fr.addEventListener('load', () => {
+      try {
+        doc = fr.contentDocument;
+        const st = doc.createElement('style');
+        st.textContent = '.bijou-back{display:none!important}html{scrollbar-width:none;scroll-behavior:auto!important}::-webkit-scrollbar{display:none}';
+        doc.head.appendChild(st);
+      } catch (e) { doc = null; }
+      fr.style.opacity = '1';
+      setTimeout(() => { img.style.visibility = 'hidden'; }, 600);
+    });
+    const io = new IntersectionObserver((es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      box.style.position = 'relative'; box.style.overflow = 'hidden'; box.scrollTop = 0;
+      fit(); new ResizeObserver(fit).observe(box);
+      fr.src = m[1] + 'demo/' + m[2] + '.html';
+      box.appendChild(fr);
+      // на картці кейсу живе запрошення прокручується, а відкрити кейс можна кнопкою
+      const card = box.closest('a');
+      if (card) {
+        const ph = box.closest('.phone');
+        const bt = document.createElement('button');
+        bt.type = 'button';
+        bt.textContent = document.documentElement.lang === 'en' ? 'Open' : 'Відкрити';
+        bt.style.cssText = 'display:block;margin:14px auto 0;position:relative;transform:none;z-index:3;font:500 13px/1 var(--serif);letter-spacing:.06em;padding:9px 16px;border:0;border-radius:99px;background:var(--wine);color:#fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap';
+        bt.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); window.open(card.href, '_blank', 'noopener'); });
+        ph.insertAdjacentElement('afterend', bt);
+      }
+    }, { rootMargin: '300px 0px' });
+    io.observe(box);
+    // коли відвідувач відійшов від запрошення, воно повертається на початок
+    const back = () => { try { fr.contentDocument.scrollingElement.scrollTop = 0; } catch (e) {} };
+    box.addEventListener('pointerleave', back);
+    new IntersectionObserver((es) => { if (es.some((e) => !e.isIntersecting)) back(); }).observe(box);
+  }
+  // запрошення стоїть на початку і гортається лише від руки відвідувача (колесо, палець)
+};
+// Каруселі (колекція, кейси) можна гортати вбік, перетягуючи мишкою — як свайп пальцем на телефоні
+window.bijouDrag = function (rail) {
+  let down = false, moved = false, x0 = 0, s0 = 0;
+  rail.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; moved = false; x0 = e.clientX; s0 = rail.scrollLeft; });
+  addEventListener('pointermove', (e) => {
+    if (!down) return;
+    const dx = e.clientX - x0;
+    if (!moved && Math.abs(dx) > 6) { moved = true; rail.style.scrollSnapType = 'none'; rail.style.cursor = 'grabbing'; }
+    if (moved) { rail.scrollLeft = s0 - dx; e.preventDefault(); }
+  });
+  addEventListener('pointerup', () => {
+    if (!down) return; down = false; rail.style.cursor = '';
+    if (!moved) return;
+    rail.style.scrollSnapType = '';
+    // доводимо до найближчої картки
+    const c = rail.children, step = c.length > 1 ? c[1].offsetLeft - c[0].offsetLeft : rail.clientWidth;
+    rail.scrollTo({ left: Math.round(rail.scrollLeft / step) * step, behavior: 'smooth' });
+  });
+  // після перетягування клік по картці не відкриває посилання
+  rail.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  rail.addEventListener('dragstart', (e) => e.preventDefault());
+};
+    </script><link rel="stylesheet" href="../../css/Base.CXxfULg5.css"><link rel="stylesheet" href="../../css/Contact.BpkhOf3b.css"></head><body><div class="page"><header class="hdr" data-astro-cid-nen7h5rs><div class="hdr__in" data-astro-cid-nen7h5rs><a href="../../en/index.html" class="logo" aria-label="Bijou — home" data-astro-cid-nen7h5rs></a><nav class="nav" data-astro-cid-nen7h5rs><a href="../../en/katalog/index.html" data-astro-cid-nen7h5rs>Templates</a><a href="../../en/keisy/index.html" data-astro-cid-nen7h5rs>Cases</a><a href="../../en/index.html#how" data-astro-cid-nen7h5rs>How it works</a><a href="../../en/tsiny/index.html" data-astro-cid-nen7h5rs>Pricing</a><a href="../../en/index.html#faq" data-astro-cid-nen7h5rs>FAQ</a></nav><div class="hdr__r" data-astro-cid-nen7h5rs><nav class="lang" aria-label="Language" data-astro-cid-nen7h5rs><a href="../../zamovlennia/index.html" hreflang="uk" data-astro-cid-nen7h5rs>UA</a><span aria-hidden="true" data-astro-cid-nen7h5rs>·</span><a href="../../en/zamovlennia/index.html" hreflang="en" aria-current="true" data-astro-cid-nen7h5rs>EN</a></nav><a href="../../en/zamovlennia/index.html" class="btn btn--solid hdr__cta" data-astro-cid-nen7h5rs>Order</a></div></div></header><main><div class="wrap pageback"><a class="back" href="../../en/index.html" data-back>‹ Back</a></div><section class="sec order" id="order" data-astro-cid-rm6npfgm><div class="wrap order__in" data-astro-cid-rm6npfgm><form class="rsvp" id="rsvp" name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate data-subject="Website request" data-astro-cid-rm6npfgm><input type="hidden" name="form-name" value="order" data-astro-cid-rm6npfgm><input type="hidden" name="paket" value="" data-astro-cid-rm6npfgm><input type="hidden" name="lang" value="en" data-astro-cid-rm6npfgm><p hidden data-astro-cid-rm6npfgm><label data-astro-cid-rm6npfgm>Leave empty<input name="bot-field" data-astro-cid-rm6npfgm></label></p><div class="rsvp__frame" data-astro-cid-rm6npfgm><p class="rsvp__title" data-astro-cid-rm6npfgm>R.S.V.P.</p><p class="rsvp__sub" data-astro-cid-rm6npfgm>tell us about your celebration</p><p class="rsvp__star" data-astro-cid-rm6npfgm>✦</p><div class="rsvp__grid" data-astro-cid-rm6npfgm><label data-astro-cid-rm6npfgm>Your names<input name="names" placeholder="Olena &amp; Marko" required data-astro-cid-rm6npfgm></label><label class="opt" data-astro-cid-rm6npfgm>Event date<input name="date" placeholder="12.06.2027" data-astro-cid-rm6npfgm></label><label data-astro-cid-rm6npfgm>Event<select name="event" data-astro-cid-rm6npfgm><option data-astro-cid-rm6npfgm>wedding</option><option data-astro-cid-rm6npfgm>birthday</option><option data-astro-cid-rm6npfgm>christening</option><option data-astro-cid-rm6npfgm>corporate</option><option data-astro-cid-rm6npfgm>other</option></select></label><label class="opt" data-astro-cid-rm6npfgm>Number of guests<input name="guests" placeholder="≈ 80" inputmode="numeric" data-astro-cid-rm6npfgm></label><label class="full" data-astro-cid-rm6npfgm>Telegram, Instagram or email<input name="contact" placeholder="@" required data-astro-cid-rm6npfgm></label><label class="full opt" data-astro-cid-rm6npfgm>Design<select name="design" data-astro-cid-rm6npfgm><option value="" data-astro-cid-rm6npfgm>not chosen yet</option><option value="Midnight" data-astro-cid-rm6npfgm>Midnight</option><option value="Chateau" data-astro-cid-rm6npfgm>Chateau</option><option value="Sage" data-astro-cid-rm6npfgm>Sage</option><option value="Bordeaux" data-astro-cid-rm6npfgm>Bordeaux</option><option value="Noir" data-astro-cid-rm6npfgm>Noir</option><option value="Cupid Garden" data-astro-cid-rm6npfgm>Cupid Garden</option><option value="Hydrangea" data-astro-cid-rm6npfgm>Hydrangea</option><option value="Tili-Tisto" data-astro-cid-rm6npfgm>Tili-Tisto</option><option value="Love" data-astro-cid-rm6npfgm>Love</option><option value="Vyshyvanka" data-astro-cid-rm6npfgm>Vyshyvanka</option><option value="Wedding Day" data-astro-cid-rm6npfgm>Wedding Day</option><option value="Fiesta" data-astro-cid-rm6npfgm>Fiesta</option></select></label><label class="full opt" data-astro-cid-rm6npfgm>A few words about the celebration<textarea name="message" rows="3" data-astro-cid-rm6npfgm></textarea></label></div><p class="rsvp__err" role="alert" hidden data-astro-cid-rm6npfgm>Please add your names and a contact ♡</p><div class="rsvp__foot" data-astro-cid-rm6npfgm><span data-astro-cid-rm6npfgm>we’ll reply within a day ♡</span><button class="btn btn--solid" type="submit" data-astro-cid-rm6npfgm>Send</button></div><p class="rsvp__done" hidden data-astro-cid-rm6npfgm>Thank you! We’ve got your request and will reply within a day ♡</p></div></form><div class="env-wrap" data-astro-cid-rm6npfgm><span class="art env__glasses" aria-hidden="true" style="-webkit-mask-image:url(../../art/glasses.png);mask-image:url(../../art/glasses.png);width:110px;height:110px;"></span><div class="env" data-astro-cid-rm6npfgm><p class="env__from" data-astro-cid-rm6npfgm>from: <span data-astro-cid-rm6npfgm>you ♡</span></p><div class="env__stamp" data-astro-cid-rm6npfgm><span data-astro-cid-rm6npfgm>bijou</span></div><div class="env__post" data-astro-cid-rm6npfgm>bijou · lviv<br data-astro-cid-rm6npfgm><em data-astro-cid-rm6npfgm>with love</em><br data-astro-cid-rm6npfgm>2025</div><p class="env__label" data-astro-cid-rm6npfgm>to</p><p class="env__line env__to" data-astro-cid-rm6npfgm>Bijou Invitations Agency</p><p class="env__line" data-astro-cid-rm6npfgm><a href="mailto:bijou.invitations@gmail.com" data-astro-cid-rm6npfgm>bijou.invitations@gmail.com</a></p><p class="env__line env__social" data-astro-cid-rm6npfgm><span data-astro-cid-rm6npfgm>@bijou_agency</span><small data-astro-cid-rm6npfgm>instagram · telegram</small></p></div></div></div></section><script type="module">var e=document.getElementById(`rsvp`),t=new URLSearchParams(location.search),n=t.get(`shablon`);if(n){let t=e.elements.namedItem(`design`),r=[...t.options].find(e=>e.value.toLowerCase().startsWith(n));r&&(t.value=r.value)}e.elements.namedItem(`paket`).value=t.get(`paket`)??``;var r=t=>{let n=[`names`,`date`,`event`,`guests`,`contact`,`design`,`paket`,`lang`,`message`].map(e=>`${e}: ${t.get(e)??``}`).join(`
+`);location.href=`mailto:bijou.invitations@gmail.com?subject=${encodeURIComponent(`${e.dataset.subject}: ${t.get(`names`)}`)}&body=${encodeURIComponent(n)}`};e.addEventListener(`submit`,async t=>{t.preventDefault();let n=new FormData(e),i=e.querySelector(`.rsvp__err`);if(i.hidden=!!(String(n.get(`names`)).trim()&&String(n.get(`contact`)).trim()),!i.hidden)return;let a=e.querySelector(`button[type="submit"]`);a.disabled=!0;try{let t=await fetch(`/`,{method:`POST`,headers:{"Content-Type":`application/x-www-form-urlencoded`},body:new URLSearchParams(n).toString()});if(!t.ok)throw Error(String(t.status));e.reset()}catch{r(n)}e.querySelector(`.rsvp__done`).hidden=!1,a.disabled=!1});</script></main><footer class="ftr" data-astro-cid-jo6i4kqk><div class="ftr__logo" aria-hidden="true" data-astro-cid-jo6i4kqk></div><div class="ftr__in" data-astro-cid-jo6i4kqk><p class="ftr__merci" data-astro-cid-jo6i4kqk>merci <span data-astro-cid-jo6i4kqk>♥</span></p><nav data-astro-cid-jo6i4kqk><a href="../../en/katalog/index.html" data-astro-cid-jo6i4kqk>Templates</a><a href="../../en/keisy/index.html" data-astro-cid-jo6i4kqk>Cases</a><a href="../../en/index.html#how" data-astro-cid-jo6i4kqk>How it works</a><a href="../../en/tsiny/index.html" data-astro-cid-jo6i4kqk>Pricing</a><a href="../../en/index.html#faq" data-astro-cid-jo6i4kqk>FAQ</a></nav><p class="ftr__copy" data-astro-cid-jo6i4kqk>© Bijou 2026 · <a href="mailto:bijou.invitations@gmail.com" data-astro-cid-jo6i4kqk>bijou.invitations@gmail.com</a></p></div></footer></div><script type="module">var e=new IntersectionObserver(t=>t.forEach(t=>{t.isIntersecting&&(t.target.classList.add(`is-in`),e.unobserve(t.target))}),{threshold:.15});document.querySelectorAll(`.reveal`).forEach(t=>e.observe(t)),document.querySelectorAll(`[data-back]`).forEach(e=>e.addEventListener(`click`,e=>{history.length>1&&document.referrer&&new URL(document.referrer).host===location.host&&(e.preventDefault(),history.back())}));</script></body></html>

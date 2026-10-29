@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Марко & Вероніка · Chateau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap">
+<style>
+/* рукописний шрифт заголовків цього шаблону — Calligraphia One */
+@font-face{font-family:"Calligraphia One";src:url("chateau/CalligraphiaOne.ttf") format("truetype");font-display:swap}
+:root{
+  --cream:#F6F1E8; --paper:#F0EADF; --ink:#2E2A26; --ink-2:#5A534B; --olive:#5D6A3A; --olive-d:#4C4D26; --line:#CFC6B6; --on-green:#F3EFE3;
+  --script:"Calligraphia One","Great Vibes",cursive; --serif:"Cormorant Garamond",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#e9e3d6;color:var(--ink);font:400 17px/1.5 var(--serif);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+p{margin:0}
+.page{max-width:480px;margin:0 auto;background:var(--cream);overflow:hidden}
+.sec{position:relative;padding:56px 24px;text-align:center}
+.h{font:400 58px/1 var(--script);color:var(--ink);margin:0;letter-spacing:.5px}
+.sub{margin-top:6px;font:500 20px/1.3 var(--serif);color:var(--ink-2)}
+.txt{color:var(--ink-2);font-size:17px;line-height:1.6}
+.green{background:var(--olive-d) url(chateau/green.jpg) center/cover;color:var(--on-green)}
+.green .h{color:var(--on-green)}
+/* рвані краї паперу: форма з макета, колір задається фоном */
+.tear{position:absolute;left:0;right:0;height:22px;z-index:2;pointer-events:none;-webkit-mask:url(chateau/edge.png) center/100% 100% no-repeat;mask:url(chateau/edge.png) center/100% 100% no-repeat}
+.tear--down{top:-1px}
+.tear--up{bottom:-1px;transform:scaleY(-1)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.reveal.is-in{opacity:1;transform:none}
+
+/* 1. обкладинка */
+.hero{position:relative;height:min(820px,210vw);background:#ddd url(chateau/hero.jpg) center top/cover;color:#fff;text-align:center}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(to bottom,transparent,rgb(48 50 24 / .55))}
+.hero__title{position:absolute;z-index:1;top:9.5%;left:0;right:0;font:400 74px/1 var(--script);color:#5f6d3c}
+.hero__names{position:absolute;z-index:1;left:0;right:0;bottom:9%;font:400 40px/1.1 var(--script);color:#fff;text-shadow:0 2px 14px rgb(0 0 0 / .35)}
+.hero__date{display:block;margin-top:10px;font:400 18px/1 var(--serif);letter-spacing:.14em}
+.hero .tear{background:var(--cream)}
+
+/* 2. звернення */
+.dear .h{font-size:56px}
+.guest{margin:32px 0 24px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:500 26px/1.3 var(--serif);color:var(--olive)}
+
+/* 3. дата й відлік */
+.date{padding-top:72px;padding-bottom:64px}
+.date__row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.date__row span{padding:8px 0;border-top:1px solid rgb(243 239 227 / .45);border-bottom:1px solid rgb(243 239 227 / .45);font:500 13px/1 var(--serif);letter-spacing:.24em;text-transform:uppercase}
+.date__row b{font:300 64px/1 var(--serif)}
+.date__year{margin-top:6px;font:400 16px/1 var(--serif);letter-spacing:.3em}
+.stem{width:1px;height:48px;margin:24px auto;background:rgb(243 239 227 / .6)}
+.date__left{font-size:17px}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);margin-top:20px}
+.cd b{display:block;font:300 34px/1 var(--serif)}
+.cd span{display:block;margin-top:10px;font:500 12px/1 var(--serif);letter-spacing:.18em;text-transform:uppercase}
+.date .tear--down{background:var(--cream)}
+.date .tear--up{background:var(--cream)}
+
+/* 4. локація */
+.chateau{width:100%;margin:36px 0 40px}
+.place{font:400 26px/1.4 var(--serif)}
+.addr{max-width:296px;margin:8px auto 0;font-weight:300;color:var(--ink-2)}
+.obtn{display:inline-flex;align-items:center;justify-content:center;margin-top:36px;padding:12px 36px;border:1px solid #5c5c31;color:var(--ink);font:500 16px/1.6 var(--serif);letter-spacing:4px;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s}
+.obtn:hover{background:var(--olive);color:var(--cream)}
+
+/* 5. програма */
+.prog{padding-top:80px;padding-bottom:80px}
+.prog .h{display:inline-block;position:relative}
+.prog .h small{position:absolute;right:-56px;bottom:-14px;font:400 22px/1 var(--script);white-space:nowrap}
+.tl{list-style:none;margin:48px 0 0;padding:0}
+.tl li{display:flex;flex-direction:column;align-items:center}
+.tl li + li::before{content:"";width:1px;height:44px;margin:18px 0;background:rgb(243 239 227 / .55)}
+.tl svg{width:26px;height:26px;stroke:var(--on-green);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}
+.tl time{font:400 56px/1 var(--serif)}
+.tl p{margin-top:8px;font-size:17px;opacity:.9}
+.prog .tear--down{background:var(--cream)}
+.prog .tear--up{background:var(--cream)}
+
+/* 6. дрес-код */
+.dress{padding-bottom:0}
+.dots{display:flex;justify-content:center;gap:10px;margin:40px 0 36px}
+.dots i{width:50px;height:50px;border-radius:50%;border:1px solid #8f8a7c;padding:4px;background-clip:content-box}
+.pair{display:flex;justify-content:center;align-items:flex-end;gap:0;margin:0 -10px}
+.pair img{width:50%;height:auto}
+
+/* 7. деталі */
+.details{background:var(--paper)}
+.det{margin-top:36px}
+.det h3{margin:0;font:500 24px/1.4 var(--serif);color:var(--ink)}
+.det p{max-width:306px;margin:6px auto 0}
+.det + .det::before{content:"";display:block;width:1px;height:28px;margin:24px auto;background:var(--line)}
+
+/* 8. фото */
+.photo{position:relative;height:330px;background:url(chateau/hands.jpg) center 42%/cover}
+.photo .tear{background:var(--cream)}
+
+/* 9. анкета */
+.rsvp .h{font-size:48px}
+.form{margin-top:40px;text-align:left}
+.f{margin-bottom:24px}
+.f > label:not(.radio),.f legend{display:block;padding:0;margin-bottom:4px;font-size:17px;color:var(--olive)}
+.f fieldset,fieldset.f{border:0;margin:0 0 24px;padding:0}
+.inp{width:100%;height:42px;padding:6px 12px;border:0;border-bottom:1px solid var(--line);background:transparent;font:500 19px/1.4 var(--serif);color:var(--ink);border-radius:0}
+.inp::placeholder{color:#8a8278}
+.inp:focus{outline:none;border-bottom-color:var(--olive)}
+textarea.inpp{height:66px;resize:vertical;padding-top:20px}
+select.inpp{-webkit-appearance:none;appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235D6A3A'/%3E%3C/svg%3E") right 10px center no-repeat}
+.radio{display:flex;align-items:center;gap:12px;margin-top:10px;font-size:18px;cursor:pointer}
+.radio input{appearance:none;-webkit-appearance:none;margin:0;width:18px;height:18px;border:1px solid var(--ink-2);border-radius:50%;display:grid;place-items:center;cursor:pointer}
+.radio input:checked{border-color:var(--olive)}
+.radio input:checked::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--olive)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{height:44px;padding:0 15px;border:1px solid var(--line);border-radius:99px;background:transparent;font:500 17px/1 var(--serif);color:var(--ink-2);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.chip[aria-pressed="true"]{background:var(--olive);border-color:var(--olive);color:var(--cream)}
+.send{width:100%;height:53px;margin-top:12px;border:0;background:var(--olive);color:var(--cream);font:500 15px/1 var(--serif);letter-spacing:.3em;text-transform:uppercase;cursor:pointer;transition:background .25s}
+.send:hover{background:var(--olive-d)}
+.thanks{display:none;margin-top:32px;font:400 40px/1.1 var(--script);color:var(--olive)}
+.rsvp.done .form{display:none}
+.rsvp.done .thanks{display:block}
+
+/* 10. фінал */
+.final{position:relative;height:min(569px,146vw);background:url(chateau/final.jpg) center 35%/cover;color:#fff}
+.final .tear{background:var(--cream)}
+.final__txt{position:absolute;left:28px;top:44%;text-align:left}
+.final__txt b{display:block;font:400 76px/1 var(--script);text-shadow:0 2px 16px rgb(0 0 0 / .3)}
+.final__txt span{display:block;margin:-6px 0 0 120px;font-size:20px;text-shadow:0 1px 8px rgb(0 0 0 / .5)}
+.foot{padding:20px 12px;text-align:center;font:500 12px/1 var(--serif);letter-spacing:.32em;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+<style>
+/* Bijou · анімація шаблону Chateau */
+@media (prefers-reduced-motion:no-preference){
+  .hero__title{animation:mxWrite 2.4s .3s cubic-bezier(.6,0,.3,1) both}
+  .hero__names{animation:mxUp 1.4s 1.6s ease both}
+  .hero__date{animation:mxTrack 1.8s 2s ease both}
+  .h.reveal{clip-path:inset(-30% 100% -30% 0);transition:opacity .9s ease,transform .9s ease,clip-path 1.6s cubic-bezier(.6,0,.3,1)}
+  .h.reveal.is-in{clip-path:inset(-30% -5% -30% -5%)}
+  .chateau.reveal{clip-path:inset(100% 0 0 0);transition:opacity .6s ease,clip-path 2.2s cubic-bezier(.5,0,.2,1)}
+  .chateau.reveal.is-in{clip-path:inset(0 0 0 0)}
+  .date__row b{display:inline-block;transform:scale(.7);opacity:0;transition:transform 1.4s .3s cubic-bezier(.2,.8,.2,1),opacity 1.2s .3s ease}
+  .date__row.is-in b{transform:none;opacity:1}
+  .stem{transform:scaleY(0);transform-origin:top;transition:transform 1.4s .4s ease}
+  .stem.mx-in{transform:none}
+  .cd b{animation:mxBreath 4s ease-in-out infinite}
+  .cd div:nth-child(2) b{animation-delay:.5s}.cd div:nth-child(3) b{animation-delay:1s}.cd div:nth-child(4) b{animation-delay:1.5s}
+  .green{animation:mxPan 30s ease-in-out infinite alternate}
+}
+@keyframes mxWrite{from{clip-path:inset(-30% 100% -30% 0);opacity:.2}to{clip-path:inset(-30% -5% -30% -5%);opacity:1}}
+@keyframes mxUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes mxTrack{from{opacity:0;letter-spacing:.5em}to{opacity:1;letter-spacing:.14em}}
+@keyframes mxBreath{0%,100%{opacity:1}50%{opacity:.7}}
+@keyframes mxPan{from{background-position:50% 40%}to{background-position:50% 60%}}
+</style>
+</head>
+<body>
+<main class="page">
+  <!-- 1. Обкладинка -->
+  <header class="hero">
+    <p class="hero__title">Wedding Day</p>
+    <p class="hero__names">Марко &amp; Вероніка<span class="hero__date">22.05.2027</span></p>
+    <i class="tear tear--up" aria-hidden="true"></i>
+  </header>
+
+  <!-- 2. Звернення -->
+  <section class="sec dear">
+    <p class="h reveal">Dear,</p>
+    <p class="guest reveal">Вікторія та Олег</p>
+    <p class="txt reveal">Ми так довго чекали моменту, коли зможемо розділити з вами найважливіший і найщасливіший день нашого життя. Будемо раді бачити вас поруч!</p>
+  </section>
+
+  <!-- 3. Дата й відлік -->
+  <section class="sec green date">
+    <i class="tear tear--down" aria-hidden="true"></i>
+    <div class="date__row reveal"><span>травня</span><b>22</b><span>субота</span></div>
+    <p class="date__year">2027</p>
+    <div class="stem" aria-hidden="true"></div>
+    <p class="date__left">до свята залишилось</p>
+    <div class="cd" aria-live="off">
+      <div><b id="cd-d">0</b><span>днів</span></div>
+      <div><b id="cd-h">00</b><span>годин</span></div>
+      <div><b id="cd-m">00</b><span>хвилин</span></div>
+      <div><b id="cd-s">00</b><span>секунд</span></div>
+    </div>
+    <i class="tear tear--up" aria-hidden="true"></i>
+  </section>
+
+  <!-- 4. Локація -->
+  <section class="sec loc">
+    <p class="h reveal">Location</p>
+    <p class="sub reveal">місце проведення</p>
+    <img class="chateau reveal" src="chateau/chateau.svg" alt="Шато «Ле Валь»" loading="lazy">
+    <p class="place reveal">Шато «Ле Валь»</p>
+    <p class="addr reveal">Закарпатська обл., с. Сторожниця, вул. Замкова, 1</p>
+    <a class="obtn reveal" href="https://maps.google.com/?q=Сторожниця" target="_blank" rel="noopener">Відкрити карту</a>
+  </section>
+
+  <!-- 5. Програма -->
+  <section class="sec green prog">
+    <i class="tear tear--down" aria-hidden="true"></i>
+    <p class="h reveal">Program<small>of the day</small></p>
+    <ol class="tl">
+      <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h5l-.5 6a2 2 0 0 1-4 0zM8.5 10v10M6 20h5M13 2h5l.5 6a2 2 0 0 1-4 0zM16.5 10v10M14 20h5"/></svg><time>16:00</time><p>Guests arrive</p></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="14" r="5.5"/><circle cx="15" cy="14" r="5.5"/><path d="M7.5 6.5 9 4.5l1.5 2"/></svg><time>17:00</time><p>Wedding ceremony</p></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="6"/><circle cx="12" cy="13" r="3.5"/><path d="M3 4v5a1.5 1.5 0 0 0 3 0V4M4.5 9v11M19.5 4c-1.5 0-2 2.5-2 5h2v11"/></svg><time>18:00</time><p>Dinner &amp; celebration</p></li>
+      <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4a8 8 0 1 0 5 13A7 7 0 0 1 15 4z"/><path d="M18 3v3M16.5 4.5h3"/></svg><time>00:00</time><p>End of the evening</p></li>
+    </ol>
+    <i class="tear tear--up" aria-hidden="true"></i>
+  </section>
+
+  <!-- 6. Дрес-код -->
+  <section class="sec dress">
+    <p class="h reveal">Dresscode</p>
+    <p class="txt reveal" style="margin-top:12px">Будемо раді, якщо ви підтримаєте ніжну палітру свята: шавлія, олива, пісочний і молочний.</p>
+    <div class="dots reveal" aria-label="Палітра">
+      <i style="background-color:#4f5b40"></i><i style="background-color:#7f8b6b"></i><i style="background-color:#b5bca3"></i><i style="background-color:#d9d2c0"></i><i style="background-color:#f1ede3"></i>
+    </div>
+    <div class="pair reveal"><img src="chateau/groom.png" alt="" loading="lazy"><img src="chateau/bride.png" alt="" loading="lazy"></div>
+  </section>
+
+  <!-- 7. Деталі -->
+  <section class="sec details">
+    <p class="h reveal">Details</p>
+    <div class="det reveal"><h3>Подарунки</h3><p class="txt">Головне для нас – ваша увага, а радість принесе будь-який подарунок у конверті.</p></div>
+    <div class="det reveal"><h3>Тости</h3><p class="txt">Замість «Гірко!» давайте піднімемо келихи за любов на нашому святі.</p></div>
+    <div class="det reveal"><h3>Квіти</h3><p class="txt">Не купуйте букети – краще принесіть свічку з побажанням, і ми запалимо їх разом.</p></div>
+  </section>
+
+  <!-- 8. Фото -->
+  <div class="photo" role="img" aria-label="Руки нареченого й нареченої"><i class="tear tear--up" aria-hidden="true"></i></div>
+
+  <!-- 9. Анкета -->
+  <section class="sec rsvp" id="rsvp">
+    <p class="h reveal">Kindly Respond</p>
+    <p class="txt reveal" style="margin-top:16px">Будь ласка, підтвердьте свою присутність<br>до 22 березня 2027 року</p>
+    <form class="form" id="form">
+      <div class="f"><label for="nm">Ваше ім’я та прізвище</label><input class="inp" id="nm" name="name" placeholder="Ірина Коваль" required></div>
+      <fieldset class="f">
+        <legend>Чи зможете ви прийти?</legend>
+        <label class="radio"><input type="radio" name="go" value="yes" checked> Із радістю прийду</label>
+        <label class="radio"><input type="radio" name="go" value="no"> На жаль, не зможу</label>
+      </fieldset>
+      <div class="f"><label for="gs">Скільки гостей буде з вами?</label>
+        <select class="inp" id="gs" name="guests"><option>1 гість</option><option>2 гості</option><option>3 гості</option><option>4 гості</option></select></div>
+      <fieldset class="f">
+        <legend>Що будете пити?</legend>
+        <div class="chips">
+          <button type="button" class="chip" aria-pressed="true">Вино</button><button type="button" class="chip" aria-pressed="false">Шампанське</button><button type="button" class="chip" aria-pressed="false">Текіла</button><button type="button" class="chip" aria-pressed="true">Віскі</button><button type="button" class="chip" aria-pressed="false">Горілка</button><button type="button" class="chip" aria-pressed="false">Безалкогольне</button>
+        </div>
+      </fieldset>
+      <div class="f"><label for="al">Алергії або побажання до меню</label><textarea class="inp" id="al" name="wish" placeholder="Напишіть тут…"></textarea></div>
+      <button class="send" type="submit">Надіслати відповідь</button>
+    </form>
+    <p class="thanks" role="status">Дякуємо! До зустрічі</p>
+  </section>
+
+  <!-- 10. Фінал -->
+  <footer>
+    <div class="final"><i class="tear tear--down" aria-hidden="true"></i>
+      <div class="final__txt reveal"><b>See you</b><span>до зустрічі в шато</span></div>
+    </div>
+    <p class="foot green">Bijou · Invitation agency</p>
+  </footer>
+</main>
+<script>
+  // дата весілля — з неї рахується відлік
+  const WEDDING = new Date(2027, 4, 22, 16, 0);
+  const pad = (n) => String(n).padStart(2, '0');
+  const tick = () => {
+    let s = Math.max(0, Math.floor((WEDDING - Date.now()) / 1000));
+    const d = Math.floor(s / 86400); s %= 86400;
+    document.getElementById('cd-d').textContent = d;
+    document.getElementById('cd-h').textContent = pad(Math.floor(s / 3600));
+    document.getElementById('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
+    document.getElementById('cd-s').textContent = pad(s % 60);
+  };
+  tick(); setInterval(tick, 1000);
+  document.querySelectorAll('.chip').forEach((c) => c.addEventListener('click', () => c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed') !== 'true'))));
+  document.getElementById('form').addEventListener('submit', (e) => { e.preventDefault(); document.getElementById('rsvp').classList.add('done'); });
+  const io = new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.add('is-in'); io.unobserve(x.target); } }), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+<a href="../index.html" class="bijou-back" aria-label="Назад до сайту Bijou" style="position:fixed;z-index:9999;top:max(12px,env(safe-area-inset-top));left:12px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px 0 10px;border-radius:99px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#4a1f2a;font:500 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 14px -6px rgba(0,0,0,.35)"><span aria-hidden="true" style="font-size:18px;line-height:1">&#8249;</span>Bijou</a>
+<script>document.querySelector('.bijou-back').addEventListener('click',function(e){if(history.length>1&&document.referrer&&new URL(document.referrer).host===location.host){e.preventDefault();history.back();}});</script>
+<script data-mx-sel=".stem">
+/* Bijou · м'яка анімація: каскад для блоків, що з'являються, і клас .mx-in для декору в полі зору */
+(function(sel){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('mx');
+  document.querySelectorAll('.reveal').forEach(function(el){
+    var sib = Array.prototype.filter.call(el.parentNode.children, function(c){ return c.classList.contains('reveal'); });
+    var i = sib.indexOf(el);
+    if (i > 0 && !el.style.transitionDelay) el.style.transitionDelay = Math.min(i, 4) * 0.09 + 's';
+  });
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('mx-in'); io.unobserve(e.target); } }); }, { threshold: .2 });
+  document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
+})(document.currentScript.dataset.mxSel);
+</script>
+</body>
+</html>

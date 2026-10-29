@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Twenty Five · Юля</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@400&display=swap">
+<style>
+@font-face{font-family:"Calligraphia One";src:url("twentyfive/CalligraphiaOne.ttf") format("truetype");font-display:swap}
+:root{
+  --black:#101010; --red:#6B0C0D; --red-d:#5C090A; --text-red:#6E1414; --white:#fff; --grey:#E6E6E6; --ink:#1a1a1a;
+  --script:"Calligraphia One",cursive; --serif:"Cormorant Garamond",Georgia,serif; --num:"Playfair Display",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#2a2a2a;color:var(--ink);font:400 18px/1.6 var(--serif);-webkit-font-smoothing:antialiased}
+img{display:block;width:100%}
+p{margin:0}
+.page{max-width:480px;margin:0 auto;background:var(--white);overflow:hidden}
+.h{font:400 50px/1.1 var(--script);margin:0}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.reveal.is-in{opacity:1;transform:none}
+
+/* 1. обкладинка (фото з написом TWENTY FIVE і трояндами) */
+.hero{background:var(--black)}
+
+/* 2. звернення: чорний блок, низ — дуга */
+.intro{position:relative;z-index:1;background:var(--black);color:#fff;text-align:center;padding:24px 28px 96px;border-radius:0 0 50% 50% / 0 0 120px 120px}
+.intro .h{font-size:44px;color:#fff}
+.intro i{display:block;width:96px;height:1px;margin:28px auto 32px;background:#7a1a1a}
+.intro p + p{margin-top:22px}
+.intro p:last-child{font-size:16px}
+
+/* 3. дата */
+.date{position:relative;padding:72px 0 40px;text-align:center}
+.date b{display:block;font:400 116px/1 var(--num);color:var(--text-red);letter-spacing:-.01em}
+.date span{position:absolute;top:58%;font:400 30px/1 var(--script);writing-mode:vertical-rl}
+.date span:first-of-type{left:18px;transform:rotate(180deg)}
+.date span:last-of-type{right:18px}
+
+/* 4. локація */
+.loc{position:relative;z-index:1;background:var(--white);text-align:center;padding:0 24px 64px;border-radius:0 0 50% 50% / 0 0 120px 120px}
+.loc .venue{width:calc(100% + 48px);max-width:none;margin:24px -24px 0}
+.loc .h{margin-top:4px}
+.place{margin-top:14px;font:500 22px/1.3 var(--serif);color:var(--text-red)}
+.addr{margin-top:6px;font-size:17px}
+.pill{display:inline-block;margin-top:40px;padding:12px 26px;border-radius:99px;background:var(--grey);color:var(--text-red);font:600 16px/1 var(--serif);text-decoration:underline;text-underline-offset:3px;transition:transform .2s}
+.pill:hover{transform:translateY(-2px)}
+
+/* 5. таймінг */
+.timing{background:linear-gradient(var(--red),var(--red-d));color:#fff;text-align:center;margin-top:-120px;padding:180px 24px 200px}
+.timing .h{color:#fff;font-size:46px;margin-bottom:28px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li + li{margin-top:40px}
+.tl time{display:block;font:400 92px/1 var(--num);color:var(--grey)}
+.tl strong{display:block;margin-top:10px;font:600 22px/1.3 var(--serif)}
+.tl p{margin-top:10px;font-size:16px}
+.tl small{display:block;margin-top:4px;font-size:14px;opacity:.6}
+
+/* 6. дрес-код: біла арка */
+.dress{position:relative;z-index:1;margin-top:-140px;background:var(--white);border-radius:50% 50% 0 0 / 120px 120px 0 0;text-align:center;padding:72px 24px 40px}
+.dress p:not(.h){margin-top:14px;font-size:17px}
+.dress em{font-style:normal;color:var(--text-red)}
+.roses{width:calc(100% + 48px);max-width:none;margin:32px -24px 0}
+.tones{display:grid;grid-template-columns:repeat(3,1fr);margin-top:4px;font-size:19px}
+
+/* 7. подяка: червоне коло на межі білого й чорного */
+.thanks{position:relative;background:var(--black);margin-top:110px;padding-bottom:24px}
+.thanks::before{content:"";position:absolute;left:0;right:0;top:-110px;height:240px;background:var(--white);border-radius:0 0 50% 50% / 0 0 130px 130px}
+.thanks__c{position:relative;z-index:1;width:84%;aspect-ratio:1/0.82;margin:-60px auto 0;border-radius:50%;background:var(--red);color:#fff;text-align:center;display:flex;flex-direction:column;justify-content:center;padding:0 9%}
+.thanks__c strong{font:600 21px/1.35 var(--serif)}
+.thanks__c p{margin-top:16px;font-size:15px}
+
+/* 8. фінал (фото з «25 — це тільки початок») */
+.final{background:var(--black)}
+.foot{background:var(--black);color:#8a8a8a;text-align:center;padding:18px 12px;font:500 11px/1 var(--serif);letter-spacing:.3em;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+<style>
+/* Bijou · анімація шаблону Twenty Five */
+@media (prefers-reduced-motion:no-preference){
+  .hero{overflow:hidden}
+  .hero img{animation:mxFocus 3.2s ease-out both}
+  .intro i{transform:scaleX(0);transition:transform 1.6s .5s ease}
+  .intro i.mx-in{transform:none}
+  .date span{animation:mxFloat 6s ease-in-out infinite}
+  .date span:last-of-type{animation-delay:-3s}
+  .loc .venue{transform:scale(1.08);transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
+  .loc .venue.mx-in{transform:none}
+  .roses.reveal.is-in{animation:mxSway 7s ease-in-out 1s infinite}
+}
+@keyframes mxFocus{from{opacity:0;filter:blur(10px);transform:scale(1.1)}to{opacity:1;filter:none;transform:none}}
+@keyframes mxFloat{0%,100%{translate:0 -6px}50%{translate:0 6px}}
+@keyframes mxSway{0%,100%{rotate:0deg}50%{rotate:1.5deg}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="hero"><img src="twentyfive/hero.jpg" alt="Twenty Five — An evening to remember" loading="lazy"></header>
+
+  <section class="intro">
+    <p class="h reveal">Юля &amp; Сергій</p>
+    <i aria-hidden="true"></i>
+    <p class="reveal">Цього року мені виповнюється 25, і я хочу відсвяткувати цей вечір у колі людей, яких справді хочу бачити поруч.</p>
+    <p class="reveal">Тому хочу запросити вас провести цей вечір разом зі мною — з шампанським, хорошою музикою, вечерею, танцями та просто приємною атмосферою.</p>
+    <p class="reveal">Буду дуже рада бачити вас і разом відсвяткувати цей день.</p>
+  </section>
+
+  <section class="date" aria-label="24 жовтня 2026">
+    <b class="reveal">24.</b><b class="reveal">10.</b><b class="reveal">26.</b>
+    <span aria-hidden="true">date</span><span aria-hidden="true">date</span>
+  </section>
+
+  <section class="loc">
+    <img class="venue" src="twentyfive/venue.jpg" alt="Зала ресторану" loading="lazy">
+    <p class="h reveal">Location</p>
+    <p class="place reveal">•&nbsp; Fami Chefs &nbsp;•</p>
+    <p class="addr reveal">вул. Мельника, 18, LEOLAND (2 поверх)</p>
+    <a class="pill reveal" href="https://maps.google.com/?q=Fami+Chefs+LEOLAND+Мельника+18+Львів" target="_blank" rel="noopener">Подивитися на карті</a>
+  </section>
+
+  <section class="timing">
+    <p class="h reveal">Timing</p>
+    <ol class="tl">
+      <li class="reveal"><time>16:00</time><strong>Welcome</strong><p>зустріч гостей &nbsp;•&nbsp; шампанське &nbsp;•&nbsp; фото</p><small>(Приходьте вчасно — хочеться почати цей вечір разом)</small></li>
+      <li class="reveal"><time>17:00</time><strong>Dinner</strong><p>вечеря &nbsp;•&nbsp; DJ &nbsp;•&nbsp; розмови</p></li>
+      <li class="reveal"><time>21:00</time><strong>Birthday Cake</strong><p>свічки &nbsp;•&nbsp; побажання &nbsp;•&nbsp; фото</p></li>
+      <li class="reveal"><time>22:30</time><strong>The End</strong><p>Дякую, що були частиною цього вечора.</p></li>
+    </ol>
+  </section>
+
+  <section class="dress">
+    <p class="h reveal">Dresscode</p>
+    <p class="reveal">Здається, це саме той випадок, коли є привід трохи причепуритися. Обирайте свій найкращий <em>cocktail look</em>.</p>
+    <img class="roses reveal" src="twentyfive/roses.jpg" alt="" loading="lazy">
+    <div class="tones reveal"><span>Black</span><span>Graphite</span><span>Grey</span></div>
+  </section>
+
+  <section class="thanks">
+    <div class="thanks__c reveal">
+      <strong>Дякую, що будете частиною цього вечора.</strong>
+      <p>Мені дуже хочеться запам'ятати свої 25 саме так — красиво, голосно і разом із людьми, яких я люблю.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="final"><img src="twentyfive/final.jpg" alt="25 — це тільки початок" loading="lazy"></div>
+    <p class="foot">Bijou · Invitation agency</p>
+  </footer>
+</main>
+<script>
+  const io = new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.add('is-in'); io.unobserve(x.target); } }), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+<a href="../index.html" class="bijou-back" aria-label="Назад до сайту Bijou" style="position:fixed;z-index:9999;top:max(12px,env(safe-area-inset-top));left:12px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px 0 10px;border-radius:99px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#4a1f2a;font:500 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 14px -6px rgba(0,0,0,.35)"><span aria-hidden="true" style="font-size:18px;line-height:1">&#8249;</span>Bijou</a>
+<script>document.querySelector('.bijou-back').addEventListener('click',function(e){if(history.length>1&&document.referrer&&new URL(document.referrer).host===location.host){e.preventDefault();history.back();}});</script>
+<script data-mx-sel=".intro i, .loc .venue">
+/* Bijou · м'яка анімація: каскад для блоків, що з'являються, і клас .mx-in для декору в полі зору */
+(function(sel){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('mx');
+  document.querySelectorAll('.reveal').forEach(function(el){
+    var sib = Array.prototype.filter.call(el.parentNode.children, function(c){ return c.classList.contains('reveal'); });
+    var i = sib.indexOf(el);
+    if (i > 0 && !el.style.transitionDelay) el.style.transitionDelay = Math.min(i, 4) * 0.09 + 's';
+  });
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('mx-in'); io.unobserve(e.target); } }); }, { threshold: .2 });
+  document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
+})(document.currentScript.dataset.mxSel);
+</script>
+</body>
+</html>

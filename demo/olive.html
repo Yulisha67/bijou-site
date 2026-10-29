@@ -1,0 +1,429 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>
+/* Bijou · анімація шаблону Olive */
+@media (prefers-reduced-motion:no-preference){
+  .top .swash path{stroke-dasharray:1;stroke-dashoffset:1;animation:mxDraw 2.6s .5s ease forwards}
+  .top .sw-br path{animation-delay:1.1s}
+  .top .eyebrow{animation:mxUp 1.2s .2s ease both}
+  .top .names{animation:mxTrack 2s .5s cubic-bezier(.3,0,.2,1) both}
+  .top .spk{animation:mxTwinkle 3.6s 1.8s ease-in-out infinite both}
+    .ph:first-of-type img{animation:mxSettle 2.2s .3s ease-out both}
+  .cal .on svg{animation:mxBeat 2.6s ease-in-out infinite;transform-origin:center}
+  /* браузери без scroll-анімацій (Safari, Firefox) — звичайна поява при скролі */
+  @supports not (animation-timeline: view()){
+    .mx .rev{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease}
+    .mx .rev.mx-in{opacity:1;transform:none}
+  }
+}
+@keyframes mxDraw{to{stroke-dashoffset:0}}
+@keyframes mxUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes mxTrack{from{opacity:0;letter-spacing:.35em}to{opacity:1}}
+@keyframes mxTwinkle{0%,100%{opacity:1;transform:rotate(0) scale(1)}50%{opacity:.5;transform:rotate(45deg) scale(.8)}}
+@keyframes mxSettle{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:none}}
+@keyframes mxBeat{0%,60%,100%{transform:scale(1)}20%{transform:scale(1.18)}40%{transform:scale(1.05)}}
+</style>
+</head><body>
+<title>Roman & Valeria · Olive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Parisienne&family=Jost:wght@200;300;400&display=swap">
+
+<style>
+:root{
+  --cream:#F4F0E6;
+  --cream-2:#EDE8DA;
+  --olive:#5E6534;
+  --olive-d:#474D26;
+  --olive-l:#8E9560;
+  --ink:#2F3220;
+  --ink-2:#5C5F45;
+  --gold:#A98B5B;
+  --hair:rgba(47,50,32,.16);
+  --hair-2:rgba(47,50,32,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:#D9D5C6;color:var(--ink);
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:16.5px;line-height:1.8;font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  padding:clamp(0px,3vw,34px) clamp(0px,3vw,18px);
+}
+img{max-width:100%;display:block}
+::selection{background:var(--olive);color:var(--cream)}
+:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+
+.card{max-width:430px;margin:0 auto;background:var(--cream);position:relative;overflow:hidden}
+
+/* ── type roles ── */
+.scr{font-family:"Parisienne",cursive;font-weight:400;color:var(--olive)}
+.lab{font-family:"Jost",sans-serif;font-size:8.5px;font-weight:300;letter-spacing:.42em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 14px;text-align:center}
+.nm{font-family:"Cormorant Garamond",serif;font-weight:400;letter-spacing:.2em;text-transform:uppercase}
+h2{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:21px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0 0 16px;text-align:center;color:var(--ink)}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
+.sec{padding:40px 28px;position:relative}
+.center{text-align:center}
+.olive{background:var(--olive);color:#F1EEE0}
+.olive h2,.olive .scr{color:#F1EEE0}
+.olive .lab{color:rgba(241,238,224,.62)}
+.olive p{color:rgba(241,238,224,.82)}
+.tint{background:var(--cream-2)}
+.muted{color:var(--ink-2);font-size:15.5px;line-height:1.85}
+
+/* ── ornaments ── */
+.spk{color:var(--gold);display:inline-block;vertical-align:middle}
+.spk-abs{position:absolute;color:var(--gold);opacity:.75;pointer-events:none}
+.swash{position:absolute;color:var(--gold);opacity:.55;pointer-events:none}
+.sw-tl{top:12px;left:12px;width:74px}
+.sw-br{bottom:12px;right:12px;width:74px;transform:rotate(180deg)}
+.rule{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 auto;max-width:170px;color:var(--gold)}
+.rule i{flex:1;height:1px;background:currentColor;opacity:.5}
+
+/* ── top ── */
+.top{padding:34px 28px 30px;position:relative;text-align:center}
+.top .eyebrow{font-family:"Parisienne",cursive;font-size:22px;color:var(--olive);margin:0 0 4px}
+.top .names{font-family:"Cormorant Garamond",serif;font-weight:400;
+  font-size:clamp(25px,7vw,32px);line-height:1.3;letter-spacing:.19em;text-transform:uppercase;
+  margin:0;color:var(--ink)}
+.top .names span{font-family:"Parisienne",cursive;text-transform:none;letter-spacing:0;
+  color:var(--gold);font-size:.92em;padding:0 .12em}
+
+/* ── photo ── */
+.ph{padding:0 28px}
+.ph img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.ph.wide img{aspect-ratio:3/2}
+.ph figcaption{font-family:"Jost",sans-serif;font-size:7.5px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gold);text-align:center;margin-top:8px}
+
+/* ── calendar ── */
+.cal{max-width:250px;margin:0 auto}
+.cal .dt{font-family:"Cormorant Garamond",serif;font-size:22px;letter-spacing:.24em;
+  text-align:center;margin:0 0 14px;color:var(--ink)}
+.cal table{width:100%;border-collapse:collapse}
+.cal th{font-family:"Jost",sans-serif;font-size:7.5px;font-weight:300;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-2);padding-bottom:8px;opacity:.7}
+.cal td{padding:4px 0;font-size:13.5px;color:var(--ink-2);text-align:center;
+  font-variant-numeric:tabular-nums;position:relative}
+.cal td.off{opacity:.3}
+.cal td.on{color:#F1EEE0}
+.cal td.on span{position:relative;z-index:2}
+.cal td.on svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);
+  width:23px;height:23px;color:var(--olive);z-index:1}
+
+/* ── programme ── */
+.prog{max-width:280px;margin:0 auto;position:relative;padding-left:64px}
+.prog::before{content:"";position:absolute;left:58px;top:10px;bottom:10px;width:1px;
+  background:rgba(241,238,224,.32)}
+.prog div{position:relative;padding:0 0 18px}
+.prog div:last-child{padding-bottom:0}
+.prog div::before{content:"";position:absolute;left:-10px;top:7px;width:5px;height:5px;
+  border-radius:50%;background:#F1EEE0}
+.prog .t{position:absolute;left:-64px;top:2px;width:44px;text-align:right;
+  font-family:"Jost",sans-serif;font-size:9px;font-weight:300;letter-spacing:.12em;
+  color:rgba(241,238,224,.8);font-variant-numeric:tabular-nums}
+.prog .e{display:block;font-size:16px;letter-spacing:.09em;color:#F1EEE0;line-height:1.35}
+.prog .s{display:block;font-size:13.5px;color:rgba(241,238,224,.6);line-height:1.5;margin-top:1px}
+
+/* ── venue ── */
+.venue .rn{font-family:"Cormorant Garamond",serif;font-size:21px;letter-spacing:.16em;
+  text-transform:uppercase;margin:0 0 4px}
+.btn{display:inline-block;font-family:"Jost",sans-serif;font-size:8.5px;font-weight:300;
+  letter-spacing:.28em;text-transform:uppercase;text-decoration:none;
+  padding:11px 22px;border:1px solid currentColor;color:#F1EEE0;
+  transition:background .3s,color .3s}
+.btn:hover{background:#F1EEE0;color:var(--olive)}
+.btn.dark{color:var(--olive);border-color:var(--olive)}
+.btn.dark:hover{background:var(--olive);color:var(--cream)}
+
+/* ── dress code ── */
+.dress{display:grid;grid-template-columns:1fr 106px;gap:14px;align-items:start;
+  max-width:320px;margin:0 auto}
+.dress .mood img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.chips{display:flex;flex-direction:column;gap:7px}
+.chips div{display:flex;align-items:center;gap:9px}
+.chips i{width:30px;height:30px;flex:none;display:block}
+.chips span{font-family:"Parisienne",cursive;font-size:14px;color:var(--ink-2);line-height:1.15}
+@media (max-width:420px){.dress{grid-template-columns:1fr 96px;gap:11px}
+.chips i{width:26px;height:26px}}
+
+/* ── countdown ── */
+.cd{display:flex;justify-content:center;align-items:baseline;gap:0}
+.cd div{flex:1;text-align:center;position:relative}
+.cd div+div::before{content:":";position:absolute;left:-3px;top:2px;
+  font-family:"Cormorant Garamond",serif;font-size:26px;color:var(--gold);opacity:.6}
+.cd .n{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:34px;line-height:1;
+  display:block;font-variant-numeric:tabular-nums;color:var(--ink)}
+.cd .u{font-family:"Parisienne",cursive;font-size:14px;color:var(--olive);margin-top:5px;display:block}
+
+/* ── form ── */
+.form{max-width:280px;margin:0 auto;text-align:left}
+.f{margin-bottom:15px}
+.f label,.leg{display:block;font-family:"Jost",sans-serif;font-size:7.5px;font-weight:300;
+  letter-spacing:.3em;text-transform:uppercase;color:rgba(241,238,224,.6);margin-bottom:6px}
+.f input,.f select{width:100%;padding:7px 0;border:0;border-bottom:1px solid rgba(241,238,224,.3);
+  background:transparent;color:#F1EEE0;border-radius:0;
+  font-family:"Cormorant Garamond",serif;font-size:16.5px;-webkit-appearance:none;appearance:none}
+.f input::placeholder{color:rgba(241,238,224,.32)}
+.f select option{background:var(--olive-d);color:#F1EEE0}
+.f input:focus,.f select:focus{outline:none;border-color:#F1EEE0}
+fieldset{border:0;padding:0;margin:0 0 15px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.seg label{display:flex;align-items:center;justify-content:center;padding:11px 5px;margin:0;
+  border:1px solid rgba(241,238,224,.3);cursor:pointer;text-align:center;
+  font-family:"Jost",sans-serif;font-size:8px;font-weight:300;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(241,238,224,.82);transition:all .25s}
+.seg input{position:absolute;opacity:0;width:0;height:0}
+.seg label:has(input:checked){background:#F1EEE0;border-color:#F1EEE0;color:var(--olive)}
+.send{width:100%;padding:13px;border:1px solid rgba(241,238,224,.5);background:transparent;
+  color:#F1EEE0;font-family:"Jost",sans-serif;font-size:8.5px;font-weight:300;letter-spacing:.3em;
+  text-transform:uppercase;cursor:pointer;transition:all .3s;margin-top:5px}
+.send:hover{background:#F1EEE0;color:var(--olive)}
+.done{text-align:center;padding:8px 0}
+.done b{display:block;font-family:"Parisienne",cursive;font-size:32px;font-weight:400;
+  color:#F1EEE0;margin-bottom:6px}
+
+/* ── foot ── */
+.foot{padding:36px 28px 32px;text-align:center;position:relative}
+.foot .fn{font-family:"Parisienne",cursive;font-size:26px;color:var(--olive);margin:0}
+.foot .fd{font-family:"Jost",sans-serif;font-size:7.5px;font-weight:300;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--ink-2);margin:10px 0 0;opacity:.75}
+.by{text-align:center;font-family:"Jost",sans-serif;font-size:7.5px;font-weight:300;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(47,50,32,.32);padding:14px 0 4px}
+
+/* ── music ── */
+.mus{position:fixed;top:calc(clamp(0px,3vw,34px) + 14px);right:calc(50% - 215px + 14px);z-index:50;
+  width:34px;height:34px;border-radius:50%;border:1px solid rgba(169,139,91,.6);
+  background:rgba(244,240,230,.82);backdrop-filter:blur(6px);cursor:pointer;
+  display:grid;place-items:center;padding:0}
+.mus .bars{display:flex;align-items:flex-end;gap:2px;height:11px}
+.mus .bars i{width:2px;background:var(--olive);height:3px;display:block;border-radius:1px}
+.mus[aria-pressed="true"] .bars i{animation:eq .9s ease-in-out infinite}
+.mus[aria-pressed="true"] .bars i:nth-child(2){animation-delay:.15s}
+.mus[aria-pressed="true"] .bars i:nth-child(3){animation-delay:.3s}
+.mus[aria-pressed="true"] .bars i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:3px}50%{height:11px}}
+@media (max-width:466px){.mus{right:16px}}
+
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion:no-preference){
+    .rev{animation:fin linear both;animation-timeline:view();animation-range:entry 3% cover 20%}
+  }
+}
+@keyframes fin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<div class="card">
+
+  <!-- ░ NAMES ░ -->
+  <div class="top">
+    <svg class="swash sw-tl" viewBox="0 0 90 54" fill="none" aria-hidden="true">
+      <path d="M2 52C2 30 14 12 34 6c14-4 24 2 24 11 0 8-9 12-16 8-6-3-6-12 3-16 10-4 24 1 33 9"
+        pathLength="1" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/>
+    </svg>
+    <svg class="swash sw-br" viewBox="0 0 90 54" fill="none" aria-hidden="true">
+      <path d="M2 52C2 30 14 12 34 6c14-4 24 2 24 11 0 8-9 12-16 8-6-3-6-12 3-16 10-4 24 1 33 9"
+        pathLength="1" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/>
+    </svg>
+    <p class="eyebrow">Our story</p>
+    <h1 class="names">Roman<span>&amp;</span>Valeria</h1>
+    <svg class="spk" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="margin-top:12px">
+      <path d="M12 1c.7 5.6 4.7 9.6 10.3 10.3C16.7 12 12.7 16 12 21.6 11.3 16 7.3 12 1.7 11.3 7.3 10.6 11.3 6.6 12 1z"/>
+    </svg>
+  </div>
+
+  <figure class="ph rev">
+    <img src="assets/p1.jpg" alt="The two of them" fetchpriority="high" loading="lazy">
+  </figure>
+
+  <div class="sec center rev">
+    <h2 style="font-size:19px">The day we<br>dreamed of</h2>
+    <p class="muted" style="max-width:270px;margin-inline:auto">
+      Dear ones — we are inviting you to share the most important “yes” of our life.
+      It would mean everything to have you in the room.
+    </p>
+  </div>
+
+  <!-- ░ CALENDAR ░ -->
+  <div class="sec tint rev" style="padding-top:34px">
+    <p class="scr center" style="font-size:19px;margin:0 0 12px">save the date</p>
+    <div class="cal">
+      <p class="dt">08 / 08 / 2026</p>
+      <table>
+        <thead><tr><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th><th>Su</th></tr></thead>
+        <tbody>
+          <tr><td class="off">27</td><td class="off">28</td><td class="off">29</td><td class="off">30</td><td class="off">31</td><td>1</td><td>2</td></tr>
+          <tr><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+            <td class="on"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.4-9C1 8.4 3 5 6.4 5 8.7 5 10.8 6.4 12 8.3 13.2 6.4 15.3 5 17.6 5 21 5 23 8.4 21.4 12 19.5 16.3 12 21 12 21z"/></svg><span>8</span></td>
+            <td>9</td></tr>
+          <tr><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+          <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td></tr>
+          <tr><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td></tr>
+          <tr><td>31</td><td class="off">1</td><td class="off">2</td><td class="off">3</td><td class="off">4</td><td class="off">5</td><td class="off">6</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ░ VENUE ░ -->
+  <div class="sec olive venue center rev">
+    <p class="scr" style="font-size:18px;margin:0 0 6px">the place</p>
+    <p class="rn">Maison La Prairie</p>
+    <p style="font-size:14.5px;letter-spacing:.06em;margin:0 0 16px">Vereskovaya 12</p>
+    <a class="btn" href="https://maps.google.com/?q=Maison+La+Prairie" target="_blank" rel="noopener">Build a route</a>
+  </div>
+
+  <figure class="ph wide rev" style="padding:0">
+    <img src="assets/p2.jpg" alt="The terrace" loading="lazy">
+  </figure>
+
+  <div class="sec center rev">
+    <p class="muted" style="max-width:280px;margin-inline:auto">
+      We chose this place for a reason — it is filled with a particular quiet,
+      and it will become part of our warmest memories.
+    </p>
+    <div class="rule" style="margin-top:22px"><i></i>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 1c.7 5.6 4.7 9.6 10.3 10.3C16.7 12 12.7 16 12 21.6 11.3 16 7.3 12 1.7 11.3 7.3 10.6 11.3 6.6 12 1z"/>
+      </svg><i></i></div>
+  </div>
+
+  <!-- ░ PROGRAMME ░ -->
+  <div class="sec olive rev">
+    <p class="scr center" style="font-size:20px;margin:0 0 4px">programme</p>
+    <p class="lab" style="margin-bottom:26px">of the day</p>
+    <div class="prog">
+      <div><span class="t">15:00</span><span class="e">Gathering</span><span class="s">Registry office №1, Oktyabrsky 3g</span></div>
+      <div><span class="t">15:30</span><span class="e">Ceremony</span><span class="s">In the garden, by the old wall</span></div>
+      <div><span class="t">16:30</span><span class="e">Welcome</span><span class="s">Maison La Prairie, Vereskovaya 12</span></div>
+      <div><span class="t">18:00</span><span class="e">Dinner</span><span class="s">Long tables under the pergola</span></div>
+      <div><span class="t">21:00</span><span class="e">Dancing</span><span class="s">Until the last song</span></div>
+    </div>
+  </div>
+
+  <!-- ░ DRESS CODE ░ -->
+  <div class="sec tint rev">
+    <p class="scr center" style="font-size:20px;margin:0 0 4px">dress code</p>
+    <p class="lab" style="margin-bottom:18px">a few words about colour</p>
+    <p class="muted center" style="max-width:280px;margin:0 auto 22px">
+      We would be so glad if you supported the atmosphere of the day and chose
+      something in the palette below.
+    </p>
+    <div class="dress">
+      <figure class="mood" style="margin:0"><img src="assets/p3.jpg" alt="Dress code mood" loading="lazy"></figure>
+      <div class="chips">
+        <div><i style="background:#E7DFC8"></i><span>cream</span></div>
+        <div><i style="background:#C9BE9A"></i><span>sand</span></div>
+        <div><i style="background:#8E9560"></i><span>sage</span></div>
+        <div><i style="background:#5E6534"></i><span>olive</span></div>
+        <div><i style="background:#474D26"></i><span>deep olive</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ░ COUNTDOWN ░ -->
+  <div class="sec center rev">
+    <p class="scr" style="font-size:20px;margin:0 0 20px">very soon</p>
+    <div class="cd">
+      <div><span class="n" id="d">—</span><span class="u">days</span></div>
+      <div><span class="n" id="h">—</span><span class="u">hours</span></div>
+      <div><span class="n" id="m">—</span><span class="u">minutes</span></div>
+      <div><span class="n" id="s">—</span><span class="u">seconds</span></div>
+    </div>
+  </div>
+
+  <!-- ░ RSVP ░ -->
+  <div class="sec olive">
+    <p class="scr center" style="font-size:20px;margin:0 0 4px">questionnaire</p>
+    <p class="lab" style="margin-bottom:22px">kindly reply by 1 july</p>
+    <form class="form" id="frm" novalidate>
+      <div class="f"><label for="nm">Your name</label><input type="text" id="nm" autocomplete="name"></div>
+      <div class="f"><label for="em">Email</label><input type="email" id="em" autocomplete="email" placeholder="you@example.com"></div>
+      <fieldset>
+        <span class="leg">Will you come</span>
+        <div class="seg">
+          <label><input type="radio" name="a" id="ay" checked><span>Yes, with joy</span></label>
+          <label><input type="radio" name="a" id="an"><span>Sadly no</span></label>
+        </div>
+      </fieldset>
+      <div id="yo">
+        <div class="f"><label for="ct">How many of you</label>
+          <select id="ct"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+        <div class="f"><label for="dr">What will you drink</label>
+          <select id="dr"><option>Wine, red</option><option>Wine, white</option><option>Champagne</option><option>Something stronger</option><option>Nothing at all</option></select></div>
+        <div class="f"><label for="di">Anything we should know</label><input type="text" id="di" placeholder="Allergies, a wish"></div>
+      </div>
+      <button class="send" type="submit">Send the answer</button>
+    </form>
+    <div class="done" id="dn" hidden><b>thank you</b><p id="dc" style="text-align:center;font-size:14.5px"></p></div>
+  </div>
+
+  <div class="foot">
+    <div class="rule" style="margin-bottom:16px"><i></i>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 1c.7 5.6 4.7 9.6 10.3 10.3C16.7 12 12.7 16 12 21.6 11.3 16 7.3 12 1.7 11.3 7.3 10.6 11.3 6.6 12 1z"/>
+      </svg><i></i></div>
+    <p class="fn">See you soon</p>
+    <p class="fd">Roman &amp; Valeria · 08.08.2026</p>
+  </div>
+</div>
+
+<p class="by">Made by Bijou</p>
+
+<button class="mus" id="mus" aria-pressed="false" aria-label="Play music">
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</button>
+<audio id="aud" loop preload="none" src="assets/ambient.mp3"></audio>
+
+<script>
+(function(){
+  var t=new Date(2026,7,8,15,0,0).getTime(),
+      d=document.getElementById('d'),h=document.getElementById('h'),
+      m=document.getElementById('m'),s=document.getElementById('s');
+  function p(n){return n<10?'0'+n:''+n}
+  function tk(){var x=Math.max(0,t-Date.now()),c=Math.floor(x/1000);
+    d.textContent=Math.floor(c/86400);h.textContent=p(Math.floor(c/3600)%24);
+    m.textContent=p(Math.floor(c/60)%60);s.textContent=p(c%60)}
+  tk();setInterval(tk,1000);
+
+  var aud=document.getElementById('aud'),mus=document.getElementById('mus');
+  aud.volume=0.38;
+  mus.addEventListener('click',function(){
+    if(aud.paused){aud.play().then(function(){mus.setAttribute('aria-pressed','true')}).catch(function(){});}
+    else{aud.pause();mus.setAttribute('aria-pressed','false')}
+  });
+
+  var f=document.getElementById('frm'),dn=document.getElementById('dn'),dc=document.getElementById('dc'),
+      yo=document.getElementById('yo'),ay=document.getElementById('ay'),an=document.getElementById('an');
+  function sy(){yo.hidden=!ay.checked}
+  ay.addEventListener('change',sy);an.addEventListener('change',sy);sy();
+  f.addEventListener('submit',function(e){e.preventDefault();
+    var n=document.getElementById('nm'),em=document.getElementById('em');
+    if(!n.value.trim()){n.focus();return}
+    if(!em.value.trim()||em.value.indexOf('@')<0){em.focus();return}
+    dc.textContent=ay.checked?'Your seats are saved. We will write again closer to the day.':'We will miss you.';
+    f.hidden=true;dn.hidden=false;dn.scrollIntoView({block:'center'})});
+})();
+</script>
+
+<style id="bijou-phone-fit">@media (max-width:480px){html body{padding:0!important}}</style>
+<a href="../index.html" class="bijou-back" aria-label="Назад до сайту Bijou" style="position:fixed;z-index:9999;top:max(12px,env(safe-area-inset-top));left:12px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px 0 10px;border-radius:99px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#4a1f2a;font:500 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 14px -6px rgba(0,0,0,.35)"><span aria-hidden="true" style="font-size:18px;line-height:1">&#8249;</span>Bijou</a>
+<script>document.querySelector('.bijou-back').addEventListener('click',function(e){if(history.length>1&&document.referrer&&new URL(document.referrer).host===location.host){e.preventDefault();history.back();}});</script>
+<script data-mx-sel=".rev">
+/* Bijou · м'яка анімація: каскад для блоків, що з'являються, і клас .mx-in для декору в полі зору */
+(function(sel){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('mx');
+  document.querySelectorAll('.reveal').forEach(function(el){
+    var sib = Array.prototype.filter.call(el.parentNode.children, function(c){ return c.classList.contains('reveal'); });
+    var i = sib.indexOf(el);
+    if (i > 0 && !el.style.transitionDelay) el.style.transitionDelay = Math.min(i, 4) * 0.09 + 's';
+  });
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('mx-in'); io.unobserve(e.target); } }); }, { threshold: .2 });
+  document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
+})(document.currentScript.dataset.mxSel);
+</script>
+</body></html>

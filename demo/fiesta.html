@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Настя · Birthday Fiesta · Bijou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Lora:ital@0;1&family=Caveat:wght@500;600&display=swap">
+<style>
+:root{--cream:#f7f3ea;--paper:#fbf8f1;--blue:#1d3c7c;--blue2:#2f5aa8;--pink:#d6457c;--green:#6e8f3c;--ink:#2a2f45}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;background:#e9e1cf}
+body{font:400 16px/1.55 Lora,Georgia,serif;color:var(--ink);background:#e9e1cf url(fiesta/band.jpg) 0 0/220px auto;-webkit-font-smoothing:antialiased}
+.pg{max-width:430px;margin:0 auto;background:var(--cream);overflow:hidden;box-shadow:0 0 40px rgba(29,60,124,.18)}
+img{display:block;max-width:100%;mix-blend-mode:multiply}
+.caps{font:600 13px/1.3 'Cormorant Garamond',serif;letter-spacing:.24em;text-transform:uppercase;color:var(--blue)}
+.ttl{font:400 52px/.98 'Playfair Display',serif;text-transform:uppercase;color:var(--blue);letter-spacing:.01em}
+.orn{width:92px;margin:14px auto}
+.band{height:26px;background:url(fiesta/band.jpg) 0 0/auto 100% repeat-x}
+section{position:relative;padding:56px 28px;text-align:center}
+/* перший екран у рамці з плитки */
+.hero{min-height:100svh;padding:64px 34px 30px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.fr{position:absolute;pointer-events:none}
+.fr.l,.fr.r{top:44px;bottom:44px;width:46px;background:url(fiesta/side.jpg) 0 0/100% auto repeat-y;mix-blend-mode:multiply}
+.fr.l{left:0}.fr.r{right:0;transform:scaleX(-1)}
+.fr.t,.fr.b{left:44px;right:44px;height:46px;background:url(fiesta/side.jpg) 0 0/100% auto repeat-y;mix-blend-mode:multiply}
+.fr.t{top:0;transform-origin:0 0;width:46px;height:calc(100% - 88px)}
+.cor{position:absolute;width:48px;mix-blend-mode:multiply}
+.cor.tl{top:0;left:0}.cor.tr{top:0;right:0}.cor.bl{bottom:0;left:0}.cor.br{bottom:0;right:0}
+.hero .sun{width:58px;margin:-26px auto 10px}
+.hero .ttl{margin-top:12px}
+.hero .ttl small{display:block;font-size:.62em;letter-spacing:.02em;margin-top:6px}
+.hero .tags{font:500 12px/1 'Cormorant Garamond',serif;letter-spacing:.22em;color:var(--blue);text-transform:uppercase}
+.hero .art{width:118%;max-width:none;margin:18px -9% 0}
+.hero .when{margin-top:18px}
+.hero .when b{display:block;font:400 26px/1.2 'Playfair Display',serif;letter-spacing:.06em;color:var(--blue)}
+.scroll{margin-top:16px;font:italic 500 15px 'Cormorant Garamond',serif;color:var(--blue2);opacity:.8}
+/* привітання */
+.hello{display:grid;grid-template-columns:44% 1fr;gap:14px;align-items:center;text-align:left;padding:48px 22px}
+.hello .card{transform:rotate(-4deg);box-shadow:0 10px 24px -12px rgba(0,0,0,.35);mix-blend-mode:normal;border:6px solid #fff}
+.hello .ttl{font-size:44px;margin:6px 0}
+.hello p{font-size:15px}
+.hello .lime{position:absolute;width:86px;left:4px;bottom:6px}
+/* відлік */
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
+.cd div{background:var(--paper);border:1.5px solid var(--blue);outline:3px double rgba(29,60,124,.35);outline-offset:3px;padding:14px 0 10px}
+.cd b{display:block;font:400 30px/1 'Playfair Display',serif;color:var(--blue)}
+.cd span{font:600 10px/1 'Cormorant Garamond',serif;letter-spacing:.18em;text-transform:uppercase;color:var(--blue2)}
+/* деталі */
+.det{display:grid;grid-template-columns:repeat(3,1fr);margin-top:26px}
+.det>div{padding:4px 6px;border-left:1px solid rgba(29,60,124,.35)}.det>div:first-child{border:0}
+.det svg{width:34px;height:34px;stroke:var(--blue);fill:none;stroke-width:1.4;margin:0 auto 8px;display:block}
+.det p{font:500 15px/1.35 'Cormorant Garamond',serif;color:var(--blue);letter-spacing:.06em;text-transform:uppercase}
+.det small{display:block;font:italic 13px Lora,serif;color:var(--ink);text-transform:none;letter-spacing:0;margin-top:4px}
+.tile-box{position:relative;text-align:center;border:2px solid var(--blue);outline:5px solid var(--paper);box-shadow:0 0 0 7px var(--blue);margin:8px;background:var(--paper);padding:34px 18px}
+/* програма */
+.tl{list-style:none;padding:0;margin:26px auto 0;max-width:300px;text-align:left}
+.tl li{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:12px 0;border-bottom:1px dashed rgba(29,60,124,.35)}
+.tl b{font:400 20px 'Playfair Display',serif;color:var(--pink)}
+.tl span{font-size:15px}
+.tl em{display:block;font:italic 13px Lora;opacity:.75}
+/* дрес-код */
+.dc{padding-bottom:30px}
+.sw{display:flex;justify-content:center;gap:12px;margin:20px 0 6px}
+.sw i{width:34px;height:34px;border-radius:50%;box-shadow:inset 0 -3px 6px rgba(0,0,0,.18)}
+.dc .row{display:flex;justify-content:space-between;align-items:flex-end;margin:10px -28px 0}
+.dc .row img:first-child{width:52%}.dc .row img:last-child{width:34%}
+/* місце */
+.map{display:inline-block;margin-top:18px}
+.btn{display:inline-block;font:600 13px/1 'Cormorant Garamond',serif;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);background:var(--blue);padding:15px 22px;border:0;cursor:pointer;text-decoration:none;box-shadow:0 0 0 2px var(--paper),0 0 0 3px var(--blue)}
+.btn:hover{background:var(--blue2)}
+/* анкета */
+form{margin:24px auto 0;max-width:320px;text-align:left;display:grid;gap:14px}
+label{font:600 12px 'Cormorant Garamond',serif;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+input[type=text],input[type=number],select{display:block;width:100%;margin-top:6px;font:16px Lora,serif;color:var(--ink);background:var(--paper);border:0;border-bottom:1.5px solid var(--blue);padding:8px 2px;border-radius:0}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.opts label{font:15px Lora;letter-spacing:0;text-transform:none;color:var(--ink);border:1.5px solid var(--blue);padding:8px 12px;cursor:pointer}
+.opts input{position:absolute;opacity:0}
+.opts label:has(input:checked){background:var(--blue);color:var(--paper)}
+form .btn{justify-self:center;margin-top:6px}
+.thanks{display:none;margin-top:22px;font:400 26px 'Playfair Display',serif;color:var(--pink)}
+form.sent{display:none}form.sent+.thanks{display:block}
+/* фінал */
+.salud{display:grid;grid-template-columns:28% 1fr 24%;align-items:end;gap:6px;padding:40px 10px 26px}
+.salud .ttl{font-size:46px}
+.salud p{font-size:14px;margin:8px 0 14px}
+.salud .rsvp{display:inline-block;font:600 11px 'Cormorant Garamond',serif;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);border:1.5px solid var(--blue);outline:1px solid var(--blue);outline-offset:3px;padding:9px 12px}
+.foot{padding:18px;font:italic 13px 'Cormorant Garamond',serif;color:var(--blue2);text-align:center}
+/* відчуття «від руки»: папір, нерівні лінії, рукописні підписи */
+.pg{position:relative;background-color:var(--cream);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .25 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(60% 40% at 15% 30%,rgba(214,69,124,.06),transparent 70%),radial-gradient(50% 35% at 85% 60%,rgba(47,90,168,.06),transparent 70%),radial-gradient(55% 30% at 30% 85%,rgba(110,143,60,.07),transparent 70%)}
+.hand{font-family:Caveat,cursive;font-weight:500;letter-spacing:0;text-transform:none}
+.rough{position:relative;border:0!important;outline:0!important;box-shadow:none!important}
+.rough::before,.rough::after{content:"";position:absolute;inset:0;border:1.6px solid var(--blue);border-radius:4px 7px 5px 6px/6px 4px 7px 5px;filter:url(#rough);pointer-events:none}
+.rough::after{inset:5px;border-width:1px;rotate:-.6deg;opacity:.75;filter:url(#rough2)}
+.tile-box.rough{margin:16px 14px;padding:38px 20px}
+.btn.rough{background:transparent;color:var(--blue);padding:16px 24px}
+.btn.rough:hover{background:rgba(29,60,124,.08)}
+.btn.rough::before{background:rgba(29,60,124,.04)}
+.opts label{border:0;position:relative}
+.opts label::before{content:"";position:absolute;inset:0;border:1.4px solid var(--blue);border-radius:5px 3px 6px 4px;filter:url(#rough);pointer-events:none}
+.opts label:has(input:checked){background:transparent;color:var(--blue);font-weight:600}
+.opts label:has(input:checked)::after{content:"";position:absolute;inset:-4px -6px;border:2px solid var(--pink);border-radius:50% 46% 52% 48%;rotate:-3deg;filter:url(#rough2)}
+input[type=text],input[type=number],select{border:0;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 6' preserveAspectRatio='none'%3E%3Cpath d='M1 3.5C40 1.5 70 5 110 3S180 1.8 220 3.6 280 2.4 299 3' fill='none' stroke='%231d3c7c' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") 0 100%/100% 6px no-repeat;padding-bottom:10px}
+.tl li{border:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 6' preserveAspectRatio='none'%3E%3Cpath d='M1 3.5C40 1.5 70 5 110 3S180 1.8 220 3.6 280 2.4 299 3' fill='none' stroke='%231d3c7c' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") 0 100%/100% 5px no-repeat}
+.cd div.rough{background:transparent}
+.squig{display:block;width:150px;height:14px;margin:8px auto 0;overflow:visible}
+.squig path,.doodle path{fill:none;stroke:var(--pink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400);transition:stroke-dashoffset 1.6s ease .3s}
+.in .squig path,.squig.in path,.doodle.in path,.in .doodle path{stroke-dashoffset:0}
+.doodle{position:absolute;width:46px;height:46px;overflow:visible;pointer-events:none;z-index:1}
+.doodle path{stroke:var(--blue2);stroke-width:1.6}
+.hello .card{border:0;box-shadow:none;transform:rotate(-4deg)}
+.tape{position:absolute;z-index:2;width:56px;height:18px;background:rgba(230,205,150,.6);top:-6px;left:50%;translate:-50% 0;rotate:-6deg;clip-path:polygon(3% 10%,97% 0,100% 90%,0 100%)}
+/* декор з фото */
+.dec{position:absolute;z-index:2;pointer-events:none}
+.hang{transform-origin:50% 0;animation:hang 5s ease-in-out infinite}
+@keyframes hang{0%,100%{rotate:-3deg}50%{rotate:3deg}}
+.swing{transform-origin:50% 100%;animation:hang 3.2s ease-in-out infinite}
+.bob{animation:fl 4s ease-in-out infinite}
+.tilt{animation:tl 6s ease-in-out infinite}
+@keyframes tl{0%,100%{rotate:-6deg}50%{rotate:4deg}}
+.rv.fl-l{translate:-120px 0;opacity:0}.rv.fl-r{translate:120px 0;opacity:0}
+.rv.fl-l.in,.rv.fl-r.in{translate:0 0;opacity:1}
+.rv.pop{scale:.4;rotate:-25deg;translate:0 0}.rv.pop.in{scale:1;rotate:0deg}
+.rv.pop{transition:opacity .8s,scale 1s cubic-bezier(.3,1.6,.5,1),rotate 1s cubic-bezier(.3,1.6,.5,1)}
+/* анімації */
+.rv{opacity:0;translate:0 26px;transition:opacity .9s ease,translate .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;translate:0 0}
+.hero .rv{transition-duration:1.2s}
+@keyframes sw{0%,100%{rotate:-2.5deg}50%{rotate:2.5deg}}
+@keyframes fl{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes spin{to{rotate:360deg}}
+.sway{animation:sw 4.5s ease-in-out infinite;transform-origin:50% 100%}
+.float{animation:fl 5s ease-in-out infinite}
+.hero .sun{animation:spin 40s linear infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;translate:none}}
+</style>
+<script>if('scrollRestoration' in history)history.scrollRestoration='manual';addEventListener('pageshow',function(){scrollTo(0,0)});</script>
+</head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter><filter id="rough2"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></svg>
+<div class="pg">
+
+<section class="hero">
+  <div class="fr l"></div><div class="fr r"></div>
+  <img class="cor tl" src="fiesta/corner.jpg" alt="" loading="lazy"><img class="cor tr" src="fiesta/corner.jpg" alt="" loading="lazy"><img class="cor bl" src="fiesta/corner.jpg" alt="" loading="lazy"><img class="cor br" src="fiesta/corner.jpg" alt="" loading="lazy">
+  <img class="dec hang" style="top:-6px;left:26px;width:70px" src="fiesta/lemons.webp" alt="" loading="lazy"><img class="dec hang" style="top:-6px;right:24px;width:80px;animation-delay:-2.4s" src="fiesta/bougain.webp" alt="" loading="lazy"><img class="sun" src="fiesta/sun.webp" alt="" loading="lazy">
+  <p class="caps rv">¡Estás invitado!</p>
+  <h1 class="ttl rv" style="--d:.15s">Настя<small>Birthday Fiesta</small><svg class="squig" viewBox="0 0 150 14"><path style="--len:170" d="M4 9C24 3 40 12 62 7S100 2 118 8 140 10 146 5"/></svg></h1>
+  <img class="orn rv" style="--d:.3s" src="fiesta/orn.jpg" alt="" loading="lazy">
+  <p class="tags rv" style="--d:.4s">текіла · сомбреро · buena vida</p>
+  <img class="art rv" style="--d:.55s" src="fiesta/hero.webp" alt="Піньята, текіла і сомбреро" loading="lazy">
+  <div class="when rv" style="--d:.8s"><p class="caps">субота</p><b>12 · 06 · 2027</b><p class="caps">19:00 · Київ</p></div>
+  <p class="scroll float hand" style="font-size:22px">гортайте вниз ↓</p>
+</section>
+<div class="band"></div>
+
+<section class="hello"><img class="dec rv pop" style="left:4px;bottom:-14px;width:84px" src="fiesta/lime.webp" alt="" loading="lazy"><img class="dec bob" style="right:16px;top:14px;width:38px" src="fiesta/cup.webp" alt="" loading="lazy">
+  <div class="rv" style="position:relative"><span class="tape"></span><img class="card" src="fiesta/card.webp" alt="Мексиканський дворик" loading="lazy"></div>
+  <div>
+    <p class="caps rv hand" style="font-size:26px;color:var(--pink)">Let’s celebrate</p>
+    <h2 class="ttl rv" style="--d:.1s">Настя!</h2>
+    <img class="orn rv" style="--d:.2s;margin:8px 0;width:70px" src="fiesta/orn.jpg" alt="" loading="lazy">
+    <p class="rv" style="--d:.3s">Кличу вас на вечір текіли, тако й найкращої компанії. Святкуємо мій день народження по-мексиканськи!</p>
+  </div>
+</section>
+
+<section style="padding-top:20px;padding-bottom:70px"><svg class="doodle rv" style="left:18px;top:6px;width:30px;height:30px" viewBox="0 0 46 46"><path style="--len:160" d="M23 4l4 14 15 1-12 8 5 15-12-9-12 9 5-15L4 19l15-1z"/></svg><svg class="doodle rv" style="right:20px;top:2px;width:28px;height:28px" viewBox="0 0 46 46"><path style="--len:140;stroke:var(--pink)" d="M23 38C10 29 5 22 7 15c2-6 10-8 16 0 6-8 14-6 16 0 2 7-3 14-16 23z"/></svg>
+  <p class="rv hand" style="font-size:28px;color:var(--blue)">до фієсти залишилось…</p>
+  <div class="cd rv" style="--d:.1s" id="cd"><div class="rough"><b>--</b><span>днів</span></div><div class="rough"><b>--</b><span>годин</span></div><div class="rough"><b>--</b><span>хвилин</span></div><div class="rough"><b>--</b><span>секунд</span></div></div>
+</section>
+
+<div class="tile-box rough" style="position:relative"><img class="dec rv fl-r tilt" style="right:-18px;top:-46px;width:92px" src="fiesta/cactus.webp" alt="" loading="lazy">
+  <p class="caps rv">Party details</p>
+  <img class="orn rv" style="--d:.1s;margin-bottom:0" src="fiesta/orn.jpg" alt="" loading="lazy">
+  <div class="det">
+    <div class="rv" style="--d:.1s"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="7"/><path d="M20 4v6M20 30v6M4 20h6M30 20h6M8.7 8.7l4.2 4.2M27.1 27.1l4.2 4.2M8.7 31.3l4.2-4.2M27.1 12.9l4.2-4.2"/></svg><p>Дата<small>12 червня, субота</small></p></div>
+    <div class="rv" style="--d:.2s"><svg viewBox="0 0 40 40"><path d="M20 36V14M20 36l-9-16M20 36l9-16M20 36L6 28M20 36l14-8M20 36l-4-24M20 36l4-24"/></svg><p>Час<small>19:00 — до світанку</small></p></div>
+    <div class="rv" style="--d:.3s"><svg viewBox="0 0 40 40"><path d="M8 8h24L20 22zM20 22v12M13 34h14M26 10l4-5"/></svg><p>Місце<small>Casa Azul, Київ</small></p></div>
+  </div>
+</div>
+
+<section style="padding-bottom:110px">
+  <img class="dec rv fl-r swing" style="right:12px;bottom:6px;width:92px" src="fiesta/pinata3.webp" alt="" loading="lazy"><img class="dec rv fl-l tilt" style="left:6px;bottom:8px;width:120px" src="fiesta/sombA.webp" alt="" loading="lazy">
+  <p class="caps rv">програма вечора</p>
+  <ul class="tl">
+    <li class="rv"><b>19:00</b><span>Збір гостей<em class="hand" style="font-size:18px;opacity:.85">welcome-маргарита на терасі</em></span></li>
+    <li class="rv"><b>19:30</b><span>Тако-бар<em class="hand" style="font-size:18px;opacity:.85">гуакамоле, начос і гаряче</em></span></li>
+    <li class="rv"><b>21:00</b><span>Піньята<em class="hand" style="font-size:18px;opacity:.85">хто перший — тому сюрприз</em></span></li>
+    <li class="rv"><b>22:00</b><span>Торт і тости<em class="hand" style="font-size:18px;opacity:.85">¡Salud! за іменинницю</em></span></li>
+    <li class="rv"><b>22:30</b><span>Танці<em class="hand" style="font-size:18px;opacity:.85">латино до ранку</em></span></li>
+  </ul>
+</section>
+<div class="band"></div>
+
+<section class="dc"><svg class="doodle rv" style="left:22px;top:24px" viewBox="0 0 46 46"><path style="--len:220" d="M23 15a8 8 0 1 1-.1 0M23 3v7M23 36v7M3 23h7M36 23h7M9 9l5 5M32 32l5 5M9 37l5-5M32 14l5-5"/></svg><svg class="doodle rv" style="right:26px;top:34px;width:26px;height:26px" viewBox="0 0 46 46"><path style="--len:160" d="M23 4l4 14 15 1-12 8 5 15-12-9-12 9 5-15L4 19l15-1z"/></svg>
+  <p class="caps rv" style="font-size:16px">Fiesta dress code</p>
+  <p class="rv hand" style="--d:.1s;font-size:24px;color:var(--pink)">Mexican chic · яскраві деталі</p>
+  <div class="sw rv" style="--d:.2s"><i style="background:#1d3c7c"></i><i style="background:#6e8f3c"></i><i style="background:#d6457c"></i><i style="background:#efe4cc"></i></div>
+  <p class="rv" style="--d:.3s;font-size:14px">Сукні з квітами, льон, солом’яні капелюхи — і обов’язково гарний настрій.</p>
+  <div class="row"><img class="rv sway" src="fiesta/sombflow.webp" alt="" loading="lazy"><img class="rv sway" style="--d:.2s;animation-delay:-2s" src="fiesta/cactuspot.webp" alt="" loading="lazy"></div>
+</section>
+
+<div class="tile-box rough">
+  <img class="dec rv pop" style="right:-4px;top:-50px;width:96px" src="fiesta/agave.webp" alt="" loading="lazy"><p class="caps rv">Де святкуємо</p>
+  <h2 class="ttl rv" style="font-size:34px;margin:10px 0 6px">Casa Azul</h2>
+  <p class="rv">вул. Сонячна, 12, Київ</p>
+  <a class="btn rough map rv" href="https://maps.google.com/?q=Kyiv" target="_blank" rel="noopener">Відкрити мапу</a>
+</div>
+
+<section id="rsvp"><img class="dec rv fl-l bob" style="left:14px;top:40px;width:38px;rotate:-6deg" src="fiesta/bottle.webp" alt="" loading="lazy">
+  <img class="rv" style="width:120px;margin:0 auto -6px" src="fiesta/blueflor.webp" alt="" loading="lazy">
+  <p class="caps rv">R.S.V.P.</p>
+  <h2 class="ttl rv" style="font-size:36px;margin-top:8px">Чи будете?<svg class="squig" viewBox="0 0 150 14"><path style="--len:170" d="M4 9C24 3 40 12 62 7S100 2 118 8 140 10 146 5"/></svg></h2>
+  <p class="rv hand" style="font-size:22px;color:var(--pink)">відповідь до 1 червня ♡</p>
+  <form class="rv" onsubmit="event.preventDefault();this.classList.add('sent')">
+    <label>Ваше ім’я<input type="text" required placeholder="Ім’я та прізвище"></label>
+    <div><label>Прийдете?</label><div class="opts"><label><input type="radio" name="go" checked>¡Sí! Буду</label><label><input type="radio" name="go">На жаль, ні</label></div></div>
+    <label>Скільки вас буде<input type="number" min="1" max="6" value="1"></label>
+    <div><label>Що п’ємо</label><div class="opts"><label><input type="checkbox" checked>Текіла</label><label><input type="checkbox">Маргарита</label><label><input type="checkbox">Вино</label><label><input type="checkbox">Без алкоголю</label></div></div>
+    <button class="btn rough" type="submit">Надіслати</button>
+  </form>
+  <p class="thanks">¡Gracias! Чекаю на вас ♡</p>
+</section>
+<div class="band"></div>
+
+<section class="salud"><svg class="doodle rv" style="left:46%;top:8px;width:26px;height:26px" viewBox="0 0 46 46"><path style="--len:140;stroke:var(--pink)" d="M23 38C10 29 5 22 7 15c2-6 10-8 16 0 6-8 14-6 16 0 2 7-3 14-16 23z"/></svg>
+  <img class="rv sway" src="fiesta/marg.webp" alt="" loading="lazy">
+  <div class="rv" style="--d:.15s"><h2 class="ttl">¡Salud!<svg class="squig" viewBox="0 0 150 14"><path style="--len:170" d="M4 9C24 3 40 12 62 7S100 2 118 8 140 10 146 5"/></svg></h2><p>Не можу дочекатися святкувати з вами!</p><span class="rsvp">До зустрічі 12.06</span></div>
+  <img class="rv float" style="--d:.3s" src="fiesta/pinata2.webp" alt="" loading="lazy">
+</section>
+<div class="band"></div>
+<p class="foot hand" style="font-size:20px">зроблено з любов’ю · Bijou</p>
+</div>
+<script>
+(function(){
+// поява блоків при гортанні
+var els=[].slice.call(document.querySelectorAll('.rv'));
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){(e.target._d||[e.target]).forEach(function(x){x.classList.add('in')});io.unobserve(e.target)}})},{threshold:.12});
+// декор за краєм екрана спостерігач не бачить, тому стежимо за його блоком
+els.forEach(function(e){if(e.classList.contains('dec')){var p=e.parentElement;if(!p._d){p._d=[];io.observe(p)}p._d.push(e)}else io.observe(e)});
+// декор трохи пливе при гортанні
+var par=[].slice.call(document.querySelectorAll('.dec:not(.hang)'));
+function pr(){var vh=innerHeight;par.forEach(function(e,i){var r=e.parentElement.getBoundingClientRect(),k=((r.top+r.height/2)-vh/2)/vh;e.style.marginTop=(k*(i%2?-18:18)).toFixed(1)+'px'})}
+addEventListener('scroll',function(){requestAnimationFrame(pr)},{passive:true});pr();
+// живий відлік; якщо дата минула — відлік від 120 днів
+var t=new Date('2027-06-12T19:00:00+03:00').getTime();if(t<Date.now())t=Date.now()+120*864e5;
+var b=document.querySelectorAll('#cd b');
+function tick(){var s=Math.max(0,Math.floor((t-Date.now())/1e3)),v=[Math.floor(s/86400),Math.floor(s/3600)%24,Math.floor(s/60)%60,s%60];v.forEach(function(x,i){b[i].textContent=i?String(x).padStart(2,'0'):x})}
+tick();setInterval(tick,1000);
+})();
+</script>
+<a href="../index.html" class="bijou-back" aria-label="Назад до сайту Bijou" style="position:fixed;z-index:9999;top:max(12px,env(safe-area-inset-top));left:12px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px 0 10px;border-radius:99px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#4a1f2a;font:500 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 14px -6px rgba(0,0,0,.35)"><span aria-hidden="true" style="font-size:18px;line-height:1">&#8249;</span>Bijou</a>
+<script>document.querySelector('.bijou-back').addEventListener('click',function(e){if(history.length>1&&document.referrer&&new URL(document.referrer).host===location.host){e.preventDefault();history.back();}});</script>
+</body></html>
