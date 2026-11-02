@@ -41,3 +41,13 @@
 .ask__btns{gap:12px;padding-bottom:6px}
 .ask__yes{position:relative;z-index:2}
 .ask__no{position:relative;z-index:1}
+
+/* 2026-11-02 правки Юлії */
+.coll__chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:24px 0 36px}
+#designs .design[hidden]{display:none}
+.record__disc[data-astro-cid-7vvucncb]{width:290px;top:44px;left:150px}
+.record__sleeve[data-astro-cid-7vvucncb]{width:330px}
+.record[data-astro-cid-7vvucncb]{height:420px}
+@media (width<=820px){.record[data-astro-cid-7vvucncb]{height:300px}.record__sleeve[data-astro-cid-7vvucncb]{width:250px}.record__disc[data-astro-cid-7vvucncb]{width:220px;top:32px;left:120px}}
+@media (width<=480px){.record[data-astro-cid-7vvucncb]{height:250px}.record__sleeve[data-astro-cid-7vvucncb]{width:210px}.record__disc[data-astro-cid-7vvucncb]{width:190px;top:24px;left:96px}}
+@media (min-width:900px){.coll__grid[data-astro-cid-iv2j62a3]{grid-template-columns:repeat(3,250px);gap:64px 110px}.case>.phone{width:300px}}
