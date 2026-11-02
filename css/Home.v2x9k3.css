@@ -53,3 +53,6 @@
 .chips .chip.is-on,.coll__chips .chip.is-on{color:#fff!important}
 
 @media (width>1100px){.record[data-astro-cid-7vvucncb]{margin-left:calc(-1 * clamp(0px,(100vw - 1200px) / 2,80px))}}
+
+.chip{color:var(--wine)}
+.chip.is-on{color:#fff}
