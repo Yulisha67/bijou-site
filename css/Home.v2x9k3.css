@@ -12,7 +12,7 @@
 .record__sleeve{width:330px}
 }
 .chip{border-radius:999px;border:1px solid #48222d40;background:transparent;padding:12px 24px;transition:background .25s,color .25s,border-color .25s}
-.chip.is-on{background:var(--wine);border-color:var(--wine)}
+.chip.is-on{background:var(--wine);border-color:var(--wine);color:#fff}
 .chip:not(.is-on):hover{border-color:var(--wine)}
 .rsvp select{-webkit-appearance:none;appearance:none;border-radius:0;padding-right:36px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2348222d' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 4px center/12px 8px}
 @media (min-width:900px){
@@ -50,3 +50,4 @@
 @media (width<=480px){.record__disc[data-astro-cid-7vvucncb]{width:190px;top:37px;left:161px}}
 @media (min-width:900px){.record__sleeve[data-astro-cid-7vvucncb]{width:416px}}
 @media (min-width:900px){.coll__grid[data-astro-cid-iv2j62a3]{grid-template-columns:repeat(3,250px);gap:64px 110px}.case>.phone{width:300px}}
+.chips .chip.is-on,.coll__chips .chip.is-on{color:#fff!important}
