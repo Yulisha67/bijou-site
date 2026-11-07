@@ -1,302 +1,921 @@
 <!doctype html>
-<html lang="uk">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Марко & Вероніка · Chateau</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap">
-<style>
-/* рукописний шрифт заголовків цього шаблону — Calligraphia One */
-@font-face{font-family:"Calligraphia One";src:url("chateau/CalligraphiaOne.ttf") format("truetype");font-display:swap}
-:root{
-  --cream:#F6F1E8; --paper:#F0EADF; --ink:#2E2A26; --ink-2:#5A534B; --olive:#5D6A3A; --olive-d:#4C4D26; --line:#CFC6B6; --on-green:#F3EFE3;
-  --script:"Calligraphia One","Great Vibes",cursive; --serif:"Cormorant Garamond",Georgia,serif;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:#e9e3d6;color:var(--ink);font:400 17px/1.5 var(--serif);-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%}
-p{margin:0}
-.page{max-width:480px;margin:0 auto;background:var(--cream);overflow:hidden}
-.sec{position:relative;padding:56px 24px;text-align:center}
-.h{font:400 58px/1 var(--script);color:var(--ink);margin:0;letter-spacing:.5px}
-.sub{margin-top:6px;font:500 20px/1.3 var(--serif);color:var(--ink-2)}
-.txt{color:var(--ink-2);font-size:17px;line-height:1.6}
-.green{background:var(--olive-d) url(chateau/green.jpg) center/cover;color:var(--on-green)}
-.green .h{color:var(--on-green)}
-/* рвані краї паперу: форма з макета, колір задається фоном */
-.tear{position:absolute;left:0;right:0;height:22px;z-index:2;pointer-events:none;-webkit-mask:url(chateau/edge.png) center/100% 100% no-repeat;mask:url(chateau/edge.png) center/100% 100% no-repeat}
-.tear--down{top:-1px}
-.tear--up{bottom:-1px;transform:scaleY(-1)}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
-.reveal.is-in{opacity:1;transform:none}
-
-/* 1. обкладинка */
-.hero{position:relative;height:min(820px,210vw);background:#ddd url(chateau/hero.jpg) center top/cover;color:#fff;text-align:center}
-.hero::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(to bottom,transparent,rgb(48 50 24 / .55))}
-.hero__title{position:absolute;z-index:1;top:9.5%;left:0;right:0;font:400 74px/1 var(--script);color:#5f6d3c}
-.hero__names{position:absolute;z-index:1;left:0;right:0;bottom:9%;font:400 40px/1.1 var(--script);color:#fff;text-shadow:0 2px 14px rgb(0 0 0 / .35)}
-.hero__date{display:block;margin-top:10px;font:400 18px/1 var(--serif);letter-spacing:.14em}
-.hero .tear{background:var(--cream)}
-
-/* 2. звернення */
-.dear .h{font-size:56px}
-.guest{margin:32px 0 24px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:500 26px/1.3 var(--serif);color:var(--olive)}
-
-/* 3. дата й відлік */
-.date{padding-top:72px;padding-bottom:64px}
-.date__row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
-.date__row span{padding:8px 0;border-top:1px solid rgb(243 239 227 / .45);border-bottom:1px solid rgb(243 239 227 / .45);font:500 13px/1 var(--serif);letter-spacing:.24em;text-transform:uppercase}
-.date__row b{font:300 64px/1 var(--serif)}
-.date__year{margin-top:6px;font:400 16px/1 var(--serif);letter-spacing:.3em}
-.stem{width:1px;height:48px;margin:24px auto;background:rgb(243 239 227 / .6)}
-.date__left{font-size:17px}
-.cd{display:grid;grid-template-columns:repeat(4,1fr);margin-top:20px}
-.cd b{display:block;font:300 34px/1 var(--serif)}
-.cd span{display:block;margin-top:10px;font:500 12px/1 var(--serif);letter-spacing:.18em;text-transform:uppercase}
-.date .tear--down{background:var(--cream)}
-.date .tear--up{background:var(--cream)}
-
-/* 4. локація */
-.chateau{width:100%;margin:36px 0 40px}
-.place{font:400 26px/1.4 var(--serif)}
-.addr{max-width:296px;margin:8px auto 0;font-weight:300;color:var(--ink-2)}
-.obtn{display:inline-flex;align-items:center;justify-content:center;margin-top:36px;padding:12px 36px;border:1px solid #5c5c31;color:var(--ink);font:500 16px/1.6 var(--serif);letter-spacing:4px;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s}
-.obtn:hover{background:var(--olive);color:var(--cream)}
-
-/* 5. програма */
-.prog{padding-top:80px;padding-bottom:80px}
-.prog .h{display:inline-block;position:relative}
-.prog .h small{position:absolute;right:-56px;bottom:-14px;font:400 22px/1 var(--script);white-space:nowrap}
-.tl{list-style:none;margin:48px 0 0;padding:0}
-.tl li{display:flex;flex-direction:column;align-items:center}
-.tl li + li::before{content:"";width:1px;height:44px;margin:18px 0;background:rgb(243 239 227 / .55)}
-.tl svg{width:26px;height:26px;stroke:var(--on-green);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}
-.tl time{font:400 56px/1 var(--serif)}
-.tl p{margin-top:8px;font-size:17px;opacity:.9}
-.prog .tear--down{background:var(--cream)}
-.prog .tear--up{background:var(--cream)}
-
-/* 6. дрес-код */
-.dress{padding-bottom:0}
-.dots{display:flex;justify-content:center;gap:10px;margin:40px 0 36px}
-.dots i{width:50px;height:50px;border-radius:50%;border:1px solid #8f8a7c;padding:4px;background-clip:content-box}
-.pair{display:flex;justify-content:center;align-items:flex-end;gap:0;margin:0 -10px}
-.pair img{width:50%;height:auto}
-
-/* 7. деталі */
-.details{background:var(--paper)}
-.det{margin-top:36px}
-.det h3{margin:0;font:500 24px/1.4 var(--serif);color:var(--ink)}
-.det p{max-width:306px;margin:6px auto 0}
-.det + .det::before{content:"";display:block;width:1px;height:28px;margin:24px auto;background:var(--line)}
-
-/* 8. фото */
-.photo{position:relative;height:330px;background:url(chateau/hands.jpg) center 42%/cover}
-.photo .tear{background:var(--cream)}
-
-/* 9. анкета */
-.rsvp .h{font-size:48px}
-.form{margin-top:40px;text-align:left}
-.f{margin-bottom:24px}
-.f > label:not(.radio),.f legend{display:block;padding:0;margin-bottom:4px;font-size:17px;color:var(--olive)}
-.f fieldset,fieldset.f{border:0;margin:0 0 24px;padding:0}
-.inp{width:100%;height:42px;padding:6px 12px;border:0;border-bottom:1px solid var(--line);background:transparent;font:500 19px/1.4 var(--serif);color:var(--ink);border-radius:0}
-.inp::placeholder{color:#8a8278}
-.inp:focus{outline:none;border-bottom-color:var(--olive)}
-textarea.inpp{height:66px;resize:vertical;padding-top:20px}
-select.inpp{-webkit-appearance:none;appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235D6A3A'/%3E%3C/svg%3E") right 10px center no-repeat}
-.radio{display:flex;align-items:center;gap:12px;margin-top:10px;font-size:18px;cursor:pointer}
-.radio input{appearance:none;-webkit-appearance:none;margin:0;width:18px;height:18px;border:1px solid var(--ink-2);border-radius:50%;display:grid;place-items:center;cursor:pointer}
-.radio input:checked{border-color:var(--olive)}
-.radio input:checked::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--olive)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.chip{height:44px;padding:0 15px;border:1px solid var(--line);border-radius:99px;background:transparent;font:500 17px/1 var(--serif);color:var(--ink-2);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.chip[aria-pressed="true"]{background:var(--olive);border-color:var(--olive);color:var(--cream)}
-.send{width:100%;height:53px;margin-top:12px;border:0;background:var(--olive);color:var(--cream);font:500 15px/1 var(--serif);letter-spacing:.3em;text-transform:uppercase;cursor:pointer;transition:background .25s}
-.send:hover{background:var(--olive-d)}
-.thanks{display:none;margin-top:32px;font:400 40px/1.1 var(--script);color:var(--olive)}
-.rsvp.done .form{display:none}
-.rsvp.done .thanks{display:block}
-
-/* 10. фінал */
-.final{position:relative;height:min(569px,146vw);background:url(chateau/final.jpg) center 35%/cover;color:#fff}
-.final .tear{background:var(--cream)}
-.final__txt{position:absolute;left:28px;top:44%;text-align:left}
-.final__txt b{display:block;font:400 76px/1 var(--script);text-shadow:0 2px 16px rgb(0 0 0 / .3)}
-.final__txt span{display:block;margin:-6px 0 0 120px;font-size:20px;text-shadow:0 1px 8px rgb(0 0 0 / .5)}
-.foot{padding:20px 12px;text-align:center;font:500 12px/1 var(--serif);letter-spacing:.32em;text-transform:uppercase}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-</style>
-<style>
-/* Bijou · анімація шаблону Chateau */
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Марко & Вероніка · Bijou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Cormorant+SC:wght@400;500;600&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Forum&family=Great+Vibes&family=Manrope:wght@300..700&family=Bad+Script&family=Montserrat:wght@400;500&family=Neucha&family=Noto+Serif+Display:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&family=Nunito:wght@400;600&family=Playfair+Display:wght@400..700&family=Raleway:ital,wght@0,200..600;1,200..600&display=swap">
+<style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.inset-\[-0\.48\%_-0\.44\%\]{inset:-.48% -.44%}.inset-\[-0\.54\%\]{inset:-.54%}.inset-\[-0\.54\%_-8\.14\%\]{inset:-.54% -8.14%}.inset-\[-0\.5px_-0\.15\%\]{inset:-.5px -.15%}.inset-\[-0\.5px_-0\.54\%\]{inset:-.5px -.54%}.inset-\[-0\.69\%_-2\.71\%\]{inset:-.69% -2.71%}.inset-\[-0\.78\%_-0\.5px\]{inset:-.78% -.5px}.inset-\[-0\.78\%_-1\.88\%\]{inset:-.78% -1.88%}.inset-\[-1\.43\%_-0\.52\%\]{inset:-1.43% -.52%}.inset-\[-1\.85\%_-0\.5px\]{inset:-1.85% -.5px}.inset-\[-1\.85\%_-4\.88\%\]{inset:-1.85% -4.88%}.inset-\[-1\.92\%_-0\.54\%\]{inset:-1.92% -.54%}.inset-\[-12\.5\%_-0\.41\%\]{inset:-12.5% -.41%}.inset-\[-12\.5\%_-0\.5\%\]{inset:-12.5% -.5%}.inset-\[-1px_0_0_0\]{inset:-1px 0 0 0}.inset-\[-2\.17\%_-0\.5px\]{inset:-2.17% -.5px}.inset-\[-2\.17\%_-4\.88\%\]{inset:-2.17% -4.88%}.inset-\[-2\.63\%_-1\.63\%\]{inset:-2.63% -1.63%}.inset-\[-2\.63\%_-4\.88\%\]{inset:-2.63% -4.88%}.inset-\[-3\.13\%_-0\.5px_-3\.12\%_-0\.5px\]{inset:-3.13% -.5px -3.12% -.5px}.inset-\[-3\.85\%_-4\.88\%\]{inset:-3.85% -4.88%}.inset-\[-4\.17\%_-0\.98\%\]{inset:-4.17% -.98%}.inset-\[-4\.17\%_-4\.07\%\]{inset:-4.17% -4.07%}.inset-\[-5\%_-0\.98\%\]{inset:-5% -.98%}.inset-\[-5\.56\%_-0\.98\%\]{inset:-5.56% -.98%}.inset-\[-69\%_-23\.05\%\]{inset:-69% -23.05%}.inset-\[-8\.33\%_-8\.14\%\]{inset:-8.33% -8.14%}.inset-\[-93\.86\%_-20\.15\%\]{inset:-93.86% -20.15%}.inset-\[0_0_15\.38\%_0\]{inset:0 0 15.38% 0}.inset-\[13\.59\%_49\.09\%_83\.5\%_49\.09\%\]{inset:13.59% 49.09% 83.5% 49.09%}.inset-\[20\.87\%_42\.44\%_74\.76\%_42\.44\%\]{inset:20.87% 42.44% 74.76% 42.44%}.inset-\[21\.84\%_35\.79\%_61\.17\%_35\.79\%\]{inset:21.84% 35.79% 61.17% 35.79%}.inset-\[27\.18\%_12\.21\%_67\.96\%_72\.67\%\]{inset:27.18% 12.21% 67.96% 72.67%}.inset-\[27\.18\%_72\.67\%_67\.96\%_12\.21\%\]{inset:27.18% 72.67% 67.96% 12.21%}.inset-\[28\%_0_0_0\]{inset:28% 0 0 0}.inset-\[28\.64\%_45\.47\%_62\.14\%_45\.47\%\]{inset:28.64% 45.47% 62.14% 45.47%}.inset-\[30\.1\%_48\.19\%_64\.08\%_48\.19\%\]{inset:30.1% 48.19% 64.08% 48.19%}.inset-\[32\.04\%_6\.17\%_55\.34\%_66\.63\%\]{inset:32.04% 6.17% 55.34% 66.63%}.inset-\[32\.04\%_66\.63\%_55\.34\%_6\.17\%\]{inset:32.04% 66.63% 55.34% 6.17%}.inset-\[35\.44\%_11\.3\%_58\.25\%_85\.67\%\]{inset:35.44% 11.3% 58.25% 85.67%}.inset-\[35\.44\%_18\.26\%_58\.25\%_78\.72\%\]{inset:35.44% 18.26% 58.25% 78.72%}.inset-\[35\.44\%_25\.21\%_58\.25\%_71\.77\%\]{inset:35.44% 25.21% 58.25% 71.77%}.inset-\[35\.44\%_71\.77\%_58\.25\%_25\.21\%\]{inset:35.44% 71.77% 58.25% 25.21%}.inset-\[35\.44\%_78\.72\%_58\.25\%_18\.26\%\]{inset:35.44% 78.72% 58.25% 18.26%}.inset-\[35\.44\%_85\.67\%_58\.25\%_11\.3\%\]{inset:35.44% 85.67% 58.25% 11.3%}.inset-\[38\.83\%_32\.16\%_59\.22\%_32\.16\%\]{inset:38.83% 32.16% 59.22% 32.16%}.inset-\[40\.78\%_33\.37\%_8\.74\%_33\.37\%\]{inset:40.78% 33.37% 8.74% 33.37%}.inset-\[44\.66\%_4\.96\%_53\.4\%_65\.42\%\]{inset:44.66% 4.96% 53.4% 65.42%}.inset-\[44\.66\%_65\.42\%_53\.4\%_4\.96\%\]{inset:44.66% 65.42% 53.4% 4.96%}.inset-\[46\.6\%_36\.09\%_8\.74\%_62\.09\%\]{inset:46.6% 36.09% 8.74% 62.09%}.inset-\[46\.6\%_42\.74\%_8\.74\%_55\.44\%\]{inset:46.6% 42.74% 8.74% 55.44%}.inset-\[46\.6\%_55\.44\%_8\.74\%_42\.74\%\]{inset:46.6% 55.44% 8.74% 42.74%}.inset-\[46\.6\%_6\.17\%_8\.74\%_66\.63\%\]{inset:46.6% 6.17% 8.74% 66.63%}.inset-\[46\.6\%_62\.09\%_8\.74\%_36\.09\%\]{inset:46.6% 62.09% 8.74% 36.09%}.inset-\[46\.6\%_66\.63\%_8\.74\%_6\.17\%\]{inset:46.6% 66.63% 8.74% 6.17%}.inset-\[49\.03\%_38\.81\%_41\.75\%_58\.16\%\]{inset:49.03% 38.81% 41.75% 58.16%}.inset-\[49\.03\%_58\.16\%_41\.75\%_38\.81\%\]{inset:49.03% 58.16% 41.75% 38.81%}.inset-\[5\.83\%_1\.03\%_2\.91\%_-0\.18\%\]{inset:5.83% 1.03% 2.91% -.18%}.inset-\[52\.91\%_10\.7\%_35\.92\%_89\.3\%\]{inset:52.91% 10.7% 35.92% 89.3%}.inset-\[52\.91\%_15\.23\%_35\.92\%_81\.74\%\]{inset:52.91% 15.23% 35.92% 81.74%}.inset-\[52\.91\%_16\.75\%_35\.92\%_83\.25\%\]{inset:52.91% 16.75% 35.92% 83.25%}.inset-\[52\.91\%_21\.28\%_35\.92\%_75\.7\%\]{inset:52.91% 21.28% 35.92% 75.7%}.inset-\[52\.91\%_22\.79\%_35\.92\%_77\.21\%\]{inset:52.91% 22.79% 35.92% 77.21%}.inset-\[52\.91\%_27\.33\%_35\.92\%_69\.65\%\]{inset:52.91% 27.33% 35.92% 69.65%}.inset-\[52\.91\%_28\.84\%_35\.92\%_71\.16\%\]{inset:52.91% 28.84% 35.92% 71.16%}.inset-\[52\.91\%_69\.65\%_35\.92\%_27\.33\%\]{inset:52.91% 69.65% 35.92% 27.33%}.inset-\[52\.91\%_71\.16\%_35\.92\%_28\.84\%\]{inset:52.91% 71.16% 35.92% 28.84%}.inset-\[52\.91\%_75\.7\%_35\.92\%_21\.28\%\]{inset:52.91% 75.7% 35.92% 21.28%}.inset-\[52\.91\%_77\.21\%_35\.92\%_22\.79\%\]{inset:52.91% 77.21% 35.92% 22.79%}.inset-\[52\.91\%_81\.74\%_35\.92\%_15\.23\%\]{inset:52.91% 81.74% 35.92% 15.23%}.inset-\[52\.91\%_83\.25\%_35\.92\%_16\.75\%\]{inset:52.91% 83.25% 35.92% 16.75%}.inset-\[52\.91\%_87\.79\%_35\.92\%_9\.19\%\]{inset:52.91% 87.79% 35.92% 9.19%}.inset-\[52\.91\%_89\.3\%_35\.92\%_10\.7\%\]{inset:52.91% 89.3% 35.92% 10.7%}.inset-\[52\.91\%_9\.19\%_35\.92\%_87\.79\%\]{inset:52.91% 9.19% 35.92% 87.79%}.inset-\[60\.19\%_46\.07\%_8\.74\%_46\.07\%\]{inset:60.19% 46.07% 8.74% 46.07%}.inset-\[62\.14\%_1\.03\%_2\.91\%_93\.53\%\]{inset:62.14% 1.03% 2.91% 93.53%}.inset-\[62\.14\%_94\.74\%_2\.91\%_-0\.18\%\]{inset:62.14% 94.74% 2.91% -.18%}.inset-\[67\.96\%_6\.17\%_32\.04\%_66\.63\%\]{inset:67.96% 6.17% 32.04% 66.63%}.inset-\[67\.96\%_66\.63\%_32\.04\%_6\.17\%\]{inset:67.96% 66.63% 32.04% 6.17%}.inset-\[72\.33\%_10\.7\%_14\.56\%_89\.3\%\]{inset:72.33% 10.7% 14.56% 89.3%}.inset-\[72\.33\%_15\.23\%_14\.56\%_81\.74\%\]{inset:72.33% 15.23% 14.56% 81.74%}.inset-\[72\.33\%_16\.75\%_14\.56\%_83\.25\%\]{inset:72.33% 16.75% 14.56% 83.25%}.inset-\[72\.33\%_21\.28\%_14\.56\%_75\.7\%\]{inset:72.33% 21.28% 14.56% 75.7%}.inset-\[72\.33\%_22\.79\%_14\.56\%_77\.21\%\]{inset:72.33% 22.79% 14.56% 77.21%}.inset-\[72\.33\%_27\.33\%_14\.56\%_69\.65\%\]{inset:72.33% 27.33% 14.56% 69.65%}.inset-\[72\.33\%_28\.84\%_14\.56\%_71\.16\%\]{inset:72.33% 28.84% 14.56% 71.16%}.inset-\[72\.33\%_69\.65\%_14\.56\%_27\.33\%\]{inset:72.33% 69.65% 14.56% 27.33%}.inset-\[72\.33\%_71\.16\%_14\.56\%_28\.84\%\]{inset:72.33% 71.16% 14.56% 28.84%}.inset-\[72\.33\%_75\.7\%_14\.56\%_21\.28\%\]{inset:72.33% 75.7% 14.56% 21.28%}.inset-\[72\.33\%_77\.21\%_14\.56\%_22\.79\%\]{inset:72.33% 77.21% 14.56% 22.79%}.inset-\[72\.33\%_81\.74\%_14\.56\%_15\.23\%\]{inset:72.33% 81.74% 14.56% 15.23%}.inset-\[72\.33\%_83\.25\%_14\.56\%_16\.75\%\]{inset:72.33% 83.25% 14.56% 16.75%}.inset-\[72\.33\%_87\.79\%_14\.56\%_9\.19\%\]{inset:72.33% 87.79% 14.56% 9.19%}.inset-\[72\.33\%_89\.3\%_14\.56\%_10\.7\%\]{inset:72.33% 89.3% 14.56% 10.7%}.inset-\[72\.33\%_9\.19\%_14\.56\%_87\.79\%\]{inset:72.33% 9.19% 14.56% 87.79%}.inset-\[91\.26\%_42\.44\%_2\.91\%_42\.44\%\]{inset:91.26% 42.44% 2.91% 42.44%}.inset-\[97\.09\%_1\.33\%_2\.91\%_1\.33\%\]{inset:97.09% 1.33% 2.91% 1.33%}.bottom-0{bottom:0}.bottom-\[-0\.51px\]{bottom:-.51px}.bottom-\[-17\.82px\]{bottom:-17.82px}.bottom-\[-1px\]{bottom:-1px}.bottom-\[0\.21px\]{bottom:.21px}.bottom-\[0\.22px\]{bottom:.22px}.bottom-\[8\.74\%\]{bottom:8.74%}.bottom-\[86\.41\%\]{bottom:86.41%}.left-0{left:0}.left-1\/2{left:50%}.left-\[-12\%\]{left:-12%}.left-\[-19px\]{left:-19px}.left-\[-20\.09\%\]{left:-20.09%}.left-\[3px\]{left:3px}.left-\[4px\]{left:4px}.right-1\/2{right:50%}.right-\[33\.4px\]{right:33.4px}.top-0{top:0}.top-\[-0\.21px\]{top:-.21px}.top-\[-0\.41px\]{top:-.41px}.top-\[305px\]{top:305px}.top-\[3px\]{top:3px}.top-\[4px\]{top:4px}.top-\[5\.83\%\]{top:5.83%}.top-\[60\.19\%\]{top:60.19%}.top-\[667\.51px\]{top:667.51px}.top-\[calc\(50\%\+15\.29px\)\]{top:calc(50% + 15.29px)}.mb-\[-22px\]{margin-bottom:-22px}.mb-\[-24px\]{margin-bottom:-24px}.block{display:block}.flex{display:flex}.contents{display:contents}.size-\[10px\]{width:10px;height:10px}.size-\[18px\]{width:18px;height:18px}.size-\[34px\]{width:34px;height:34px}.size-\[40px\]{width:40px;height:40px}.size-\[50px\]{width:50px;height:50px}.size-full{width:100%;height:100%}.h-0{height:0}.h-\[102px\]{height:102px}.h-\[140px\]{height:140px}.h-\[185\.516px\]{height:185.516px}.h-\[186\.209px\]{height:186.209px}.h-\[208px\]{height:208px}.h-\[25px\]{height:25px}.h-\[26px\]{height:26px}.h-\[28px\]{height:28px}.h-\[30px\]{height:30px}.h-\[330px\]{height:330px}.h-\[36\.637px\]{height:36.637px}.h-\[36px\]{height:36px}.h-\[46px\]{height:46px}.h-\[569px\]{height:569px}.h-\[63px\]{height:63px}.h-\[66px\]{height:66px}.h-\[820px\]{height:820px}.h-\[88px\]{height:88px}.h-full{height:100%}.min-h-px{min-height:1px}.w-0{width:0}.w-\[102px\]{width:102px}.w-\[103\.09\%\]{width:103.09%}.w-\[125\.76\%\]{width:125.76%}.w-\[140\.17\%\]{width:140.17%}.w-\[162\.023px\]{width:162.023px}.w-\[165px\]{width:165px}.w-\[196\.923px\]{width:196.923px}.w-\[296px\]{width:296px}.w-\[306px\]{width:306px}.w-\[332px\]{width:332px}.w-\[340px\]{width:340px}.w-\[341px\]{width:341px}.w-\[36px\]{width:36px}.w-\[390px\]{width:390px}.w-\[396px\]{width:396px}.w-\[410px\]{width:410px}.w-\[419px\]{width:419px}.w-\[74\.203px\]{width:74.203px}.w-\[78px\]{width:78px}.w-\[80px\]{width:80px}.w-\[min-content\]{width:-moz-min-content;width:min-content}.w-full{width:100%}.w-px{width:1px}.min-w-\[1px\]{min-width:1px}.min-w-full{min-width:100%}.max-w-none{max-width:none}.flex-\[1_0_0\]{flex:1 0 0}.flex-none{flex:none}.shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%}.-translate-x-1\/2,.-translate-y-1\/2{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%}.rotate-\[-9\.73deg\]{--tw-rotate:-9.73deg}.rotate-\[-9\.73deg\],.rotate-\[90deg\]{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-\[90deg\]{--tw-rotate:90deg}.-scale-y-100{--tw-scale-y:-1;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.content-start{align-content:flex-start}.content-stretch{align-content:stretch}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-\[10px\]{gap:10px}.gap-\[11px\]{gap:11px}.gap-\[12px\]{gap:12px}.gap-\[16px\]{gap:16px}.gap-\[24px\]{gap:24px}.gap-\[36px\]{gap:36px}.gap-\[40px\]{gap:40px}.gap-\[4px\]{gap:4px}.gap-\[56px\]{gap:56px}.gap-\[6px\]{gap:6px}.gap-\[8px\]{gap:8px}.overflow-hidden{overflow:hidden}.overflow-clip{overflow:clip}.whitespace-nowrap{white-space:nowrap}.rounded-\[20px\]{border-radius:20px}.rounded-\[24px\]{border-radius:24px}.rounded-\[25px\]{border-radius:25px}.rounded-\[5px\]{border-radius:5px}.rounded-\[9px\]{border-radius:9px}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-solid{border-style:solid}.border-\[\#5c5c31\]{--tw-border-opacity:1;border-color:rgb(92 92 49/var(--tw-border-opacity,1))}.border-\[\#5e6b3a\]{--tw-border-opacity:1;border-color:rgb(94 107 58/var(--tw-border-opacity,1))}.border-\[\#8d957f\]{--tw-border-opacity:1;border-color:rgb(141 149 127/var(--tw-border-opacity,1))}.border-\[\#c5cbb6\]{--tw-border-opacity:1;border-color:rgb(197 203 182/var(--tw-border-opacity,1))}.border-\[rgba\(255\2c 255\2c 255\2c 0\.7\)\]{border-color:hsla(0,0%,100%,.7)}.bg-\[\#4f5b40\]{--tw-bg-opacity:1;background-color:rgb(79 91 64/var(--tw-bg-opacity,1))}.bg-\[\#5e6b3a\]{--tw-bg-opacity:1;background-color:rgb(94 107 58/var(--tw-bg-opacity,1))}.bg-\[\#7f8b6b\]{--tw-bg-opacity:1;background-color:rgb(127 139 107/var(--tw-bg-opacity,1))}.bg-\[\#b5bca3\]{--tw-bg-opacity:1;background-color:rgb(181 188 163/var(--tw-bg-opacity,1))}.bg-\[\#c5cbb6\]{--tw-bg-opacity:1;background-color:rgb(197 203 182/var(--tw-bg-opacity,1))}.bg-\[\#d9d2c0\]{--tw-bg-opacity:1;background-color:rgb(217 210 192/var(--tw-bg-opacity,1))}.bg-\[\#f0eadf\]{--tw-bg-opacity:1;background-color:rgb(240 234 223/var(--tw-bg-opacity,1))}.bg-\[\#f1ede3\]{--tw-bg-opacity:1;background-color:rgb(241 237 227/var(--tw-bg-opacity,1))}.bg-\[\#f6f1e8\]{--tw-bg-opacity:1;background-color:rgb(246 241 232/var(--tw-bg-opacity,1))}.bg-\[\#f7f4ec\]{--tw-bg-opacity:1;background-color:rgb(247 244 236/var(--tw-bg-opacity,1))}.bg-\[rgba\(255\2c 255\2c 255\2c 0\.01\)\]{background-color:hsla(0,0%,100%,.01)}.bg-\[rgba\(255\2c 255\2c 255\2c 0\.6\)\]{background-color:hsla(0,0%,100%,.6)}.object-cover{-o-object-fit:cover;object-fit:cover}.p-\[8px\]{padding:8px}.px-\[12px\]{padding-left:12px;padding-right:12px}.px-\[14px\]{padding-left:14px;padding-right:14px}.px-\[24px\]{padding-left:24px;padding-right:24px}.px-\[36px\]{padding-left:36px;padding-right:36px}.py-\[12px\]{padding-top:12px;padding-bottom:12px}.py-\[16px\]{padding-top:16px;padding-bottom:16px}.py-\[24px\]{padding-top:24px;padding-bottom:24px}.py-\[56px\]{padding-top:56px;padding-bottom:56px}.py-\[6px\]{padding-top:6px;padding-bottom:6px}.py-\[7px\]{padding-top:7px;padding-bottom:7px}.py-\[8px\]{padding-top:8px;padding-bottom:8px}.pb-\[50px\]{padding-bottom:50px}.pt-\[104px\]{padding-top:104px}.pt-\[56px\]{padding-top:56px}.text-center{text-align:center}.text-right{text-align:right}.text-\[12px\]{font-size:12px}.text-\[13px\]{font-size:13px}.text-\[14px\]{font-size:14px}.text-\[16px\]{font-size:16px}.text-\[17px\]{font-size:17px}.text-\[18px\]{font-size:18px}.text-\[20px\]{font-size:20px}.text-\[22px\]{font-size:22px}.text-\[24px\]{font-size:24px}.text-\[25\.1px\]{font-size:25.1px}.text-\[26px\]{font-size:26px}.text-\[28px\]{font-size:28px}.text-\[38px\]{font-size:38px}.text-\[45px\]{font-size:45px}.text-\[60px\]{font-size:60px}.text-\[70px\]{font-size:70px}.text-\[74px\]{font-size:74px}.text-\[80px\]{font-size:80px}.text-\[96px\]{font-size:96px}.uppercase{text-transform:uppercase}.leading-\[0\]{line-height:0}.leading-\[1\.5\]{line-height:1.5}.leading-\[21px\]{line-height:21px}.leading-\[25\.6px\]{line-height:25.6px}.leading-\[25px\]{line-height:25px}.leading-\[26px\]{line-height:26px}.leading-\[27px\]{line-height:27px}.leading-\[29px\]{line-height:29px}.leading-\[30px\]{line-height:30px}.leading-\[35px\]{line-height:35px}.leading-\[38\.4px\]{line-height:38.4px}.leading-\[38px\]{line-height:38px}.leading-\[41\.6px\]{line-height:41.6px}.leading-\[57\.6px\]{line-height:57.6px}.leading-\[74px\]{line-height:74px}.leading-\[76px\]{line-height:76px}.leading-\[normal\]{line-height:normal}.leading-none{line-height:1}.tracking-\[0\.179px\]{letter-spacing:.179px}.tracking-\[0\.5px\]{letter-spacing:.5px}.tracking-\[0\.6px\]{letter-spacing:.6px}.tracking-\[1\.6px\]{letter-spacing:1.6px}.tracking-\[2\.4px\]{letter-spacing:2.4px}.tracking-\[3px\]{letter-spacing:3px}.tracking-\[4px\]{letter-spacing:4px}.tracking-\[5px\]{letter-spacing:5px}.tracking-\[7px\]{letter-spacing:7px}.text-\[\#2e2a26\]{--tw-text-opacity:1;color:rgb(46 42 38/var(--tw-text-opacity,1))}.text-\[\#4a5240\]{--tw-text-opacity:1;color:rgb(74 82 64/var(--tw-text-opacity,1))}.text-\[\#5a534b\]{--tw-text-opacity:1;color:rgb(90 83 75/var(--tw-text-opacity,1))}.text-\[\#5e6b3a\]{--tw-text-opacity:1;color:rgb(94 107 58/var(--tw-text-opacity,1))}.text-\[\#5f6457\]{--tw-text-opacity:1;color:rgb(95 100 87/var(--tw-text-opacity,1))}.text-\[\#d9e0c4\]{--tw-text-opacity:1;color:rgb(217 224 196/var(--tw-text-opacity,1))}.text-\[\#f1f1ea\]{--tw-text-opacity:1;color:rgb(241 241 234/var(--tw-text-opacity,1))}.text-\[\#f3f4ec\]{--tw-text-opacity:1;color:rgb(243 244 236/var(--tw-text-opacity,1))}.text-\[\#f6f1e8\]{--tw-text-opacity:1;color:rgb(246 241 232/var(--tw-text-opacity,1))}.text-\[rgba\(255\2c 255\2c 255\2c 0\.9\)\]{color:hsla(0,0%,100%,.9)}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-80{opacity:.8}.\[word-break\:break-word\]{word-break:break-word}</style>
+<style>:root{--bg:#f3efe6;--h:auto}[data-name="колір"]{-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+@font-face{font-family:"Vetrino";src:url(mr/Vetrino.otf) format("opentype");font-display:swap}
+@font-face{font-family:"Calligraphia One";src:url(twentyfive/CalligraphiaOne.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"AllegroScript";src:url(../fonts/AllegroScript.otf) format("opentype");font-display:swap}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);overflow-x:hidden}
+.bj{width:390px;height:var(--h,auto);margin:0 auto;position:relative;overflow:hidden;background:var(--bg)}
 @media (prefers-reduced-motion:no-preference){
-  .hero__title{animation:mxWrite 2.4s .3s cubic-bezier(.6,0,.3,1) both}
-  .hero__names{animation:mxUp 1.4s 1.6s ease both}
-  .hero__date{animation:mxTrack 1.8s 2s ease both}
-  .h.reveal{clip-path:inset(-30% 100% -30% 0);transition:opacity .9s ease,transform .9s ease,clip-path 1.6s cubic-bezier(.6,0,.3,1)}
-  .h.reveal.is-in{clip-path:inset(-30% -5% -30% -5%)}
-  .chateau.reveal{clip-path:inset(100% 0 0 0);transition:opacity .6s ease,clip-path 2.2s cubic-bezier(.5,0,.2,1)}
-  .chateau.reveal.is-in{clip-path:inset(0 0 0 0)}
-  .date__row b{display:inline-block;transform:scale(.7);opacity:0;transition:transform 1.4s .3s cubic-bezier(.2,.8,.2,1),opacity 1.2s .3s ease}
-  .date__row.is-in b{transform:none;opacity:1}
-  .stem{transform:scaleY(0);transform-origin:top;transition:transform 1.4s .4s ease}
-  .stem.mx-in{transform:none}
-  .cd b{animation:mxBreath 4s ease-in-out infinite}
-  .cd div:nth-child(2) b{animation-delay:.5s}.cd div:nth-child(3) b{animation-delay:1s}.cd div:nth-child(4) b{animation-delay:1.5s}
-  .green{animation:mxPan 30s ease-in-out infinite alternate}
+ .mx .rv{opacity:0;translate:0 22px;transition:opacity 1s ease var(--d,0s),translate 1.1s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+ .mx .rv.in{opacity:1;translate:0 0}
+ .mx .wr{clip-path:inset(-20% 100% -20% 0);transition:clip-path 1.8s cubic-bezier(.6,0,.3,1) .2s}
+ .mx .wr.in{clip-path:inset(-20% -10% -20% -10%)}
+ .mx .ar{clip-path:inset(100% 0 0 0 round 999px 999px 0 0);transition:clip-path 1.8s cubic-bezier(.5,0,.2,1)}
+ .mx .ar.in{clip-path:inset(-5% -5% -5% -5% round 999px)}
+ .mx .zm{opacity:0;scale:.82;transition:opacity 1.2s ease,scale 1.6s cubic-bezier(.2,.7,.2,1)}
+ .mx .zm.in{opacity:1;scale:1}
+ .mx .sl>p:first-child{translate:-110% 0;transition:translate 1.6s cubic-bezier(.2,.7,.2,1) .2s}
+ .mx .sl>p:last-child{translate:110% 0;transition:translate 1.6s cubic-bezier(.2,.7,.2,1) .35s}
+ .mx .sl.in>p{translate:0 0}
+ .fl{animation:bjFloat 5.5s ease-in-out infinite}
+ .fl:nth-of-type(2n){animation-duration:6.5s;animation-delay:-2s}
+ .sw{animation:bjSway 7s ease-in-out infinite;transform-origin:50% 0}
+ .tu{animation:bjTurn 14s ease-in-out infinite alternate}
+ .dr{animation:bjDrift 16s ease-in-out infinite alternate}
+ .sp{animation:bjSpin 9s linear infinite}
+ .kb{animation:bjKB 22s ease-in-out infinite alternate;transform-origin:50% 40%}
+ .bj .cd-tick{animation:bjTick .5s ease}
 }
-@keyframes mxWrite{from{clip-path:inset(-30% 100% -30% 0);opacity:.2}to{clip-path:inset(-30% -5% -30% -5%);opacity:1}}
-@keyframes mxUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes mxTrack{from{opacity:0;letter-spacing:.5em}to{opacity:1;letter-spacing:.14em}}
-@keyframes mxBreath{0%,100%{opacity:1}50%{opacity:.7}}
-@keyframes mxPan{from{background-position:50% 40%}to{background-position:50% 60%}}
+@keyframes bjFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes bjSway{0%,100%{rotate:-1.6deg}50%{rotate:1.6deg}}
+@keyframes bjTurn{from{rotate:-3deg}to{rotate:3deg}}
+@keyframes bjDrift{from{translate:-24px 0}to{translate:24px 0}}
+@keyframes bjSpin{to{rotate:360deg}}
+@keyframes bjKB{from{scale:1}to{scale:1.08}}
+@keyframes bjTick{from{opacity:.35}to{opacity:1}}
 </style>
-</head>
-<body>
-<main class="page">
-  <!-- 1. Обкладинка -->
-  <header class="hero">
-    <p class="hero__title">Wedding Day</p>
-    <p class="hero__names">Марко &amp; Вероніка<span class="hero__date">22.05.2027</span></p>
-    <i class="tear tear--up" aria-hidden="true"></i>
-  </header>
-
-  <!-- 2. Звернення -->
-  <section class="sec dear">
-    <p class="h reveal">Dear,</p>
-    <p class="guest reveal">Вікторія та Олег</p>
-    <p class="txt reveal">Ми так довго чекали моменту, коли зможемо розділити з вами найважливіший і найщасливіший день нашого життя. Будемо раді бачити вас поруч!</p>
-  </section>
-
-  <!-- 3. Дата й відлік -->
-  <section class="sec green date">
-    <i class="tear tear--down" aria-hidden="true"></i>
-    <div class="date__row reveal"><span>травня</span><b>22</b><span>субота</span></div>
-    <p class="date__year">2027</p>
-    <div class="stem" aria-hidden="true"></div>
-    <p class="date__left">до свята залишилось</p>
-    <div class="cd" aria-live="off">
-      <div><b id="cd-d">0</b><span>днів</span></div>
-      <div><b id="cd-h">00</b><span>годин</span></div>
-      <div><b id="cd-m">00</b><span>хвилин</span></div>
-      <div><b id="cd-s">00</b><span>секунд</span></div>
-    </div>
-    <i class="tear tear--up" aria-hidden="true"></i>
-  </section>
-
-  <!-- 4. Локація -->
-  <section class="sec loc">
-    <p class="h reveal">Location</p>
-    <p class="sub reveal">місце проведення</p>
-    <img class="chateau reveal" src="chateau/chateau.svg" alt="Шато «Ле Валь»" loading="lazy">
-    <p class="place reveal">Шато «Ле Валь»</p>
-    <p class="addr reveal">Закарпатська обл., с. Сторожниця, вул. Замкова, 1</p>
-    <a class="obtn reveal" href="https://maps.google.com/?q=Сторожниця" target="_blank" rel="noopener">Відкрити карту</a>
-  </section>
-
-  <!-- 5. Програма -->
-  <section class="sec green prog">
-    <i class="tear tear--down" aria-hidden="true"></i>
-    <p class="h reveal">Program<small>of the day</small></p>
-    <ol class="tl">
-      <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h5l-.5 6a2 2 0 0 1-4 0zM8.5 10v10M6 20h5M13 2h5l.5 6a2 2 0 0 1-4 0zM16.5 10v10M14 20h5"/></svg><time>16:00</time><p>Guests arrive</p></li>
-      <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="14" r="5.5"/><circle cx="15" cy="14" r="5.5"/><path d="M7.5 6.5 9 4.5l1.5 2"/></svg><time>17:00</time><p>Wedding ceremony</p></li>
-      <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="6"/><circle cx="12" cy="13" r="3.5"/><path d="M3 4v5a1.5 1.5 0 0 0 3 0V4M4.5 9v11M19.5 4c-1.5 0-2 2.5-2 5h2v11"/></svg><time>18:00</time><p>Dinner &amp; celebration</p></li>
-      <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4a8 8 0 1 0 5 13A7 7 0 0 1 15 4z"/><path d="M18 3v3M16.5 4.5h3"/></svg><time>00:00</time><p>End of the evening</p></li>
-    </ol>
-    <i class="tear tear--up" aria-hidden="true"></i>
-  </section>
-
-  <!-- 6. Дрес-код -->
-  <section class="sec dress">
-    <p class="h reveal">Dresscode</p>
-    <p class="txt reveal" style="margin-top:12px">Будемо раді, якщо ви підтримаєте ніжну палітру свята: шавлія, олива, пісочний і молочний.</p>
-    <div class="dots reveal" aria-label="Палітра">
-      <i style="background-color:#4f5b40"></i><i style="background-color:#7f8b6b"></i><i style="background-color:#b5bca3"></i><i style="background-color:#d9d2c0"></i><i style="background-color:#f1ede3"></i>
-    </div>
-    <div class="pair reveal"><img src="chateau/groom.png" alt="" loading="lazy"><img src="chateau/bride.png" alt="" loading="lazy"></div>
-  </section>
-
-  <!-- 7. Деталі -->
-  <section class="sec details">
-    <p class="h reveal">Details</p>
-    <div class="det reveal"><h3>Подарунки</h3><p class="txt">Головне для нас – ваша увага, а радість принесе будь-який подарунок у конверті.</p></div>
-    <div class="det reveal"><h3>Тости</h3><p class="txt">Замість «Гірко!» давайте піднімемо келихи за любов на нашому святі.</p></div>
-    <div class="det reveal"><h3>Квіти</h3><p class="txt">Не купуйте букети – краще принесіть свічку з побажанням, і ми запалимо їх разом.</p></div>
-  </section>
-
-  <!-- 8. Фото -->
-  <div class="photo" role="img" aria-label="Руки нареченого й нареченої"><i class="tear tear--up" aria-hidden="true"></i></div>
-
-  <!-- 9. Анкета -->
-  <section class="sec rsvp" id="rsvp">
-    <p class="h reveal">Kindly Respond</p>
-    <p class="txt reveal" style="margin-top:16px">Будь ласка, підтвердьте свою присутність<br>до 22 березня 2027 року</p>
-    <form class="form" id="form">
-      <div class="f"><label for="nm">Ваше ім’я та прізвище</label><input class="inp" id="nm" name="name" placeholder="Ірина Коваль" required></div>
-      <fieldset class="f">
-        <legend>Чи зможете ви прийти?</legend>
-        <label class="radio"><input type="radio" name="go" value="yes" checked> Із радістю прийду</label>
-        <label class="radio"><input type="radio" name="go" value="no"> На жаль, не зможу</label>
-      </fieldset>
-      <div class="f"><label for="gs">Скільки гостей буде з вами?</label>
-        <select class="inp" id="gs" name="guests"><option>1 гість</option><option>2 гості</option><option>3 гості</option><option>4 гості</option></select></div>
-      <fieldset class="f">
-        <legend>Що будете пити?</legend>
-        <div class="chips">
-          <button type="button" class="chip" aria-pressed="true">Вино</button><button type="button" class="chip" aria-pressed="false">Шампанське</button><button type="button" class="chip" aria-pressed="false">Текіла</button><button type="button" class="chip" aria-pressed="true">Віскі</button><button type="button" class="chip" aria-pressed="false">Горілка</button><button type="button" class="chip" aria-pressed="false">Безалкогольне</button>
+<script>if('scrollRestoration' in history)history.scrollRestoration='manual';addEventListener('pageshow',function(){scrollTo(0,0)});</script>
+</head><body><div class="bj"><div class="bg-[#f7f4ec] content-stretch flex flex-col items-start relative size-full" data-node-id="1:23749" data-name="1 / шаблон">
+      <div class="content-stretch flex flex-col h-[820px] items-center justify-between overflow-clip pt-[104px] relative shrink-0 w-full" data-node-id="1:23750" data-name="Головний екран">
+        <div aria-hidden class="absolute inset-0 pointer-events-none">
+          <div class="absolute bg-[#f6f1e8] inset-0"></div>
+          <div class="absolute inset-0 overflow-hidden">
+            <img alt="" class="absolute h-full left-[-20.09%] max-w-none top-0 w-[140.17%]" src="chateau/img.jpg" />
+          </div>
         </div>
-      </fieldset>
-      <div class="f"><label for="al">Алергії або побажання до меню</label><textarea class="inp" id="al" name="wish" placeholder="Напишіть тут…"></textarea></div>
-      <button class="send" type="submit">Надіслати відповідь</button>
-    </form>
-    <p class="thanks" role="status">Дякуємо! До зустрічі</p>
-  </section>
-
-  <!-- 10. Фінал -->
-  <footer>
-    <div class="final"><i class="tear tear--down" aria-hidden="true"></i>
-      <div class="final__txt reveal"><b>See you</b><span>до зустрічі в шато</span></div>
-    </div>
-    <p class="foot green">Bijou · Invitation agency</p>
-  </footer>
-</main>
+        <p class="[word-break:break-word]  leading-[74px] relative shrink-0 text-[#5e6b3a] text-[74px] text-center w-[396px]" data-node-id="1:23751" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">
+          Wedding Day
+        </p>
+        <div class="absolute h-[140px] left-[-19px] top-[667.51px] w-[419px]" data-node-id="1:23752">
+          <div class="absolute inset-[-69%_-23.05%]">
+            <img alt="" class="block max-w-none size-full" src="chateau/imgEllipse8.svg" />
+          </div>
+        </div>
+        <div class="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col items-center justify-end min-h-px pb-[50px] relative text-center text-white" data-node-id="1:23753">
+          <p class=" leading-[57.6px] relative shrink-0 text-[45px] w-[396px]" data-node-id="1:23754" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">Марко &amp; Вероніка</p>
+          <p class=" leading-none relative shrink-0 text-[22px] tracking-[2.4px] w-[396px]" data-node-id="1:23755" style="font-family:'Cormorant Garamond';font-weight:300;font-style:normal">
+            22.05.2027
+          </p>
+        </div>
+        <div class="absolute bottom-0 h-[30px] left-0 w-[390px]" data-node-id="1:23756" data-name="Орнамент">
+          <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/img1.svg" />
+        </div>
+        <div class="absolute bottom-0 h-[25px] left-0 w-[390px]" data-node-id="1:23758" data-name="Орнамент">
+          <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/img2.svg" />
+        </div>
+      </div>
+      <div class="bg-[#f6f1e8] content-stretch flex flex-col gap-[36px] items-center overflow-clip px-[24px] py-[56px] relative shrink-0 w-full" data-node-id="1:23760" data-name="Звернення і дата">
+        <p class="[word-break:break-word]  leading-none min-w-full relative shrink-0 text-[#2e2a26] text-[60px] text-center tracking-[0.5px] w-[min-content]" data-node-id="1:23761" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">
+          Dear,
+        </p>
+        <div class="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-node-id="1:23762">
+          <div class="border-[#c5cbb6] border-b border-solid border-t content-stretch flex items-center justify-center py-[16px] relative shrink-0 w-full" data-node-id="1:23763">
+            <p class="[word-break:break-word] flex-[1_0_0]  leading-none min-w-[1px] relative text-[#5e6b3a] text-[28px] text-center tracking-[0.5px]" data-node-id="1:23764" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+              Вікторія та Олег
+            </p>
+          </div>
+          <p class="[word-break:break-word]  leading-[1.5] relative shrink-0 text-[#5a534b] text-[18px] text-center w-full" data-node-id="1:23765" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+            Ми так довго чекали моменту, коли зможемо розділити з вами найважливіший і найщасливіший день нашого життя. Будемо раді бачити вас поруч!
+          </p>
+        </div>
+        <div class="-translate-x-1/2 absolute bottom-[-0.51px] h-[25px] left-1/2 overflow-clip w-[390px]" data-node-id="1:23766" data-name="Орнамент">
+          <div class="absolute inset-[28%_0_0_0]" data-node-id="1:23767" data-name="Vector">
+            <img alt="" class="absolute block inset-0 max-w-none size-full" height="18" src="chateau/imgVector.webp" width="390" />
+          </div>
+        </div>
+      </div>
+      <div class="content-stretch flex flex-col gap-[36px] items-center overflow-clip px-[24px] py-[56px] relative shrink-0 w-[390px]" data-node-id="1:23768">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="chateau/imgFrame100.jpg" />
+        <div class="content-stretch flex flex-col items-center relative shrink-0 w-full" data-node-id="1:23769">
+          <div class="content-stretch flex gap-[24px] items-center justify-center mb-[-22px] relative shrink-0 w-full" data-node-id="1:23770">
+            <div class="border-[rgba(255,255,255,0.7)] border-b border-solid border-t content-stretch flex flex-[1_0_0] items-center justify-center min-w-[1px] py-[7px] relative" data-node-id="1:23771" data-name="capw">
+              <p class="[word-break:break-word]  leading-[21px] relative shrink-0 text-[#f3f4ec] text-[13px] text-center tracking-[3px] uppercase w-[102px]" data-node-id="1:23772" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                травня
+              </p>
+            </div>
+            <p class="[word-break:break-word]  h-[102px] leading-[76px] relative shrink-0 text-[96px] text-center text-white w-[78px]" data-node-id="1:23773" style="font-family:'Cormorant Garamond';font-weight:300;font-style:normal">
+              22
+            </p>
+            <div class="border-[rgba(255,255,255,0.7)] border-b border-solid border-t content-stretch flex flex-[1_0_0] items-center justify-center min-w-[1px] py-[7px] relative" data-node-id="1:23774" data-name="capw">
+              <p class="[word-break:break-word]  leading-[21px] relative shrink-0 text-[#f3f4ec] text-[13px] text-center tracking-[3px] uppercase w-[102px]" data-node-id="1:23775" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                субота
+              </p>
+            </div>
+          </div>
+          <p class="[word-break:break-word]  leading-[38.4px] relative shrink-0 text-[#f1f1ea] text-[24px] text-center tracking-[7px] w-[332px]" data-node-id="1:23776" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+            2027
+          </p>
+        </div>
+        <div class="bg-[rgba(255,255,255,0.6)] h-[46px] relative shrink-0 w-px" data-node-id="1:23777" data-name="div"></div>
+        <div class="[word-break:break-word] content-stretch flex flex-col gap-[16px] items-center relative shrink-0 text-center w-full" data-node-id="1:23778">
+          <p class=" leading-[30px] relative shrink-0 text-[#f6f1e8] text-[20px] w-[332px]" data-node-id="1:23779" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+            до свята залишилось
+          </p>
+          <div class="content-stretch flex items-start justify-between relative shrink-0 w-full" data-node-id="1:23780">
+            <div class="content-stretch flex flex-col gap-[6px] items-start relative shrink-0 w-[80px]" data-node-id="1:23781">
+              <p class=" leading-[38px] relative shrink-0 text-[38px] text-white w-full" data-node-id="1:23782" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                218
+              </p>
+              <p class=" leading-[21px] relative shrink-0 text-[#f3f4ec] text-[13px] tracking-[1.6px] uppercase w-full" data-node-id="1:23783" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                днів
+              </p>
+            </div>
+            <div class="content-stretch flex flex-col gap-[6px] items-start relative shrink-0 w-[80px]" data-node-id="1:23784">
+              <p class=" leading-[38px] relative shrink-0 text-[38px] text-white w-full" data-node-id="1:23785" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                09
+              </p>
+              <p class=" leading-[21px] relative shrink-0 text-[#f3f4ec] text-[13px] tracking-[1.6px] uppercase w-full" data-node-id="1:23786" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                годин
+              </p>
+            </div>
+            <div class="content-stretch flex flex-col gap-[6px] items-start relative shrink-0 w-[80px]" data-node-id="1:23787">
+              <p class=" leading-[38px] relative shrink-0 text-[38px] text-white w-full" data-node-id="1:23788" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                27
+              </p>
+              <p class=" leading-[21px] relative shrink-0 text-[#f3f4ec] text-[13px] tracking-[1.6px] uppercase w-full" data-node-id="1:23789" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                хвилин
+              </p>
+            </div>
+            <div class="content-stretch flex flex-col gap-[6px] items-start relative shrink-0 w-[80px]" data-node-id="1:23790">
+              <p class=" leading-[38px] relative shrink-0 text-[38px] text-white w-full" data-node-id="1:23791" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                44
+              </p>
+              <p class=" leading-[21px] relative shrink-0 text-[#f3f4ec] text-[13px] tracking-[1.6px] uppercase w-full" data-node-id="1:23792" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                секунд
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 h-[30px] left-0 w-[390px]" data-node-id="1:23793" data-name="Орнамент">
+          <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/img1.svg" />
+        </div>
+        <div class="absolute bottom-0 h-[25px] left-0 w-[390px]" data-node-id="1:23795" data-name="Орнамент">
+          <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/img3.svg" />
+        </div>
+      </div>
+      <div class="bg-[#f6f1e8] content-stretch flex flex-col gap-[40px] items-center overflow-clip px-[24px] py-[56px] relative shrink-0 w-full" data-node-id="1:23797" data-name="Локація">
+        <div class="content-stretch flex flex-col gap-[56px] items-center relative shrink-0 w-full" data-node-id="1:23798">
+          <div class="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="1:23799">
+            <div class="[word-break:break-word] content-stretch flex flex-col items-start relative shrink-0 text-center w-full" data-node-id="1:23800">
+              <p class=" leading-none relative shrink-0 text-[#2e2a26] text-[60px] tracking-[0.5px] w-full" data-node-id="1:23801" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">
+                Location
+              </p>
+              <p class=" leading-[26px] relative shrink-0 text-[#5a534b] text-[20px] w-full" data-node-id="1:23802" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                місце проведення
+              </p>
+            </div>
+            <div class="h-[208px] overflow-clip relative shrink-0 w-full" data-node-id="1:23803" data-name="Орнамент">
+              <div class="absolute contents inset-[5.83%_1.03%_2.91%_-0.18%]" data-node-id="1:23804" data-name="Group">
+                <div class="absolute inset-[97.09%_1.33%_2.91%_1.33%]" data-node-id="1:23805" data-name="Vector">
+                  <div class="absolute inset-[-0.5px_-0.15%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector1.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[91.26%_42.44%_2.91%_42.44%]" data-node-id="1:23806" data-name="Vector">
+                  <div class="absolute inset-[-4.17%_-0.98%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector2.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[46.6%_66.63%_8.74%_6.17%]" data-node-id="1:23807" data-name="Vector">
+                  <div class="absolute inset-[-0.54%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector3.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[44.66%_65.42%_53.4%_4.96%]" data-node-id="1:23808" data-name="Vector">
+                  <div class="absolute inset-[-12.5%_-0.5%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector4.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[32.04%_66.63%_55.34%_6.17%]" data-node-id="1:23809" data-name="Vector">
+                  <div class="absolute inset-[-1.92%_-0.54%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector5.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[35.44%_85.67%_58.25%_11.3%]" data-node-id="1:23810" data-name="Vector">
+                  <div class="absolute inset-[-3.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector6.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[35.44%_78.72%_58.25%_18.26%]" data-node-id="1:23811" data-name="Vector">
+                  <div class="absolute inset-[-3.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector6.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[35.44%_71.77%_58.25%_25.21%]" data-node-id="1:23812" data-name="Vector">
+                  <div class="absolute inset-[-3.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector6.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[27.18%_72.67%_67.96%_12.21%]" data-node-id="1:23813" data-name="Vector">
+                  <div class="absolute inset-[-5%_-0.98%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector7.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_87.79%_35.92%_9.19%]" data-node-id="1:23814" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector8.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_89.3%_35.92%_10.7%]" data-node-id="1:23815" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector9.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_81.74%_35.92%_15.23%]" data-node-id="1:23816" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector8.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_83.25%_35.92%_16.75%]" data-node-id="1:23817" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector9.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_75.7%_35.92%_21.28%]" data-node-id="1:23818" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector8.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_77.21%_35.92%_22.79%]" data-node-id="1:23819" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector9.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_69.65%_35.92%_27.33%]" data-node-id="1:23820" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector8.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_71.16%_35.92%_28.84%]" data-node-id="1:23821" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector9.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_87.79%_14.56%_9.19%]" data-node-id="1:23822" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector10.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_89.3%_14.56%_10.7%]" data-node-id="1:23823" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector11.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_81.74%_14.56%_15.23%]" data-node-id="1:23824" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector10.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_83.25%_14.56%_16.75%]" data-node-id="1:23825" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector11.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_75.7%_14.56%_21.28%]" data-node-id="1:23826" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector10.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_77.21%_14.56%_22.79%]" data-node-id="1:23827" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector11.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_69.65%_14.56%_27.33%]" data-node-id="1:23828" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector10.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_71.16%_14.56%_28.84%]" data-node-id="1:23829" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector11.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[67.96%_66.63%_32.04%_6.17%]" data-node-id="1:23830" data-name="Vector">
+                  <div class="absolute inset-[-0.5px_-0.54%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector12.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[46.6%_6.17%_8.74%_66.63%]" data-node-id="1:23831" data-name="Vector">
+                  <div class="absolute inset-[-0.54%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector3.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[44.66%_4.96%_53.4%_65.42%]" data-node-id="1:23832" data-name="Vector">
+                  <div class="absolute inset-[-12.5%_-0.5%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector4.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[32.04%_6.17%_55.34%_66.63%]" data-node-id="1:23833" data-name="Vector">
+                  <div class="absolute inset-[-1.92%_-0.54%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector5.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[35.44%_25.21%_58.25%_71.77%]" data-node-id="1:23834" data-name="Vector">
+                  <div class="absolute inset-[-3.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector6.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[35.44%_18.26%_58.25%_78.72%]" data-node-id="1:23835" data-name="Vector">
+                  <div class="absolute inset-[-3.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector6.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[35.44%_11.3%_58.25%_85.67%]" data-node-id="1:23836" data-name="Vector">
+                  <div class="absolute inset-[-3.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector6.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[27.18%_12.21%_67.96%_72.67%]" data-node-id="1:23837" data-name="Vector">
+                  <div class="absolute inset-[-5%_-0.98%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector7.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_27.33%_35.92%_69.65%]" data-node-id="1:23838" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector8.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_28.84%_35.92%_71.16%]" data-node-id="1:23839" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector9.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_21.28%_35.92%_75.7%]" data-node-id="1:23840" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector8.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_22.79%_35.92%_77.21%]" data-node-id="1:23841" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector9.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_15.23%_35.92%_81.74%]" data-node-id="1:23842" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector8.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_16.75%_35.92%_83.25%]" data-node-id="1:23843" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector9.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_9.19%_35.92%_87.79%]" data-node-id="1:23844" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector8.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[52.91%_10.7%_35.92%_89.3%]" data-node-id="1:23845" data-name="Vector">
+                  <div class="absolute inset-[-2.17%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector9.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_27.33%_14.56%_69.65%]" data-node-id="1:23846" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector10.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_28.84%_14.56%_71.16%]" data-node-id="1:23847" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector11.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_21.28%_14.56%_75.7%]" data-node-id="1:23848" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector10.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_22.79%_14.56%_77.21%]" data-node-id="1:23849" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector11.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_15.23%_14.56%_81.74%]" data-node-id="1:23850" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector10.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_16.75%_14.56%_83.25%]" data-node-id="1:23851" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector11.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_9.19%_14.56%_87.79%]" data-node-id="1:23852" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector10.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[72.33%_10.7%_14.56%_89.3%]" data-node-id="1:23853" data-name="Vector">
+                  <div class="absolute inset-[-1.85%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector11.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[67.96%_6.17%_32.04%_66.63%]" data-node-id="1:23854" data-name="Vector">
+                  <div class="absolute inset-[-0.5px_-0.54%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector12.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[40.78%_33.37%_8.74%_33.37%]" data-node-id="1:23855" data-name="Vector">
+                  <div class="absolute inset-[-0.48%_-0.44%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector13.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[38.83%_32.16%_59.22%_32.16%]" data-node-id="1:23856" data-name="Vector">
+                  <div class="absolute inset-[-12.5%_-0.41%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector14.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[21.84%_35.79%_61.17%_35.79%]" data-node-id="1:23857" data-name="Vector">
+                  <div class="absolute inset-[-1.43%_-0.52%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector15.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[20.87%_42.44%_74.76%_42.44%]" data-node-id="1:23858" data-name="Vector">
+                  <div class="absolute inset-[-5.56%_-0.98%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector16.svg" />
+                  </div>
+                </div>
+                <div class="absolute bottom-[86.41%] left-1/2 right-1/2 top-[5.83%]" data-node-id="1:23859" data-name="Vector">
+                  <div class="absolute inset-[-3.13%_-0.5px_-3.12%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector17.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[13.59%_49.09%_83.5%_49.09%]" data-node-id="1:23860" data-name="Vector">
+                  <div class="absolute inset-[-8.33%_-8.14%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector18.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[28.64%_45.47%_62.14%_45.47%]" data-node-id="1:23861" data-name="Vector">
+                  <div class="absolute inset-[-2.63%_-1.63%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector19.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[30.1%_48.19%_64.08%_48.19%]" data-node-id="1:23862" data-name="Vector">
+                  <div class="absolute inset-[-4.17%_-4.07%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector20.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[46.6%_62.09%_8.74%_36.09%]" data-node-id="1:23863" data-name="Vector">
+                  <div class="absolute inset-[-0.54%_-8.14%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector21.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[46.6%_55.44%_8.74%_42.74%]" data-node-id="1:23864" data-name="Vector">
+                  <div class="absolute inset-[-0.54%_-8.14%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector21.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[46.6%_42.74%_8.74%_55.44%]" data-node-id="1:23865" data-name="Vector">
+                  <div class="absolute inset-[-0.54%_-8.14%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector21.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[46.6%_36.09%_8.74%_62.09%]" data-node-id="1:23866" data-name="Vector">
+                  <div class="absolute inset-[-0.54%_-8.14%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector21.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[60.19%_46.07%_8.74%_46.07%]" data-node-id="1:23867" data-name="Vector">
+                  <div class="absolute inset-[-0.78%_-1.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector22.svg" />
+                  </div>
+                </div>
+                <div class="absolute bottom-[8.74%] left-1/2 right-1/2 top-[60.19%]" data-node-id="1:23868" data-name="Vector">
+                  <div class="absolute inset-[-0.78%_-0.5px]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector23.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[49.03%_58.16%_41.75%_38.81%]" data-node-id="1:23869" data-name="Vector">
+                  <div class="absolute inset-[-2.63%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector24.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[49.03%_38.81%_41.75%_58.16%]" data-node-id="1:23870" data-name="Vector">
+                  <div class="absolute inset-[-2.63%_-4.88%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector24.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[62.14%_94.74%_2.91%_-0.18%]" data-node-id="1:23871" data-name="Vector">
+                  <div class="absolute inset-[-0.69%_-2.71%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector25.svg" />
+                  </div>
+                </div>
+                <div class="absolute inset-[62.14%_1.03%_2.91%_93.53%]" data-node-id="1:23872" data-name="Vector">
+                  <div class="absolute inset-[-0.69%_-2.71%]">
+                    <img alt="" class="block max-w-none size-full" src="chateau/imgVector25.svg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-stretch flex flex-col gap-[36px] items-center relative shrink-0 w-full" data-node-id="1:23873">
+            <div class="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-center relative shrink-0 text-center w-full" data-node-id="1:23874">
+              <p class=" leading-[41.6px] min-w-full relative shrink-0 text-[#2e2a26] text-[26px] w-[min-content]" data-node-id="1:23875" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                Шато «Ле Валь»
+              </p>
+              <p class=" leading-[1.5] relative shrink-0 text-[#5a534b] text-[17px] w-[296px]" data-node-id="1:23876" style="font-family:'Cormorant Garamond';font-weight:300;font-style:normal">
+                Закарпатська обл., с. Сторожниця, вул. Замкова, 1
+              </p>
+            </div>
+            <div class="border border-[#5c5c31] border-solid content-stretch flex items-center justify-center px-[36px] py-[12px] relative shrink-0" data-node-id="1:23877" data-name="obtn">
+              <p class="[word-break:break-word]  leading-[25.6px] relative shrink-0 text-[#2e2a26] text-[16px] text-center tracking-[4px] uppercase whitespace-nowrap" data-node-id="1:23878" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                Відкрити карту
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-[-1px] flex h-[26px] items-center justify-center left-0 w-[390px]" data-node-id="1:23879">
+          <div class="-scale-y-100 flex-none">
+            <div class="h-[26px] overflow-clip relative w-[390px]" data-name="Орнамент">
+              <div class="absolute inset-[0_0_15.38%_0]" data-node-id="1:23880" data-name="Vector">
+                <img alt="" class="absolute block inset-0 max-w-none size-full" height="22" src="chateau/imgVector26.webp" width="390" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-stretch flex flex-col gap-[56px] items-start px-[24px] py-[56px] relative shrink-0 w-full" data-node-id="1:23881" data-name="Section - 5 · program">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="chateau/imgFrame100.jpg" />
+        <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="1:23882" data-name="Container">
+          <div class="content-stretch flex flex-col items-center relative shrink-0 w-full" data-node-id="1:23883" data-name="Heading 2">
+            <div class="[word-break:break-word] flex flex-col  justify-center leading-[0] relative shrink-0 text-[60px] text-center text-white whitespace-nowrap" data-node-id="1:23884" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">
+              <p class="leading-none">Program</p>
+            </div>
+          </div>
+          <div class="absolute bottom-[-17.82px] flex h-[36.637px] items-center justify-center right-[33.4px] w-[74.203px]" data-node-id="1:23885">
+            <div class="flex-none rotate-[-9.73deg]">
+              <div class="content-stretch flex flex-col items-center relative" data-name="Container">
+                <div class="[word-break:break-word] flex flex-col  justify-center leading-[0] relative shrink-0 text-[#d9e0c4] text-[25.1px] text-center whitespace-nowrap" data-node-id="1:23886" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">
+                  <p class="leading-[25px]">of the day</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-stretch flex flex-col gap-[24px] items-center relative shrink-0 w-full" data-node-id="1:23887" data-name="Ordered List">
+          <div class="content-stretch flex flex-col items-center relative shrink-0 w-full" data-node-id="1:23888" data-name="Item">
+            <div class="relative shrink-0 size-[34px]" data-node-id="1:23889" data-name="SVG">
+              <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/imgSvg.svg" />
+            </div>
+            <div class="[word-break:break-word] content-stretch flex flex-col  gap-[8px] items-center leading-[0] relative shrink-0 text-center w-full whitespace-nowrap" data-node-id="1:23895" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+              <div class="flex flex-col justify-center relative shrink-0 text-[70px] text-white" data-node-id="1:23896">
+                <p class="leading-none">16:00</p>
+              </div>
+              <div class="flex flex-col justify-center relative shrink-0 text-[18px] text-[rgba(255,255,255,0.9)] tracking-[0.179px]" data-node-id="1:23897">
+                <p class="leading-[normal]">Guests arrive</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex h-[36px] items-center justify-center relative shrink-0 w-0" data-node-id="1:23898">
+            <div class="flex-none rotate-[90deg]">
+              <div class="h-0 relative w-[36px]">
+                <div class="absolute inset-[-1px_0_0_0]">
+                  <img alt="" class="block max-w-none size-full" src="chateau/imgLine5.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-stretch flex flex-col items-center relative shrink-0 w-full" data-node-id="1:23899" data-name="Item">
+            <div class="relative shrink-0 size-[34px]" data-node-id="1:23900" data-name="SVG">
+              <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/imgSvg1.svg" />
+            </div>
+            <div class="[word-break:break-word] content-stretch flex flex-col  gap-[8px] items-center leading-[0] relative shrink-0 text-center w-full whitespace-nowrap" data-node-id="1:23904" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+              <div class="flex flex-col justify-center relative shrink-0 text-[70px] text-white" data-node-id="1:23905">
+                <p class="leading-none">17:00</p>
+              </div>
+              <div class="flex flex-col justify-center relative shrink-0 text-[18px] text-[rgba(255,255,255,0.9)] tracking-[0.179px]" data-node-id="1:23906">
+                <p class="leading-[normal]">Wedding ceremony</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex h-[36px] items-center justify-center relative shrink-0 w-0" data-node-id="1:23907">
+            <div class="flex-none rotate-[90deg]">
+              <div class="h-0 relative w-[36px]">
+                <div class="absolute inset-[-1px_0_0_0]">
+                  <img alt="" class="block max-w-none size-full" src="chateau/imgLine5.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-stretch flex flex-col items-center relative shrink-0 w-full" data-node-id="1:23908" data-name="Item">
+            <div class="relative shrink-0 size-[34px]" data-node-id="1:23909" data-name="SVG">
+              <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/imgSvg2.svg" />
+            </div>
+            <div class="[word-break:break-word] content-stretch flex flex-col  gap-[8px] items-center leading-[0] relative shrink-0 text-center w-full whitespace-nowrap" data-node-id="1:23914" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+              <div class="flex flex-col justify-center relative shrink-0 text-[70px] text-white" data-node-id="1:23915">
+                <p class="leading-none">18:00</p>
+              </div>
+              <div class="flex flex-col justify-center relative shrink-0 text-[18px] text-[rgba(255,255,255,0.9)] tracking-[0.179px]" data-node-id="1:23916">
+                <p class="leading-[normal]">Dinner &amp; celebration</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex h-[36px] items-center justify-center relative shrink-0 w-0" data-node-id="1:23917">
+            <div class="flex-none rotate-[90deg]">
+              <div class="h-0 relative w-[36px]">
+                <div class="absolute inset-[-1px_0_0_0]">
+                  <img alt="" class="block max-w-none size-full" src="chateau/imgLine5.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-stretch flex flex-col items-center relative shrink-0 w-full" data-node-id="1:23918" data-name="Item">
+            <div class="relative shrink-0 size-[34px]" data-node-id="1:23919" data-name="SVG">
+              <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/imgSvg3.svg" />
+            </div>
+            <div class="[word-break:break-word] content-stretch flex flex-col  gap-[8px] items-center leading-[0] relative shrink-0 text-center w-full whitespace-nowrap" data-node-id="1:23922" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+              <div class="flex flex-col justify-center relative shrink-0 text-[70px] text-white" data-node-id="1:23923">
+                <p class="leading-none">00:00</p>
+              </div>
+              <div class="flex flex-col justify-center relative shrink-0 text-[18px] text-[rgba(255,255,255,0.9)] tracking-[0.179px]" data-node-id="1:23924">
+                <p class="leading-[normal]">End of the evening</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#f6f1e8] content-stretch flex flex-col gap-[56px] items-center overflow-clip pt-[56px] px-[24px] relative shrink-0 w-full" data-node-id="1:23925" data-name="Дрес-код">
+        <div class="[word-break:break-word] content-stretch flex flex-col items-start relative shrink-0 text-center w-full" data-node-id="1:23926">
+          <p class=" leading-none relative shrink-0 text-[#2e2a26] text-[60px] w-full" data-node-id="1:23927" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">
+            Dresscode
+          </p>
+          <p class=" leading-[1.5] relative shrink-0 text-[#5f6457] text-[18px] w-full" data-node-id="1:23928" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+            Будемо раді, якщо ви підтримаєте ніжну палітру свята: шавлія, олива, пісочний і молочний.
+          </p>
+        </div>
+        <div class="content-stretch flex gap-[10px] items-center relative shrink-0" data-node-id="1:23929">
+          <div class="border border-[#8d957f] border-solid relative rounded-[25px] shrink-0 size-[50px]" data-node-id="1:23930" data-name="div">
+            <div class="absolute bg-[#4f5b40] left-[4px] rounded-[20px] size-[40px] top-[4px]" data-node-id="1:23931" data-name="div"></div>
+          </div>
+          <div class="border border-[#8d957f] border-solid relative rounded-[25px] shrink-0 size-[50px]" data-node-id="1:23932" data-name="div">
+            <div class="absolute bg-[#7f8b6b] left-[4px] rounded-[20px] size-[40px] top-[4px]" data-node-id="1:23933" data-name="div"></div>
+          </div>
+          <div class="border border-[#8d957f] border-solid relative rounded-[25px] shrink-0 size-[50px]" data-node-id="1:23934" data-name="div">
+            <div class="absolute bg-[#b5bca3] left-[4px] rounded-[20px] size-[40px] top-[4px]" data-node-id="1:23935" data-name="div"></div>
+          </div>
+          <div class="border border-[#8d957f] border-solid relative rounded-[25px] shrink-0 size-[50px]" data-node-id="1:23936" data-name="div">
+            <div class="absolute bg-[#d9d2c0] left-[4px] rounded-[20px] size-[40px] top-[4px]" data-node-id="1:23937" data-name="div"></div>
+          </div>
+          <div class="border border-[#8d957f] border-solid relative rounded-[25px] shrink-0 size-[50px]" data-node-id="1:23938" data-name="div">
+            <div class="absolute bg-[#f1ede3] left-[4px] rounded-[20px] size-[40px] top-[4px]" data-node-id="1:23939" data-name="div"></div>
+          </div>
+        </div>
+        <div class="content-stretch flex items-start relative shrink-0" data-node-id="1:23940">
+          <div class="h-[185.516px] relative shrink-0 w-[196.923px]" data-node-id="1:23941" data-name="Мінімалістичний портрет чоловіка в костюмі 1">
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+              <img alt="" class="absolute h-full left-0 max-w-none top-0 w-[103.09%]" src="chateau/img4.webp" />
+            </div>
+          </div>
+          <div class="h-[186.209px] relative shrink-0 w-[162.023px]" data-node-id="1:23942" data-name="Мінімалістичний портрет нареченої з шиньйоном 1">
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+              <img alt="" class="absolute h-full left-[-12%] max-w-none top-0 w-[125.76%]" src="chateau/img5.webp" />
+            </div>
+          </div>
+        </div>
+        <div class="absolute h-[26px] left-0 overflow-clip top-[-0.41px] w-[390px]" data-node-id="1:23943" data-name="Орнамент">
+          <div class="absolute inset-[0_0_15.38%_0]" data-node-id="1:23944" data-name="Vector">
+            <img alt="" class="absolute block inset-0 max-w-none size-full" height="22" src="chateau/imgVector27.webp" width="390" />
+          </div>
+        </div>
+        <div class="absolute bottom-[0.21px] flex h-[26px] items-center justify-center left-0 w-[390px]" data-node-id="1:23945">
+          <div class="-scale-y-100 flex-none">
+            <div class="h-[26px] relative w-[390px]" data-name="Орнамент">
+              <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/img6.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#f0eadf] content-stretch flex flex-col gap-[36px] items-center overflow-clip px-[24px] py-[56px] relative shrink-0 w-full" data-node-id="1:23947" data-name="Побажання">
+        <p class="[word-break:break-word]  leading-none relative shrink-0 text-[#2e2a26] text-[60px] text-center w-[340px]" data-node-id="1:23948" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">
+          Details
+        </p>
+        <div class="content-stretch flex flex-col gap-[24px] items-center relative shrink-0 w-[341px]" data-node-id="1:23949">
+          <div class="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center relative shrink-0 text-center w-full" data-node-id="1:23950">
+            <p class=" leading-[35px] min-w-full relative shrink-0 text-[#4a5240] text-[22px] w-[min-content]" data-node-id="1:23951" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+              Подарунки
+            </p>
+            <p class=" leading-[1.5] relative shrink-0 text-[#5f6457] text-[18px] w-[306px]" data-node-id="1:23952" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+              Головне для нас – ваша увага, а радість принесе будь-який подарунок у конверті.
+            </p>
+          </div>
+          <div class="bg-[#c5cbb6] h-[28px] relative shrink-0 w-px" data-node-id="1:23953" data-name="div"></div>
+          <div class="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center relative shrink-0 text-center w-full" data-node-id="1:23954">
+            <p class=" leading-[35px] min-w-full relative shrink-0 text-[#4a5240] text-[22px] w-[min-content]" data-node-id="1:23955" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+              Тости
+            </p>
+            <p class=" leading-[1.5] relative shrink-0 text-[#5f6457] text-[18px] w-[306px]" data-node-id="1:23956" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+              Замість «Гірко!» давайте піднімемо келихи за любов на нашому святі.
+            </p>
+          </div>
+          <div class="bg-[#c5cbb6] h-[28px] relative shrink-0 w-px" data-node-id="1:23957" data-name="div"></div>
+          <div class="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center relative shrink-0 text-center w-full" data-node-id="1:23958">
+            <p class=" leading-[35px] min-w-full relative shrink-0 text-[#4a5240] text-[22px] w-[min-content]" data-node-id="1:23959" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+              Квіти
+            </p>
+            <p class=" leading-[1.5] relative shrink-0 text-[#5f6457] text-[18px] w-[306px]" data-node-id="1:23960" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+              Не купуйте букети – краще принесіть свічку з побажанням, і ми запалимо їх разом.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="h-[330px] overflow-clip relative shrink-0 w-[390px]" data-node-id="1:23961" data-name="Фото квіти">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="chateau/img7.jpg" />
+        <div class="absolute bottom-[0.22px] h-[30px] left-0 w-[390px]" data-node-id="1:23962" data-name="Орнамент">
+          <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/img8.svg" />
+        </div>
+        <div class="absolute h-[26px] left-0 top-[305px] w-[390px]" data-node-id="1:23964" data-name="Орнамент">
+          <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/img9.svg" />
+        </div>
+      </div>
+      <div class="bg-[#f6f1e8] content-stretch flex flex-col gap-[56px] items-start overflow-clip px-[24px] py-[56px] relative shrink-0 w-full" data-node-id="1:23966" data-name="Анкета RSVP">
+        <div class="[word-break:break-word] content-stretch flex flex-col gap-[12px] items-center relative shrink-0 text-center w-full" data-node-id="1:23967">
+          <p class=" leading-none min-w-full relative shrink-0 text-[#2e2a26] text-[60px] w-[min-content]" data-node-id="1:23968" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">
+            Kindly Respond
+          </p>
+          <p class=" leading-[1.5] relative shrink-0 text-[#5f6457] text-[18px] w-[306px]" data-node-id="1:23969" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+            Будь ласка, підтвердьте свою присутність до 22 березня 2027 року
+          </p>
+        </div>
+        <div class="content-stretch flex flex-col gap-[36px] items-end relative shrink-0 w-full" data-node-id="1:23970" data-name="sage">
+          <div class="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="1:23971">
+            <div class="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="1:23972">
+              <p class="[word-break:break-word]  leading-[27px] relative shrink-0 text-[#5e6b3a] text-[17px] w-full" data-node-id="1:23973" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                Ваше ім’я та прізвище
+              </p>
+              <div class="border-[#c5cbb6] border-b border-solid content-stretch flex items-center px-[12px] py-[6px] relative shrink-0 w-full" data-node-id="1:23974" data-name="f-in">
+                <p class="[word-break:break-word]  leading-[29px] relative shrink-0 text-[#2e2a26] text-[18px] whitespace-nowrap" data-node-id="1:23975" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                  Ірина Коваль
+                </p>
+              </div>
+            </div>
+            <div class="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="1:23976">
+              <p class="[word-break:break-word]  leading-[27px] min-w-full relative shrink-0 text-[#5e6b3a] text-[17px] w-[min-content]" data-node-id="1:23977" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                Чи зможете ви прийти?
+              </p>
+              <div class="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-[165px]" data-node-id="1:23978">
+                <div class="content-stretch flex gap-[12px] items-center relative shrink-0 w-full" data-node-id="1:23979">
+                  <div class="border border-[#5e6b3a] border-solid relative rounded-[9px] shrink-0 size-[18px]" data-node-id="1:23980" data-name="rad">
+                    <div class="absolute bg-[#5e6b3a] left-[3px] rounded-[5px] size-[10px] top-[3px]" data-node-id="1:23981" data-name="i"></div>
+                  </div>
+                  <p class="[word-break:break-word]  leading-[29px] relative shrink-0 text-[#5e6b3a] text-[18px] whitespace-nowrap" data-node-id="1:23982" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                    Із радістю прийду
+                  </p>
+                </div>
+                <div class="content-stretch flex gap-[12px] items-center relative shrink-0 w-full" data-node-id="1:23983">
+                  <div class="border border-[#5e6b3a] border-solid relative rounded-[9px] shrink-0 size-[18px]" data-node-id="1:23984" data-name="rad"></div>
+                  <p class="[word-break:break-word]  leading-[29px] relative shrink-0 text-[#5e6b3a] text-[18px] whitespace-nowrap" data-node-id="1:23985" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                    На жаль, не зможу
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="1:23986">
+              <p class="[word-break:break-word]  leading-[27px] relative shrink-0 text-[#5e6b3a] text-[17px] w-full" data-node-id="1:23987" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                Скільки гостей буде з вами?
+              </p>
+              <div class="border-[#c5cbb6] border-b border-solid content-stretch flex items-center px-[12px] py-[6px] relative shrink-0 w-full" data-node-id="1:23988" data-name="f-in">
+                <p class="[word-break:break-word]  leading-[29px] relative shrink-0 text-[#2e2a26] text-[18px] whitespace-nowrap" data-node-id="1:23989" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                  1 гість
+                </p>
+              </div>
+            </div>
+            <div class="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="1:23990">
+              <p class="[word-break:break-word]  leading-[27px] relative shrink-0 text-[#5e6b3a] text-[17px] w-full" data-node-id="1:23991" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                Що будете пити?
+              </p>
+              <div class="content-start flex flex-wrap gap-[8px] items-start relative shrink-0 w-full" data-node-id="1:23992">
+                <div class="bg-[#5e6b3a] border border-[#5e6b3a] border-solid content-stretch flex items-center justify-center px-[14px] py-[8px] relative rounded-[24px] shrink-0" data-node-id="1:23993" data-name="chip">
+                  <p class="[word-break:break-word]  leading-[25.6px] relative shrink-0 text-[16px] text-white whitespace-nowrap" data-node-id="1:23994" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                    Вино
+                  </p>
+                </div>
+                <div class="border border-[#c5cbb6] border-solid content-stretch flex items-center justify-center px-[14px] py-[8px] relative rounded-[24px] shrink-0" data-node-id="1:23995" data-name="chip">
+                  <p class="[word-break:break-word]  leading-[25.6px] relative shrink-0 text-[#5e6b3a] text-[16px] whitespace-nowrap" data-node-id="1:23996" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                    Шампанське
+                  </p>
+                </div>
+                <div class="border border-[#c5cbb6] border-solid content-stretch flex items-center justify-center px-[14px] py-[8px] relative rounded-[24px] shrink-0" data-node-id="1:23997" data-name="chip">
+                  <p class="[word-break:break-word]  leading-[25.6px] relative shrink-0 text-[#5e6b3a] text-[16px] whitespace-nowrap" data-node-id="1:23998" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                    Текіла
+                  </p>
+                </div>
+                <div class="bg-[#5e6b3a] border border-[#5e6b3a] border-solid content-stretch flex items-center justify-center px-[14px] py-[8px] relative rounded-[24px] shrink-0" data-node-id="1:23999" data-name="chip">
+                  <p class="[word-break:break-word]  leading-[25.6px] relative shrink-0 text-[16px] text-white whitespace-nowrap" data-node-id="1:24000" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+                    Віскі
+                  </p>
+                </div>
+                <div class="border border-[#c5cbb6] border-solid content-stretch flex items-center justify-center px-[14px] py-[8px] relative rounded-[24px] shrink-0" data-node-id="1:24001" data-name="chip">
+                  <p class="[word-break:break-word]  leading-[25.6px] relative shrink-0 text-[#5e6b3a] text-[16px] whitespace-nowrap" data-node-id="1:24002" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                    Горілка
+                  </p>
+                </div>
+                <div class="border border-[#c5cbb6] border-solid content-stretch flex items-center justify-center px-[14px] py-[8px] relative rounded-[24px] shrink-0" data-node-id="1:24003" data-name="chip">
+                  <p class="[word-break:break-word]  leading-[25.6px] relative shrink-0 text-[#5e6b3a] text-[16px] whitespace-nowrap" data-node-id="1:24004" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                    Безалкогольне
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full" data-node-id="1:24005">
+              <p class="[word-break:break-word]  leading-[27px] relative shrink-0 text-[#5e6b3a] text-[17px] w-full" data-node-id="1:24006" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                Алергії або побажання до меню
+              </p>
+              <div class="border-[#c5cbb6] border-b border-solid content-stretch flex h-[66px] items-end opacity-80 p-[8px] relative shrink-0 w-full" data-node-id="1:24007" data-name="f-in">
+                <p class="[word-break:break-word]  leading-[29px] relative shrink-0 text-[#5e6b3a] text-[18px] whitespace-nowrap" data-node-id="1:24008" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+                  Напишіть тут…
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#5e6b3a] content-stretch flex items-center justify-center px-[36px] py-[16px] relative shrink-0 w-full" data-node-id="1:24009" data-name="btn">
+            <p class="[word-break:break-word]  leading-[21px] relative shrink-0 text-[14px] text-center text-white tracking-[4px] uppercase whitespace-nowrap" data-node-id="1:24010" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+              Надіслати відповідь
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="content-stretch flex flex-col gap-[11px] h-[569px] items-center justify-center overflow-clip px-[24px] relative shrink-0 w-full" data-node-id="1:24011" data-name="Фінал">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="chateau/img10.jpg" />
+        <div class="-translate-x-1/2 -translate-y-1/2 absolute h-[88px] left-1/2 top-[calc(50%+15.29px)] w-[410px]" data-node-id="1:24012">
+          <div class="absolute inset-[-93.86%_-20.15%]">
+            <img alt="" class="block max-w-none size-full" src="chateau/imgEllipse9.svg" />
+          </div>
+        </div>
+        <div class="[word-break:break-word] bg-[rgba(255,255,255,0.01)] content-stretch flex flex-col items-center px-[14px] relative shrink-0 text-white w-full" data-node-id="1:24013">
+          <p class=" leading-none mb-[-24px] relative shrink-0 text-[80px] tracking-[0.6px] w-full" data-node-id="1:24014" style="font-family:'Calligraphia One';font-weight:400;font-style:normal">
+            See you
+          </p>
+          <p class=" leading-[38.4px] relative shrink-0 text-[24px] text-right w-full" data-node-id="1:24015" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
+            до зустрічі в шато
+          </p>
+        </div>
+        <div class="-translate-x-1/2 absolute h-[30px] left-1/2 top-[-0.21px] w-[390px]" data-node-id="1:24016" data-name="Орнамент">
+          <img alt="" class="absolute block inset-0 max-w-none size-full" src="chateau/img11.svg" />
+        </div>
+      </div>
+      <div class="content-stretch flex flex-col h-[63px] items-center justify-center py-[24px] relative shrink-0 w-[390px]" data-node-id="1:24018" data-name="Section - 5 · program">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="chateau/imgFrame100.jpg" />
+        <p class="[word-break:break-word]  leading-[25.6px] relative shrink-0 text-[12px] text-center text-white tracking-[5px] uppercase w-[396px]" data-node-id="1:24019" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
+          Bijou · invitation agency
+        </p>
+      </div>
+    </div></div>
+<script>window.BJ={"date": "2027-05-22T15:00"};</script>
 <script>
-  // дата весілля — з неї рахується відлік
-  const WEDDING = new Date(2027, 4, 22, 16, 0);
-  const pad = (n) => String(n).padStart(2, '0');
-  const tick = () => {
-    let s = Math.max(0, Math.floor((WEDDING - Date.now()) / 1000));
-    const d = Math.floor(s / 86400); s %= 86400;
-    document.getElementById('cd-d').textContent = d;
-    document.getElementById('cd-h').textContent = pad(Math.floor(s / 3600));
-    document.getElementById('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
-    document.getElementById('cd-s').textContent = pad(s % 60);
-  };
-  tick(); setInterval(tick, 1000);
-  document.querySelectorAll('.chip').forEach((c) => c.addEventListener('click', () => c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed') !== 'true'))));
-  document.getElementById('form').addEventListener('submit', (e) => { e.preventDefault(); document.getElementById('rsvp').classList.add('done'); });
-  const io = new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.add('is-in'); io.unobserve(x.target); } }), { threshold: .15 });
-  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-</script>
-<a href="../index.html" class="bijou-back" aria-label="Назад до сайту Bijou" style="position:fixed;z-index:9999;top:max(12px,env(safe-area-inset-top));left:12px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px 0 10px;border-radius:99px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#4a1f2a;font:500 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 14px -6px rgba(0,0,0,.35)"><span aria-hidden="true" style="font-size:18px;line-height:1">&#8249;</span>Bijou</a>
-<script>document.querySelector('.bijou-back').addEventListener('click',function(e){if(history.length>1&&document.referrer&&new URL(document.referrer).host===location.host){e.preventDefault();history.back();}});</script>
-<script data-mx-sel=".stem">
-/* Bijou · м'яка анімація: каскад для блоків, що з'являються, і клас .mx-in для декору в полі зору */
-(function(sel){
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.documentElement.classList.add('mx');
-  document.querySelectorAll('.reveal').forEach(function(el){
-    var sib = Array.prototype.filter.call(el.parentNode.children, function(c){ return c.classList.contains('reveal'); });
-    var i = sib.indexOf(el);
-    if (i > 0 && !el.style.transitionDelay) el.style.transitionDelay = Math.min(i, 4) * 0.09 + 's';
-  });
-  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('mx-in'); io.unobserve(e.target); } }); }, { threshold: .2 });
-  document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
-})(document.currentScript.dataset.mxSel);
-</script>
-</body>
-</html>
+(function(){
+var C=window.BJ, root=document.querySelector('.bj'), W=390;
+var intro=document.querySelector('.bj-intro');
+if(intro){if(window.self!==window.top){intro.remove()}else{document.documentElement.style.overflow='hidden';var b=[].filter.call(intro.querySelectorAll('div'),function(d){return /Відкрити/.test(d.textContent)&&d.querySelectorAll('div').length==0})[0];if(b){b.style.cursor='pointer';b.setAttribute('role','button');b.tabIndex=0}
+ function op(){intro.style.opacity=0;intro.style.pointerEvents='none';document.documentElement.style.overflow='';setTimeout(function(){intro.remove()},900)}
+ (b||intro).addEventListener('click',op);if(b)b.addEventListener('keydown',function(e){if(e.key=='Enter'||e.key==' ')op()})}}
+// ширина екрана менша за макет — зменшуємо все запрошення пропорційно
+function fit(){var w=Math.min(document.documentElement.clientWidth,W);root.style.zoom=w<W?(w/W).toFixed(4):'';}
+fit();addEventListener('resize',fit);
+var $=function(id){return root.querySelector('[data-node-id="'+id+'"]')};
+function add(ids,c){(ids||[]).forEach(function(i){var e=$(i);if(e)e.classList.add(c)})}
+// живий відлік до свята
+(function(){
+  var names=['днів','годин','хвилин','секунд'],labels=[].filter.call(root.querySelectorAll('p'),function(p){return names.indexOf(p.textContent.trim().toLowerCase())>=0});
+  if(!labels.length)return;
+  var allDays=labels.every(function(l){return l.textContent.trim()=='днів'});
+  if(allDays&&labels.length==4)labels.forEach(function(l,i){l.textContent=names[i]});
+  var cells=labels.map(function(l){var a=l.parentElement;while(a&&a!==root){var n=[].filter.call(a.querySelectorAll('p'),function(p){return p!==l&&/^\d+$/.test(p.textContent.trim())})[0];if(n)return n;a=a.parentElement}});
+  var vals=cells.map(function(c){return c?+c.textContent.trim():0});
+  var t=C.date?new Date(C.date).getTime():0;
+  if(!t||t<Date.now())t=Date.now()+((vals[0]*24+(vals[1]||0))*60+(vals[2]||0))*6e4+(vals[3]||0)*1e3;
+  var kinds=labels.map(function(l){return names.indexOf(l.textContent.trim().toLowerCase())});
+  function tick(){var s=Math.max(0,Math.floor((t-Date.now())/1e3)),v=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60];
+    cells.forEach(function(c,i){if(!c)return;var k=kinds[i],x=v[k],txt=k==0?String(x):String(x).padStart(2,'0');if(c.textContent.trim()!==txt){c.textContent=txt;if(k==3){c.classList.remove('cd-tick');void c.offsetWidth;c.classList.add('cd-tick')}}})}
+  tick();setInterval(tick,1000);
+})();
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+document.documentElement.classList.add('mx');
+add(C.float,'fl');add(C.sway,'sw');add(C.turn,'tu');add(C.drift,'dr');add(C.spin,'sp');add(C.kb,'kb');
+var special=[];['write','arch','zoom','slide'].forEach(function(k){var c={write:'wr',arch:'ar',zoom:'zm',slide:'sl'}[k];(C[k]||[]).forEach(function(i){var e=$(i);if(e){e.classList.add(c);special.push(e)}})});
+// плавна поява: кожен «листок» макета (текст, фото, орнамент)
+var skip=function(e){return special.some(function(s){return s===e||s.contains(e)||e.contains(s)})||/\binset-0\b/.test(e.className)&&e.tagName!='IMG'&&!e.querySelector('[data-node-id]')&&e.closest('[aria-hidden]')};
+var leaves=[].filter.call(root.querySelectorAll('[data-node-id]'),function(e){return !e.querySelector('[data-node-id]')&&e!==root&&!skip(e)&&!e.closest('.fl,.sw,.tu,.dr,.sp,.kb')&&e.getBoundingClientRect().height<700});
+leaves.forEach(function(e){e.classList.add('rv')});
+var q=[],timer=0;
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){q.push(en.target);io.unobserve(en.target)}});
+  clearTimeout(timer);timer=setTimeout(function(){q.sort(function(a,b){return a.getBoundingClientRect().top-b.getBoundingClientRect().top});q.forEach(function(e,i){(e._bj||[e]).forEach(function(x,j){x.style.setProperty('--d',Math.min(i*0.07,0.6)+'s');if(e._bj)x.style.transitionDelay=(j*0.5)+'s';x.classList.add('in')})});q=[]},30)},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+leaves.forEach(function(e){io.observe(e)});
+// обрізаний clip-path елемент невидимий для спостерігача, тому стежимо за батьком
+special.forEach(function(e){var p=e.parentElement;(p._bj=p._bj||[]).push(e);io.observe(p)});
+// квіти розходяться в боки, коли гортаємо вниз
+var fl=(C.spread||[]).map($).filter(Boolean);
+if(fl.length){
+  var info=fl.map(function(e){var r=e.getBoundingClientRect(),rr=root.getBoundingClientRect(),z=parseFloat(root.style.zoom)||1;return{e:e,top:(r.top-rr.top)*z,dir:(r.left+r.width/2-rr.left)<rr.width/2?-1:1,out:((r.left+r.width/2-rr.left)<rr.width/2?r.right-rr.left:rr.right-r.left)*z+40}});
+  var raf=0;function upd(){raf=0;var y=scrollY,vh=innerHeight;info.forEach(function(o){var start=Math.max(0,o.top-vh*.6),p=Math.min(1,Math.max(0,(y-start)/(vh*.35)));p=p*(2-p);o.e.style.translate=(o.dir*p*o.out).toFixed(1)+'px '+(-p*40).toFixed(1)+'px';o.e.style.rotate=(o.dir*p*14).toFixed(2)+'deg';o.e.style.opacity=(1-Math.max(0,p-.6)/.4).toFixed(3)})}
+  addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(upd)},{passive:true});upd();
+}
+})();
+</script><a href="../index.html" class="bijou-back" aria-label="Назад до сайту Bijou" style="position:fixed;z-index:9999;top:max(12px,env(safe-area-inset-top));left:12px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px 0 10px;border-radius:99px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#4a1f2a;font:500 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 14px -6px rgba(0,0,0,.35)"><span aria-hidden="true" style="font-size:18px;line-height:1">&#8249;</span>Bijou</a>
+<script>document.querySelector('.bijou-back').addEventListener('click',function(e){if(history.length>1&&document.referrer&&new URL(document.referrer).host===location.host){e.preventDefault();history.back();}});</script></body></html>
