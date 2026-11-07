@@ -6,3 +6,5 @@
 .hdr__in[data-astro-cid-nen7h5rs]{height:92px}
 .logo[data-astro-cid-nen7h5rs]{height:60px}
 @media (width<=820px){.hdr__in[data-astro-cid-nen7h5rs]{height:72px}.logo[data-astro-cid-nen7h5rs]{height:50px}}
+
+.ftr__soc[data-astro-cid-jo6i4kqk]{display:flex;position:relative;z-index:1;flex-wrap:wrap;justify-content:flex-end;gap:28px;margin:28px 0 0}.ftr__soc[data-astro-cid-jo6i4kqk] a[data-astro-cid-jo6i4kqk]{color:var(--wine);font-size:13px;position:relative;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}.ftr__soc[data-astro-cid-jo6i4kqk] a[data-astro-cid-jo6i4kqk]:hover{color:var(--wine)}
