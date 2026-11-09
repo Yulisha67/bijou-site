@@ -1,6 +1,7 @@
 {
   "name": "bijou-site",
   "main": "worker.js",
+  "run_worker_first": true,
   "compatibility_date": "2026-10-01",
   "assets": { "directory": "./", "html_handling": "auto-trailing-slash" }
 }
