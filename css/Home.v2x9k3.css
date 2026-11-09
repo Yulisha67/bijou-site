@@ -57,11 +57,12 @@
 .chip{color:var(--wine)}
 .chip.is-on{color:#fff}
 
-/* collection: category + type filters */
-.coll__filters{display:flex;flex-direction:column;align-items:center;gap:14px;margin:24px 0 36px}
-.coll__filters .coll__chips{margin:0}
-.coll__chips--type{gap:0!important;border:1px solid #48222d40;border-radius:999px;padding:3px}
-.coll__chips--type .chip{border:0;min-height:36px;padding:8px 20px;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
-.coll__chips--type .chip:not(.is-on):hover{color:var(--wine);background:#48222d0d}
+/* collection: category + type filters — one row, opposite sides */
+.coll__filters{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px auto 36px;max-width:1040px}
+.coll__filters .coll__chips{margin:0;flex-wrap:nowrap;justify-content:flex-start;gap:12px}
 #designs .design[data-type=case] .design__tag{color:var(--wine)}
-@media (max-width:640px){.coll__filters{align-items:stretch}.coll__chips--type{align-self:center}}
+@media (max-width:760px){
+ .coll__filters{flex-direction:column;align-items:stretch;gap:8px;margin:20px 0 28px}
+ .coll__filters .coll__chips{gap:6px;width:100%}
+ .coll__filters .chip{flex:1 1 0;justify-content:center;padding:8px 6px;font-size:15px;min-height:40px}
+}
