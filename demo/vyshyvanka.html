@@ -452,7 +452,7 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
 (function(){
 var C=window.BJ, root=document.querySelector('.bj'), W=390;
 // ширина екрана менша за макет — зменшуємо все запрошення пропорційно
-function fit(){var w=Math.min(document.documentElement.clientWidth,W);root.style.zoom=w<W?(w/W).toFixed(4):'';}
+function fit(){var w=Math.min((window.innerWidth||document.documentElement.clientWidth),W);root.style.zoom=w<W?(w/W).toFixed(4):'';}
 fit();addEventListener('resize',fit);
 var $=function(id){return root.querySelector('[data-node-id="'+id+'"]')};
 function add(ids,c){(ids||[]).forEach(function(i){var e=$(i);if(e)e.classList.add(c)})}
