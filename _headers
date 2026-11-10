@@ -3,7 +3,7 @@
 /covers/*
   Cache-Control: public, max-age=604800
 /demo/*
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=600
 /favicon.ico
   Cache-Control: public, max-age=86400
 /img/favicon-48.png

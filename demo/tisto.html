@@ -281,8 +281,8 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
             Так-так, це ми! Колись ділили лопатку в пісочниці, а тепер ділитимемо прізвище. Будемо щасливі, якщо цей день ви проведете разом із нами.
           </p>
         </div>
-        <div class="h-[210px] mix-blend-multiply relative shrink-0 w-[340px]" data-node-id="246:487" data-name="Фото">
-          <img alt="" class="absolute inset-0 max-w-none object-bottom pointer-events-none size-full" src="tisto/img10.jpg" / loading="lazy">
+        <div class="h-[210px] relative shrink-0 w-[340px]" data-node-id="246:487" data-name="Фото">
+          <img alt="" class="absolute inset-0 max-w-none object-bottom pointer-events-none size-full" src="tisto/img10-m.jpg" / loading="lazy">
         </div>
         <div class="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative shrink-0 text-center" data-node-id="424:217">
           <p class=" leading-[33.6px] relative shrink-0 text-[#6e1423] text-[22px] w-[340px]" data-node-id="246:488" style="font-family:'Comfortaa';font-weight:500;font-style:normal">
@@ -376,8 +376,8 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
           </div>
         </div>
         <div class="content-stretch flex flex-col gap-[4px] items-center relative shrink-0 w-[340px]" data-node-id="424:599">
-          <div class="h-[373px] mix-blend-multiply relative shrink-0 w-[250px]" data-node-id="246:521" data-name="Фото">
-            <img alt="" class="absolute inset-0 max-w-none object-bottom pointer-events-none size-full" src="tisto/img16.webp" / loading="lazy">
+          <div class="h-[373px] relative shrink-0 w-[250px]" data-node-id="246:521" data-name="Фото">
+            <img alt="" class="absolute inset-0 max-w-none object-bottom pointer-events-none size-full" src="tisto/img16-m.webp" / loading="lazy">
           </div>
           <p class="[word-break:break-word]  leading-[26.4px] min-w-full relative shrink-0 text-[#6e1423] text-[32px] text-center w-[min-content]" data-node-id="246:522" style="font-family:'Bad Script',cursive;font-weight:400;font-style:normal">
             а далі – танці до ранку!
@@ -389,8 +389,8 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
           <img alt="" class="absolute block inset-0 max-w-none size-full" src="tisto/imgFrame154.svg" / loading="lazy">
         </div>
         <div class="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="424:612">
-          <div class="h-[183px] mix-blend-multiply relative shrink-0 w-full" data-node-id="246:524" data-name="Фото">
-            <img alt="" class="absolute inset-0 max-w-none object-bottom pointer-events-none size-full" src="tisto/img17.jpg" / loading="lazy">
+          <div class="h-[183px] relative shrink-0 w-full" data-node-id="246:524" data-name="Фото">
+            <img alt="" class="absolute inset-0 max-w-none object-bottom pointer-events-none size-full" src="tisto/img17-m.jpg" / loading="lazy">
           </div>
           <div class="content-stretch flex flex-col gap-[2px] items-center relative shrink-0 w-full" data-node-id="424:609">
             <div class="flex h-[53.84px] items-center justify-center relative shrink-0 w-[341.259px]" data-node-id="246:526">
@@ -550,7 +550,7 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
       <div class="bg-[#f6efe5] content-stretch flex flex-col gap-[56px] items-center overflow-clip pb-[56px] pt-[26px] px-[24px] relative shrink-0 w-full" data-node-id="441:842" data-name="Анкета RSVP">
         <div class="content-stretch flex flex-col items-center relative shrink-0 w-full" data-node-id="441:890">
           <div class="mix-blend-multiply relative shrink-0 size-[200px]" data-node-id="441:888" data-name="Фото">
-            <img alt="" class="absolute inset-0 max-w-none object-bottom pointer-events-none size-full" src="tisto/img19.jpg" / loading="lazy">
+            <img alt="" class="absolute inset-0 max-w-none object-bottom pointer-events-none size-full" src="tisto/img19-m.jpg" / loading="lazy">
           </div>
           <div class="content-stretch flex flex-col gap-[14px] items-center relative shrink-0 w-full" data-node-id="441:843">
             <div class="flex h-[71.825px] items-center justify-center relative shrink-0 w-full" data-node-id="441:844">
@@ -754,7 +754,7 @@ add(C.float,'fl');add(C.sway,'sw');add(C.turn,'tu');add(C.drift,'dr');add(C.spin
 var special=[];['write','arch','zoom','slide'].forEach(function(k){var c={write:'wr',arch:'ar',zoom:'zm',slide:'sl'}[k];(C[k]||[]).forEach(function(i){var e=$(i);if(e){e.classList.add(c);special.push(e)}})});
 // плавна поява: кожен «листок» макета (текст, фото, орнамент)
 var skip=function(e){return special.some(function(s){return s===e||s.contains(e)||e.contains(s)})||/\binset-0\b/.test(e.className)&&e.tagName!='IMG'&&!e.querySelector('[data-node-id]')&&e.closest('[aria-hidden]')};
-var leaves=[].filter.call(root.querySelectorAll('[data-node-id]'),function(e){return !e.querySelector('[data-node-id]')&&e!==root&&!skip(e)&&!e.closest('.fl,.sw,.tu,.dr,.sp,.kb')&&e.getBoundingClientRect().height<700});
+var leaves=[].filter.call(root.querySelectorAll('[data-node-id]'),function(e){return !e.querySelector('[data-node-id]')&&e!==root&&!skip(e)&&!e.closest('.mix-blend-multiply')&&!e.closest('.fl,.sw,.tu,.dr,.sp,.kb')&&e.getBoundingClientRect().height<700});
 leaves.forEach(function(e){e.classList.add('rv')});
 var q=[],timer=0;
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){q.push(en.target);io.unobserve(en.target)}});

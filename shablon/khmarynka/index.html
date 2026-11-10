@@ -25,7 +25,7 @@ window.bijouAutoscroll = function (box, { speed = 70 } = {}) {
   if (m) {
     const W = 390, inLink = !!box.closest('a');
     const fr = document.createElement('iframe');
-    fr.title = img.alt; fr.tabIndex = -1; fr.setAttribute('scrolling', 'yes');
+    fr.setAttribute('aria-label', img.alt); fr.tabIndex = -1; fr.setAttribute('scrolling', 'yes');
     fr.style.cssText = `position:absolute;top:0;left:0;width:${W}px;border:0;transform-origin:0 0;opacity:0;transition:opacity .6s;pointer-events:auto`;
     const fit = () => { const w = box.clientWidth, h = box.clientHeight; if (!w) return; const k = w / W; fr.style.height = h / k + 'px'; fr.style.transform = `scale(${k})`; };
     fr.addEventListener('load', () => {
@@ -43,7 +43,7 @@ window.bijouAutoscroll = function (box, { speed = 70 } = {}) {
       io.disconnect();
       box.style.position = 'relative'; box.style.overflow = 'hidden'; box.scrollTop = 0;
       fit(); new ResizeObserver(fit).observe(box);
-      fr.src = m[1] + 'demo/' + m[2] + '.html';
+      fr.src = m[1] + 'demo/' + m[2] + '.html?v=b2';
       box.appendChild(fr);
       // на картці кейсу живе запрошення прокручується, а відкрити кейс можна кнопкою
       window.bijouOpenBtn(box);
@@ -136,7 +136,7 @@ window.bijouDrag = function (rail) {
 <p class="tp2__tag">Слоненя й хмаринки</p>
 <p class="tp2__desc">Ніжне запрошення на гендер-паті: слоненя, хмаринки й ставка гостей — хлопчик чи дівчинка. Дата, місце, програма й анкета з голосуванням.</p>
 <div class="tp2__buy"><div class="tp2__price"><span>вартість</span><b>індивідуально</b></div>
-<div class="tp2__btns"><a class="btn btn--solid" href="../../zamovlennia/index.html?shablon=khmarynka">Замовити цей дизайн</a><a class="btn" href="../../demo/khmarynka.html" target="_blank">Живе демо</a></div></div>
+<div class="tp2__btns"><a class="btn btn--solid" href="../../zamovlennia/index.html?shablon=khmarynka">Замовити цей дизайн</a><a class="btn" href="../../demo/khmarynka.html?v=b2" target="_blank">Живе демо</a></div></div>
 <a class="tp2__all" href="../../tsiny/index.html">усі ціни →</a>
 </div>
 <div class="tp2__rest">
