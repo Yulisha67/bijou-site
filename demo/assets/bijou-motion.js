@@ -50,10 +50,10 @@
     pend = pend.filter(function (e) {
       if (e.classList.contains('in')) return false;
       var r = e.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < (atEnd ? h : h * .92) && (r.width || r.height)) { e.classList.add('in'); return false; }
+      if (r.top < (atEnd ? h : h * .92) && (r.width || r.height)) { e.classList.add('in'); return false; }
       return true;
     });
   }
   addEventListener('scroll', function () { if (!tick) tick = setTimeout(sweep, 160); }, { passive: true });
-  setTimeout(sweep, 900); setInterval(function () { if (pend.length) sweep(); }, 1500);
+  setTimeout(sweep, 700); setInterval(function () { if (pend.length) sweep(); }, 900);
 })();
