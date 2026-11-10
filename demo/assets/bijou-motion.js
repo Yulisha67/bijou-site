@@ -11,7 +11,7 @@
     'html.mx .rv{transition:opacity 1.3s ' + E + ' var(--t,0s),translate 1.6s ' + E + ' var(--t,0s),scale 2s ' + E + ' var(--t,0s)}' +
     'html.mx .rv:not(.in){opacity:0}html.mx .rv.in{opacity:1;translate:none;scale:none}' +
     /* заголовки: проявляються й піднімаються на пів рядка (без blur: Safari обрізав ним розчерки рукописних шрифтів) */
-    'html.mx .rv.m-h{box-sizing:content-box;padding-block:.25em;margin-block:-.25em}html.mx .rv.m-h:not(.in){translate:0 .35em}' +
+    'html.mx .rv.m-h:not(.in){translate:0 .35em}' +
     /* фото: повільно осідають із легкого наближення */
     'html.mx .rv.m-i:not(.in){translate:none;scale:1.06}' +
     /* текст: м\'яко, ледь помітний рух */

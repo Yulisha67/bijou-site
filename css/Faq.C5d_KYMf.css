@@ -16,3 +16,4 @@
 #price .card__label{font-size:30px}
 #price .card__list{border-top:0;padding-top:0}
 #price .card__list li:before{font-size:19px;top:0}
+#price .card__desc{font:italic 400 17px/1.45 var(--serif);text-align:center;max-width:40ch;margin:14px auto 6px;color:inherit;opacity:.75}
