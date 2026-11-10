@@ -1,9 +1,20 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chateau — wedding invitation | Bijou</title><link rel="icon" type="image/svg+xml" href="/img/bijou-icon.svg?v=3"><link rel="icon" type="image/png" sizes="48x48" href="/img/bijou-icon-48.png?v=3"><link rel="icon" type="image/png" sizes="192x192" href="/img/bijou-icon-192.png?v=3"><link rel="shortcut icon" href="/favicon.ico?v=3"><link rel="apple-touch-icon" href="/img/bijou-apple-180.png?v=3"><link rel="mask-icon" href="/img/bijou-icon.svg?v=3" color="#48222d"><link rel="manifest" href="/site.webmanifest?v=2"><meta name="description" content="Chateau: a digital wedding invitation website with RSVP and a map. A château in an olive garden."><link rel="alternate" hreflang="uk" href="../../../shablon/chateau/index.html"><link rel="alternate" hreflang="en" href="../../../en/shablon/chateau/index.html"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600&family=Great+Vibes&display=swap" rel="stylesheet"><script>
 // Шаблон у екрані телефона гортається лише тоді, коли на нього навели мишку (повільно вниз,
 // в кінці — назад угору) або коли людина гортає його сама. Без наведення він стоїть на місці.
+window.bijouOpenBtn = function (box) {
+  // кнопка «Відкрити» під кожним телефоном у картці (одна на картку)
+  const card = box.closest('a'); const ph = box.closest('.phone');
+  if (!card || !ph || card.dataset.openBtn) return; card.dataset.openBtn = '1';
+  const bt = document.createElement('button'); bt.type = 'button';
+  bt.textContent = document.documentElement.lang === 'en' ? 'Open' : 'Відкрити';
+  bt.style.cssText = 'display:block;margin:14px auto 0;position:relative;transform:none;z-index:3;font:500 16px/1 var(--serif);letter-spacing:.06em;padding:15px 30px;min-height:48px;border:1px solid rgba(255,255,255,.6);border-radius:99px;background:var(--wine);color:#fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap';
+  bt.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); if (card.target === '_blank') window.open(card.href, '_blank', 'noopener'); else location.href = card.href; });
+  ph.insertAdjacentElement('afterend', bt);
+};
 window.bijouAutoscroll = function (box, { speed = 70 } = {}) {
   if (box.dataset.bijouAs) return; // на головній ту саму рамку можуть передати двічі
   box.dataset.bijouAs = '1';
+  window.bijouOpenBtn(box);
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   // Замість знімка в телефоні показуємо живе анімоване запрошення (demo/<назва>.html),
   // а знімок лишається, поки воно вантажиться. Вантажимо, лише коли телефон близько до екрана.
@@ -37,16 +48,7 @@ window.bijouAutoscroll = function (box, { speed = 70 } = {}) {
       fr.src = m[1] + 'demo/' + m[2] + '.html';
       box.appendChild(fr);
       // на картці кейсу живе запрошення прокручується, а відкрити кейс можна кнопкою
-      const card = box.closest('a');
-      if (card) {
-        const ph = box.closest('.phone');
-        const bt = document.createElement('button');
-        bt.type = 'button';
-        bt.textContent = document.documentElement.lang === 'en' ? 'Open' : 'Відкрити';
-        bt.style.cssText = 'display:block;margin:14px auto 0;position:relative;transform:none;z-index:3;font:500 16px/1 var(--serif);letter-spacing:.06em;padding:15px 30px;min-height:48px;border:1px solid rgba(255,255,255,.6);border-radius:99px;background:var(--wine);color:#fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap';
-        bt.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); window.open(card.href, '_blank', 'noopener'); });
-        ph.insertAdjacentElement('afterend', bt);
-      }
+      window.bijouOpenBtn(box);
     }, { rootMargin: '300px 0px' });
     io.observe(box);
     // коли відвідувач відійшов від запрошення, воно повертається на початок
