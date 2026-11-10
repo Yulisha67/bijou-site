@@ -8,7 +8,10 @@ window.bijouAutoscroll = function (box, { speed = 70 } = {}) {
   // Замість знімка в телефоні показуємо живе анімоване запрошення (demo/<назва>.html),
   // а знімок лишається, поки воно вантажиться. Вантажимо, лише коли телефон близько до екрана.
   const img = box.querySelector('img');
-  const m = img && img.getAttribute('src').match(/^(.*?)covers\/([\w-]+)-full\.jpg$/);
+  // дизайни з Figma показуємо картинкою точно як у макеті, без живої сторінки
+  const FIGMA = /^(mr|twentyfive|chateau|tisto|hortenziia|love|vyshyvanka|khmarynka|vypusknyi|weddingday|rouge|blacktie)$/;
+  let m = img && img.getAttribute('src').match(/^(.*?)covers\/([\w-]+)-full\.jpg/);
+  if (m && FIGMA.test(m[2])) m = null;
   let doc = null; // документ живого запрошення, коли воно завантажилось
   if (m) {
     const W = 390, inLink = !!box.closest('a');
@@ -124,7 +127,7 @@ window.bijouDrag = function (rail) {
 @media (width<=520px){.tp2__name{font-size:clamp(48px,16vw,72px)}.tp2 .phone{--pw:240px}.tp2__arch{padding:40px 0 32px;border-radius:160px 160px 20px 20px}.tp2__inc{grid-template-columns:1fr}.tp2__buy{flex-direction:column;align-items:flex-start}.tp2__list li{grid-template-columns:44px minmax(0,1fr)}.tp2__list li:before{font-size:24px}}
 </style></head><body><div class="page"><header class="hdr" data-astro-cid-nen7h5rs><div class="hdr__in" data-astro-cid-nen7h5rs><a href="../../../en/index.html" class="logo" aria-label="Bijou — home" data-astro-cid-nen7h5rs></a><nav class="nav" data-astro-cid-nen7h5rs><a href="../../../en/katalog/index.html" data-astro-cid-nen7h5rs>Templates</a><a href="../../../en/keisy/index.html" data-astro-cid-nen7h5rs>Cases</a><a href="../../../en/index.html#how" data-astro-cid-nen7h5rs>How it works</a><a href="../../../en/tsiny/index.html" data-astro-cid-nen7h5rs>Pricing</a><a href="../../../en/index.html#faq" data-astro-cid-nen7h5rs>FAQ</a></nav><div class="hdr__r" data-astro-cid-nen7h5rs><nav class="lang" aria-label="Language" data-astro-cid-nen7h5rs><a href="../../../shablon/weddingday/index.html" hreflang="uk" data-astro-cid-nen7h5rs>UA</a><span aria-hidden="true" data-astro-cid-nen7h5rs>·</span><a href="../../../en/shablon/weddingday/index.html" hreflang="en" aria-current="true" data-astro-cid-nen7h5rs>EN</a></nav><a href="../../../en/zamovlennia/index.html" class="btn btn--solid hdr__cta" data-astro-cid-nen7h5rs>Order</a></div></div></header><main class="tp2">
 <section><div class="wrap tp2__grid">
-<div class="tp2__stage"><div class="tp2__arch"><div class="phone" style="--tilt:0deg" data-astro-cid-ykln7coe><div class="phone__screen" data-astro-cid-ykln7coe><div class="phone__scroll" data-astro-cid-ykln7coe><img src="../../../covers/weddingday-full.jpg" alt="Invitation Wedding Day" loading="lazy" data-astro-cid-ykln7coe></div></div></div></div><p class="tp2__hint">Hover over the phone or scroll it to see the whole invitation.</p></div>
+<div class="tp2__stage"><div class="tp2__arch"><div class="phone" style="--tilt:0deg" data-astro-cid-ykln7coe><div class="phone__screen" data-astro-cid-ykln7coe><div class="phone__scroll" data-astro-cid-ykln7coe><img src="../../../covers/weddingday-full.jpg?v=f1" alt="Invitation Wedding Day" loading="lazy" data-astro-cid-ykln7coe></div></div></div></div><p class="tp2__hint">Hover over the phone or scroll it to see the whole invitation.</p></div>
 <div class="tp2__info">
 <div class="tp2__top">
 <a class="tp2__back" href="../../../en/katalog/index.html" data-back>‹ All templates</a>
