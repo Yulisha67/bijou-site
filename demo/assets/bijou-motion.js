@@ -46,6 +46,14 @@
     else if (e.querySelector('img') || e.tagName === 'IMG') k = (r.width * r.height > 14000) ? 'i' : 'd';
     else k = 'd';
     e.classList.add('m-' + k);
+    // великі заголовки (часто рукописні): Safari обрізає розчерки, що виходять за рядок, —
+    // даємо тексту запас зверху й знизу, а відступами повертаємо його точно на місце з макета
+    if (k === 'h') {
+      var c = getComputedStyle(e), pad = Math.round(parseFloat(c.fontSize) * .35);
+      e.style.boxSizing = 'content-box';
+      e.style.paddingTop = (parseFloat(c.paddingTop) + pad) + 'px'; e.style.paddingBottom = (parseFloat(c.paddingBottom) + pad) + 'px';
+      e.style.marginTop = (parseFloat(c.marginTop) - pad) + 'px'; e.style.marginBottom = (parseFloat(c.marginBottom) - pad) + 'px';
+    }
     var s = section(e); if (!groups.has(s)) groups.set(s, []); groups.get(s).push({ e: e, k: k, top: r.top });
   });
   groups.forEach(function (list) {
