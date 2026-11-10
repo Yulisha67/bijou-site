@@ -7,20 +7,17 @@
   var css = document.createElement('style');
   var E = 'cubic-bezier(.22,.8,.22,1)';
   css.textContent =
-    'html.mx .rv{opacity:0;translate:none;transition:opacity 1.2s ' + E + ' var(--t,0s),translate 1.4s ' + E + ' var(--t,0s),clip-path 1.5s ' + E + ' var(--t,0s),scale 1.8s ' + E + ' var(--t,0s),filter 1.2s ' + E + ' var(--t,0s)}' +
-    'html.mx .rv.in{opacity:1}' +
-    /* заголовки: піднімаються з-під лінії */
-    'html.mx .rv.m-h{translate:0 .4em;-webkit-mask-image:linear-gradient(#000 45%,transparent 55%);mask-image:linear-gradient(#000 45%,transparent 55%);-webkit-mask-size:100% 300%;mask-size:100% 300%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:0 100%;mask-position:0 100%;transition:opacity .9s ' + E + ' var(--t,0s),translate 1.4s ' + E + ' var(--t,0s),-webkit-mask-position 1.6s ' + E + ' var(--t,0s),mask-position 1.6s ' + E + ' var(--t,0s)}' +
-    'html.mx .rv.m-h.in{translate:0 0;-webkit-mask-position:0 0;mask-position:0 0}' +
-    /* фото: шторка розкривається, кадр трохи наближений і повільно осідає */
-    'html.mx .rv.m-i{clip-path:inset(6% 6% 6% 6%);scale:1.05}' +
-    'html.mx .rv.m-i.in{clip-path:inset(0 0 0 0);scale:1}' +
-    /* текст: м\'яко проявляється, ледь помітний рух */
-    'html.mx .rv.m-t{translate:0 10px;filter:blur(3px)}' +
-    'html.mx .rv.m-t.in{translate:0 0;filter:none}' +
-    /* декор і дрібниці: лише проявляються */
-    'html.mx .rv.m-d{scale:.97}' +
-    'html.mx .rv.m-d.in{scale:1}';
+    /* рух — окремими властивостями translate/scale: макет розставляє елементи через transform, і ми його не чіпаємо */
+    'html.mx .rv{transition:opacity 1.3s ' + E + ' var(--t,0s),translate 1.6s ' + E + ' var(--t,0s),scale 2s ' + E + ' var(--t,0s),filter 1.4s ' + E + ' var(--t,0s)}' +
+    'html.mx .rv:not(.in){opacity:0}html.mx .rv.in{opacity:1;translate:none;scale:none}' +
+    /* заголовки: з легкого розфокусу, піднімаються на пів рядка */
+    'html.mx .rv.m-h:not(.in){translate:0 .3em;filter:blur(8px)}' +
+    /* фото: повільно осідають із легкого наближення */
+    'html.mx .rv.m-i:not(.in){translate:none;scale:1.06}' +
+    /* текст: м\'яко, ледь помітний рух */
+    'html.mx .rv.m-t:not(.in){translate:0 10px;filter:blur(3px)}' +
+    /* декор: лише проявляється */
+    'html.mx .rv.m-d:not(.in){translate:none;scale:.97}';
   document.head.appendChild(css);
 
   var W = root.getBoundingClientRect().width || 390;
@@ -45,4 +42,18 @@
   });
   // загальний порядок за висотою: те, що нижче на екрані, не має чекати верхнього блоку довше, ніж треба
   root.classList.add('m-ready');
+  var pend = els.slice(), tick = 0;
+  function sweep() {
+    tick = 0; var h = innerHeight, se = document.scrollingElement || html;
+    // біля самого низу сторінки показуємо все, що вже на екрані (футер інакше ніколи не «доходить» до лінії появи)
+    var atEnd = se.scrollTop + h >= se.scrollHeight - 8;
+    pend = pend.filter(function (e) {
+      if (e.classList.contains('in')) return false;
+      var r = e.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < (atEnd ? h : h * .92) && (r.width || r.height)) { e.classList.add('in'); return false; }
+      return true;
+    });
+  }
+  addEventListener('scroll', function () { if (!tick) tick = setTimeout(sweep, 160); }, { passive: true });
+  setTimeout(sweep, 900); setInterval(function () { if (pend.length) sweep(); }, 1500);
 })();

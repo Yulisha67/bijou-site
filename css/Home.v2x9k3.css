@@ -69,4 +69,7 @@
  .coll__filters .coll__chips{gap:6px;width:100%}
  .coll__filters .chip{flex:1 1 0;justify-content:center;padding:8px 6px;font-size:15px;min-height:40px}
 }
-@media (min-width:900px){#designs .lead{max-width:82ch}}
+@media (min-width:900px){#designs .lead{max-width:min(82ch,100%)}}
+.coll__more{margin:40px 0 0}
+.coll__more+.coll__all{margin-top:16px}
+.coll__more-btn{background:transparent}

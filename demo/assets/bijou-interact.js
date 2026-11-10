@@ -32,6 +32,19 @@
     clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove('on'); }, 3200);
   }
 
+  /* ---------- 0. Краї й хвилі між блоками: накриваємо стик на 1px, щоб не просвічувала тонка лінія ---------- */
+  (function () {
+    var W = root.getBoundingClientRect().width || 390;
+    [].forEach.call(root.querySelectorAll('div'), function (d) {
+      if (!d.querySelector('img') || d.querySelector('p')) return;
+      var r = d.getBoundingClientRect(), pos = cs(d).position;
+      if (r.width < W * .94 || r.height < 16 || r.height > 90 || (pos !== 'static' && pos !== 'relative')) return;
+      if (d.parentElement && d.parentElement.closest('[data-bjx-edge]')) return;
+      d.setAttribute('data-bjx-edge', '');
+      d.style.marginTop = '-1px'; d.style.marginBottom = '-1px'; d.style.height = (r.height + 2) + 'px'; d.style.zIndex = '1';
+    });
+  })();
+
   /* ---------- 1. Поля анкети: підказка в рамці → справжнє поле вводу ---------- */
   ps.forEach(function (p) {
     var box = p.parentElement, s = txt(p);
@@ -42,17 +55,20 @@
     var isField = (framed && label && label.tagName === 'P' && LBL.test(txt(label)) && s.length < 40) ||
                   /^\*?(напишіть|write)/i.test(s);
     if (!isField) return;
-    var multi = /напишіть|write|побажан/i.test(s) || box.getBoundingClientRect().height > 60;
-    var f = document.createElement(multi ? 'textarea' : 'input');
-    f.className = 'bjx-in'; f.placeholder = s;
-    if (multi) f.rows = Math.max(1, Math.round(p.getBoundingClientRect().height / (parseFloat(cs(p).lineHeight) || 24)));
-    if (/гост|guest/i.test(s)) f.inputMode = 'numeric';
-    var ps2 = cs(p);
-    ['fontFamily', 'fontSize', 'fontStyle', 'fontWeight', 'lineHeight', 'letterSpacing', 'color', 'textAlign'].forEach(function (k) { f.style[k] = ps2[k]; });
-    f.style.width = '100%';
-    p.replaceWith(f);
+    // сам текст із макета стає редагованим: вигляд лишається точно як у Figma
+    p.setAttribute('data-ph', s); p.setAttribute('data-bjx-field', '');
+    try { p.contentEditable = 'plaintext-only'; } catch (e) {}
+    if (p.contentEditable !== 'plaintext-only') p.contentEditable = 'true';
+    p.style.minHeight = p.getBoundingClientRect().height + 'px'; p.spellcheck = false; p.style.outline = 'none'; p.style.cursor = 'text'; p.style.minWidth = '60%';
+    if (/гост|guest/i.test(s)) p.inputMode = 'numeric';
+    var ph = s, dim = function (on) { p.style.opacity = on ? '.55' : ''; };
+    p.addEventListener('focus', function () {
+      if (txt(p) === ph) { p.textContent = ''; }
+    });
+    p.addEventListener('blur', function () { if (!txt(p)) { p.textContent = ph; dim(false); } });
+    p.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !/напишіть|write/i.test(ph)) { e.preventDefault(); p.blur(); } });
     box.style.cursor = 'text';
-    box.addEventListener('click', function () { f.focus(); });
+    box.addEventListener('click', function (e) { if (e.target !== p) { p.focus(); var r = document.createRange(); r.selectNodeContents(p); r.collapse(false); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); } });
   });
 
 
