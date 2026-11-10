@@ -15,6 +15,8 @@
   st.textContent =
     '.bjx-tap{cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .18s ease,background-color .25s ease,border-color .25s ease,color .25s ease,opacity .25s ease}' +
     '.bjx-tap:active{opacity:.82}' +
+    /* календар: рядок чисел не має бути ширшим за рядок днів тижня (інакше Safari ставить 10 чисел у рядок) */
+    '.bj [data-name="days"]{width:0!important;min-width:100%}' +
     '.bjx-pop{}' +
     '.bjx-in{all:unset;display:block;width:100%;box-sizing:border-box;font:inherit;color:inherit;letter-spacing:inherit;line-height:inherit;text-align:inherit;resize:none;cursor:text}' +
     '.bjx-in::placeholder{color:inherit;opacity:1}' +
@@ -42,7 +44,25 @@
       if (d.parentElement && d.parentElement.closest('[data-bjx-edge]')) return;
       d.setAttribute('data-bjx-edge', '');
       d.style.marginTop = '-1px'; d.style.marginBottom = '-1px'; d.style.height = (r.height + 2) + 'px'; d.style.zIndex = '1';
+      // вкладені обгортки картинки теж розтягуємо, інакше під хвилею лишається смужка 1–2px
+      [].forEach.call(d.querySelectorAll('div'), function (k) { if (k.querySelector('img') && cs(k).position !== 'absolute') k.style.height = '100%'; });
     });
+  })();
+
+  /* ---------- 0c. Підпис Bijou внизу, якщо його немає в макеті ---------- */
+  (function () {
+    if (/invitation agency/i.test(root.textContent)) return;
+    var last = root.lastElementChild, bg = '';
+    for (var e = last; e; e = e.lastElementChild) { var c = cs(e).backgroundColor; if (!clear(c)) bg = c; }
+    if (!bg) bg = cs(document.body).backgroundColor;
+    var m = (bg.match(/[\d.]+/g) || [255, 255, 255]).map(Number), dark = (m[0] * .3 + m[1] * .59 + m[2] * .11) < 128;
+    var fc = {}, ff = 'serif'; [].forEach.call(root.querySelectorAll('p'), function (p) { var k = cs(p).fontFamily; fc[k] = (fc[k] || 0) + txt(p).length; });
+    Object.keys(fc).forEach(function (k) { if (!/script|vibes|allegro|blosta|carolina|cursive/i.test(k) && (!fc[ff] || fc[k] > fc[ff])) ff = k; });
+    var f = document.createElement('div');
+    f.className = 'bjx-sign';
+    f.style.cssText = 'background:' + bg + ';padding:28px 0 36px;text-align:center;font:400 11px/1.6 ' + ff + ';letter-spacing:3.3px;text-transform:uppercase;color:' + (dark ? 'rgba(255,255,255,.5)' : 'rgba(40,24,24,.5)');
+    f.textContent = 'Bijou · invitation agency';
+    root.appendChild(f);
   })();
 
   /* ---------- 1. Поля анкети: підказка в рамці → справжнє поле вводу ---------- */
@@ -57,7 +77,7 @@
     if (!isField) return;
     // сам текст із макета стає редагованим: вигляд лишається точно як у Figma
     p.textContent = s; p.style.whiteSpace = 'pre-wrap';
-    p.setAttribute('data-ph', s); p.setAttribute('data-bjx-field', '');
+    p.setAttribute('data-ph', s); p.setAttribute('data-bjx-field', ''); box.classList.add('bjx-f');
     try { p.contentEditable = 'plaintext-only'; } catch (e) {}
     if (p.contentEditable !== 'plaintext-only') p.contentEditable = 'true';
     p.style.minHeight = (parseFloat(cs(p).lineHeight) || 24) + 'px'; p.spellcheck = false; p.style.outline = 'none'; p.style.cursor = 'text'; p.style.minWidth = '2ch';
@@ -87,7 +107,7 @@
     f.style.cssText = 'position:absolute;inset:0;padding:10px 14px;font-family:' + ls.fontFamily + ';font-size:15px;color:' + ls.color;
     if (/гост|guest/i.test(txt(prev))) f.inputMode = 'numeric';
     if (s.position === 'static') d.style.position = 'relative';
-    d.appendChild(f);
+    d.appendChild(f); d.classList.add('bjx-f');
   });
 
   /* ---------- 2. Варіанти з кружечком/галочкою (прийду / не зможу, напої-галочки) ---------- */
@@ -116,12 +136,12 @@
     var state = items.map(function (o, i) { return ws[i] === max && max !== min; });
     function paint() {
       items.forEach(function (o, i) {
-        if (onT) { var n = (state[i] ? onT : offT).cloneNode(true); o.ind.replaceWith(n); o.ind = n; }
+        if (onT) { var n = (state[i] ? onT : offT).cloneNode(true); [n].concat([].slice.call(n.querySelectorAll('.rv'))).forEach(function (x) { if (x.classList.contains('rv')) x.classList.add('in', 'm-0'); }); o.ind.replaceWith(n); o.ind = n; }
         else { o.ind.style.background = state[i] ? cs(o.p).color : ''; }
       });
     }
     items.forEach(function (o, i) {
-      tap(o.row);
+      tap(o.row); o.row.classList.add('bjx-f');
       o.row.addEventListener('click', function () {
         if (single) state = state.map(function (_, j) { return j === i; }); else state[i] = !state[i];
         paint(); o.ind.classList.add('bjx-pop');
@@ -148,7 +168,7 @@
     if (!on) { on = { bg: off.fg, bd: off.fg, fg: clear(off.bg) ? '#fff' : off.bg }; }
     pills.forEach(function (c, i) {
       var sel = bgs[i] !== offBg;
-      tap(c);
+      tap(c); c.classList.add('bjx-f');
       c.addEventListener('click', function () {
         sel = !sel; var s = sel ? on : off;
         c.style.backgroundColor = s.bg; c.style.borderColor = s.bd; c.children[0].style.color = s.fg;
@@ -162,7 +182,7 @@
   if (choice.length >= 2) {
     var cards = choice.map(function (p) { var a = p; while (a.parentElement && a.parentElement !== root && !a.querySelector('img')) a = a.parentElement; return a; });
     cards.forEach(function (c, i) {
-      tap(c);
+      tap(c); c.classList.add('bjx-f');
       c.addEventListener('click', function () {
         cards.forEach(function (o, j) { o.style.opacity = j === i ? '1' : '.4'; o.style.transform = j === i ? 'scale(1.06)' : 'scale(.96)'; });
       });
@@ -174,7 +194,7 @@
     if (!/^(надіслати|підтвердити|відправити|send|submit|confirm)/i.test(txt(p)) || txt(p).length > 32) return;
     var b = p.parentElement; if (!b || b === root) return;
     if (clear(cs(b).backgroundColor) && !(parseFloat(cs(b).borderTopWidth) > 0)) { var b2 = b.parentElement; if (b2 && !clear(cs(b2).backgroundColor) && b2.getBoundingClientRect().height < 90) b = b2; else return; }
-    tap(b);
+    tap(b); b.classList.add('bjx-f');
     b.addEventListener('click', function () {
       var name = root.querySelector('.bjx-in');
       p.textContent = EN ? 'Thank you ♡' : 'Дякуємо ♡';

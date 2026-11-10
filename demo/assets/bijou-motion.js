@@ -8,16 +8,18 @@
   var E = 'cubic-bezier(.22,.8,.22,1)';
   css.textContent =
     /* рух — окремими властивостями translate/scale: макет розставляє елементи через transform, і ми його не чіпаємо */
-    'html.mx .rv{transition:opacity 1.3s ' + E + ' var(--t,0s),translate 1.6s ' + E + ' var(--t,0s),scale 2s ' + E + ' var(--t,0s),filter 1.4s ' + E + ' var(--t,0s)}' +
+    'html.mx .rv{transition:opacity 1.3s ' + E + ' var(--t,0s),translate 1.6s ' + E + ' var(--t,0s),scale 2s ' + E + ' var(--t,0s)}' +
     'html.mx .rv:not(.in){opacity:0}html.mx .rv.in{opacity:1;translate:none;scale:none}' +
-    /* заголовки: з легкого розфокусу, піднімаються на пів рядка */
-    'html.mx .rv.m-h:not(.in){translate:0 .3em;filter:blur(8px)}' +
+    /* заголовки: проявляються й піднімаються на пів рядка (без blur: Safari обрізав ним розчерки рукописних шрифтів) */
+    'html.mx .rv.m-h{box-sizing:content-box;padding-block:.25em;margin-block:-.25em}html.mx .rv.m-h:not(.in){translate:0 .35em}' +
     /* фото: повільно осідають із легкого наближення */
     'html.mx .rv.m-i:not(.in){translate:none;scale:1.06}' +
     /* текст: м\'яко, ледь помітний рух */
-    'html.mx .rv.m-t:not(.in){translate:0 10px;filter:blur(3px)}' +
+    'html.mx .rv.m-t:not(.in){translate:0 10px}' +
     /* декор: лише проявляється */
-    'html.mx .rv.m-d:not(.in){translate:none;scale:.97}';
+    'html.mx .rv.m-d:not(.in){translate:none;scale:.97}' +
+    /* анкета гостя: без анімацій, усе на місці одразу */
+    'html.mx .rv.m-0,html.mx .rv.m-0.in{transition:none!important;opacity:1!important;translate:none!important;scale:none!important;filter:none!important}';
   document.head.appendChild(css);
 
   var W = root.getBoundingClientRect().width || 390;
@@ -25,6 +27,18 @@
   // секція = найближчий предок, ширина якого на весь екран (смуга сторінки)
   function section(e) { var a = e.parentElement; while (a && a !== root) { var r = a.getBoundingClientRect(); if (r.width >= W * .95 && r.height > 120) return a; a = a.parentElement; } return root; }
   var order = { h: 0, i: 1, t: 2, d: 3 }, base = { h: 0, i: .18, t: .38, d: .6 };
+  // анкета гостя (поля, варіанти, кнопка) і її заголовок не анімуються
+  var form = [].slice.call(root.querySelectorAll('.bjx-f'));
+  if (form.length) {
+    var sy = scrollY, top = Infinity, bot = -Infinity;
+    form.forEach(function (f) { var r = f.getBoundingClientRect(); top = Math.min(top, r.top + sy); bot = Math.max(bot, r.bottom + sy); });
+    top -= 520; bot += 220;
+    els = els.filter(function (e) {
+      var r = e.getBoundingClientRect(), c = (r.top + r.bottom) / 2 + sy;
+      if (c > top && c < bot) { e.classList.add('m-0', 'in'); return false; }
+      return true;
+    });
+  }
   var groups = new Map();
   els.forEach(function (e) {
     var r = e.getBoundingClientRect(), k;
