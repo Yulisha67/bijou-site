@@ -19,10 +19,8 @@ window.bijouAutoscroll = function (box, { speed = 70 } = {}) {
   // Замість знімка в телефоні показуємо живе анімоване запрошення (demo/<назва>.html),
   // а знімок лишається, поки воно вантажиться. Вантажимо, лише коли телефон близько до екрана.
   const img = box.querySelector('img');
-  // дизайни з Figma показуємо картинкою точно як у макеті, без живої сторінки
-  const FIGMA = /^(mr|twentyfive|chateau|tisto|hortenziia|love|vyshyvanka|khmarynka|vypusknyi|weddingday|rouge|blacktie)$/;
   let m = img && img.getAttribute('src').match(/^(.*?)covers\/([\w-]+)-full\.jpg/);
-  if (m && FIGMA.test(m[2])) m = null;
+
   let doc = null; // документ живого запрошення, коли воно завантажилось
   if (m) {
     const W = 390, inLink = !!box.closest('a');
