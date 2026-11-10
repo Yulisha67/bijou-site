@@ -198,11 +198,16 @@
     var start = times[0] ? (+txt(times[0]).split(':')[0]) * 60 + (+txt(times[0]).split(':')[1]) : 0;
     var eq = document.createElement('span'); eq.className = 'bjx-eq'; eq.innerHTML = '<i></i><i></i><i></i>';
     var label = p, orig = txt(p), pos = start, timer = 0;
+    var playBtn = [].filter.call(box.querySelectorAll('div'), function (d) { var r = d.getBoundingClientRect(); return r.width >= 40 && r.width <= 70 && Math.abs(r.width - r.height) < 4 && !clear(cs(d).backgroundColor); })[0];
+    var pauseIco = document.createElement('span');
+    pauseIco.style.cssText = 'display:none;position:absolute;inset:0;margin:auto;width:16px;height:18px;border-left:5px solid currentColor;border-right:5px solid currentColor;box-sizing:border-box';
+    if (playBtn) { playBtn.style.position = playBtn.style.position || 'relative'; pauseIco.style.color = cs(box).backgroundColor; playBtn.appendChild(pauseIco); }
+    var setIco = function (on) { if (!playBtn) return; [].forEach.call(playBtn.children, function (c) { if (c !== pauseIco) c.style.visibility = on ? 'hidden' : ''; }); pauseIco.style.display = on ? 'block' : 'none'; };
     tap(box);
     box.addEventListener('click', function () {
       if (!audio) { audio = new Audio(new URL('assets/ambient.mp3', document.baseURI).href); audio.loop = true; audio.volume = .7; }
       var on = !box.classList.contains('bjx-playing');
-      box.classList.toggle('bjx-playing', on);
+      box.classList.toggle('bjx-playing', on); setIco(on);
       if (on) {
         audio.play().catch(function () {});
         label.textContent = EN ? 'now playing' : 'грає зараз'; label.appendChild(eq);
