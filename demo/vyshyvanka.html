@@ -477,7 +477,7 @@ add(C.float,'fl');add(C.sway,'sw');add(C.turn,'tu');add(C.drift,'dr');add(C.spin
 var special=[];['write','arch','zoom','slide'].forEach(function(k){var c={write:'wr',arch:'ar',zoom:'zm',slide:'sl'}[k];(C[k]||[]).forEach(function(i){var e=$(i);if(e){e.classList.add(c);special.push(e)}})});
 // плавна поява: кожен «листок» макета (текст, фото, орнамент)
 var skip=function(e){return special.some(function(s){return s===e||s.contains(e)||e.contains(s)})||/\binset-0\b/.test(e.className)&&e.tagName!='IMG'&&!e.querySelector('[data-node-id]')&&e.closest('[aria-hidden]')};
-var leaves=[].filter.call(root.querySelectorAll('[data-node-id]'),function(e){return !e.querySelector('[data-node-id]')&&e!==root&&!skip(e)&&!e.closest('.fl,.sw,.tu,.dr,.sp,.kb')&&e.getBoundingClientRect().height<700});
+var leaves=[].filter.call(root.querySelectorAll('[data-node-id]'),function(e){return !e.querySelector('[data-node-id]')&&e!==root&&!skip(e)&&!(function(r){var W=root.getBoundingClientRect().width;return r.width>=W*0.94&&r.height<=160})(e.getBoundingClientRect())&&!e.closest('.fl,.sw,.tu,.dr,.sp,.kb')&&e.getBoundingClientRect().height<700});
 leaves.forEach(function(e){e.classList.add('rv')});
 var q=[],timer=0;
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){q.push(en.target);io.unobserve(en.target)}});
