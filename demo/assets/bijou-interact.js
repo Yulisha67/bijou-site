@@ -56,10 +56,11 @@
                   /^\*?(напишіть|write)/i.test(s);
     if (!isField) return;
     // сам текст із макета стає редагованим: вигляд лишається точно як у Figma
+    p.textContent = s; p.style.whiteSpace = 'pre-wrap';
     p.setAttribute('data-ph', s); p.setAttribute('data-bjx-field', '');
     try { p.contentEditable = 'plaintext-only'; } catch (e) {}
     if (p.contentEditable !== 'plaintext-only') p.contentEditable = 'true';
-    p.style.minHeight = p.getBoundingClientRect().height + 'px'; p.spellcheck = false; p.style.outline = 'none'; p.style.cursor = 'text'; p.style.minWidth = '60%';
+    p.style.minHeight = (parseFloat(cs(p).lineHeight) || 24) + 'px'; p.spellcheck = false; p.style.outline = 'none'; p.style.cursor = 'text'; p.style.minWidth = '2ch';
     if (/гост|guest/i.test(s)) p.inputMode = 'numeric';
     var ph = s, dim = function (on) { p.style.opacity = on ? '.55' : ''; };
     p.addEventListener('focus', function () {
