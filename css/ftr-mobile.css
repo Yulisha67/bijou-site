@@ -1,6 +1,6 @@
-/* Mobile footer: the big script watermark sat behind the link list and made it unreadable. */
+/* Mobile footer: the script watermark is kept but small and faint, behind the links. */
 @media (width<=600px){
-  .ftr__logo{display:none!important}
+  .ftr__logo[data-astro-cid-jo6i4kqk]{width:70%!important;top:auto!important;bottom:-6%!important;left:-6%!important;opacity:.22!important}
   .ftr nav{gap:14px!important}
   .ftr__in{position:relative;z-index:1}
 }
