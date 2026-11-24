@@ -4,3 +4,6 @@
   .ftr nav{gap:14px!important}
   .ftr__in{position:relative;z-index:1}
 }
+
+/* heart sits closer to the merci script */
+.ftr__merci span{margin-left:-.06em}
