@@ -859,7 +859,7 @@ var intro=document.querySelector('.bj-intro');
 if(intro){if(window.self!==window.top){intro.remove()}else{document.documentElement.style.overflow='hidden';var b=[].filter.call(intro.querySelectorAll('div'),function(d){return /Відкрити/.test(d.textContent)&&d.querySelectorAll('div').length==0})[0];if(b){b.style.cursor='pointer';b.setAttribute('role','button');b.tabIndex=0}
  function op(){if(intro.dataset.op)return;intro.dataset.op=1;intro.style.opacity=0;intro.style.pointerEvents='none';document.documentElement.style.overflow='';setTimeout(function(){intro.remove()},900)}
  intro.addEventListener('click',op);intro.addEventListener('wheel',function(e){if(e.deltaY>8)op()},{passive:true});var ty=0;intro.addEventListener('touchstart',function(e){ty=e.touches[0].clientY},{passive:true});intro.addEventListener('touchmove',function(e){if(ty-e.touches[0].clientY>30)op()},{passive:true});if(b)b.addEventListener('keydown',function(e){if(e.key=='Enter'||e.key==' ')op()})}}
-// ширина екрана менша за макет — зменшуємо все запрошення пропорційно
+// ширина екрана менша за макет – зменшуємо все запрошення пропорційно
 function fit(){var w=Math.min((window.innerWidth||document.documentElement.clientWidth),W);root.style.zoom=w<W?(w/W).toFixed(4):'';}
 fit();addEventListener('resize',fit);
 var $=function(id){return root.querySelector('[data-node-id="'+id+'"]')};

@@ -445,7 +445,7 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
               </p>
             </div>
             <p class="[word-break:break-word]  leading-[1.45] relative shrink-0 text-[#101010] text-[16px] text-right w-full" data-node-id="I1:8339;100:296" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
-              Коли офіційна частина завершується — починається найцікавіше
+              Коли офіційна частина завершується – починається найцікавіше
             </p>
           </div>
         </div>
@@ -729,7 +729,7 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
         </div>
         <div class="[word-break:break-word] content-stretch flex flex-col gap-[12px] items-center relative shrink-0 text-center w-full" data-node-id="1:8448" data-name="text">
           <p class=" leading-[1.45] relative shrink-0 text-[#fdfcf8] text-[16px] w-full" data-node-id="1:8449" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
-            Вашу увагу ми цінуємо понад усе, тому будемо раді, якщо замість квітів Ви оберете невеликий внесок для собак із притулку — корм. Це добра справа, яка зробить наш день ще більш особливим.
+            Вашу увагу ми цінуємо понад усе, тому будемо раді, якщо замість квітів Ви оберете невеликий внесок для собак із притулку – корм. Це добра справа, яка зробить наш день ще більш особливим.
           </p>
           <p class=" leading-[1.5] relative shrink-0 text-[14px] text-[rgba(227,220,204,0.7)] tracking-[0.42px] w-full" data-node-id="1:8450" style="font-family:'Cormorant Garamond';font-weight:500;font-style:normal">
             сухий корм (лікувальний, для дорослих, для цуциків)
@@ -821,7 +821,7 @@ var intro=document.querySelector('.bj-intro');
 if(intro){if(window.self!==window.top){intro.remove()}else{document.documentElement.style.overflow='hidden';var b=[].filter.call(intro.querySelectorAll('div'),function(d){return /Відкрити/.test(d.textContent)&&d.querySelectorAll('div').length==0})[0];if(b){b.style.cursor='pointer';b.setAttribute('role','button');b.tabIndex=0}
  function op(){if(intro.dataset.op)return;intro.dataset.op=1;intro.style.opacity=0;intro.style.pointerEvents='none';document.documentElement.style.overflow='';setTimeout(function(){intro.remove()},900)}
  intro.addEventListener('click',op);intro.addEventListener('wheel',function(e){if(e.deltaY>8)op()},{passive:true});var ty=0;intro.addEventListener('touchstart',function(e){ty=e.touches[0].clientY},{passive:true});intro.addEventListener('touchmove',function(e){if(ty-e.touches[0].clientY>30)op()},{passive:true});if(b)b.addEventListener('keydown',function(e){if(e.key=='Enter'||e.key==' ')op()})}}
-// ширина екрана менша за макет — зменшуємо все запрошення пропорційно
+// ширина екрана менша за макет – зменшуємо все запрошення пропорційно
 W=parseFloat(getComputedStyle(root).width)||390;
 function fit(){var cw=(window.innerWidth||document.documentElement.clientWidth),w=W<390?Math.min(cw,390):Math.min(cw,W);root.style.zoom=w!=W?(w/W).toFixed(4):'';}
 fit();addEventListener('resize',fit);
