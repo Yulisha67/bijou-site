@@ -169,7 +169,7 @@ input[type=text],input[type=number],select{border:0;background:transparent url("
   <img class="orn rv" style="--d:.1s;margin-bottom:0" src="fiesta/orn.jpg" alt="" loading="lazy">
   <div class="det">
     <div class="rv" style="--d:.1s"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="7"/><path d="M20 4v6M20 30v6M4 20h6M30 20h6M8.7 8.7l4.2 4.2M27.1 27.1l4.2 4.2M8.7 31.3l4.2-4.2M27.1 12.9l4.2-4.2"/></svg><p>Дата<small>12 червня, субота</small></p></div>
-    <div class="rv" style="--d:.2s"><svg viewBox="0 0 40 40"><path d="M20 36V14M20 36l-9-16M20 36l9-16M20 36L6 28M20 36l14-8M20 36l-4-24M20 36l4-24"/></svg><p>Час<small>19:00 — до світанку</small></p></div>
+    <div class="rv" style="--d:.2s"><svg viewBox="0 0 40 40"><path d="M20 36V14M20 36l-9-16M20 36l9-16M20 36L6 28M20 36l14-8M20 36l-4-24M20 36l4-24"/></svg><p>Час<small>19:00 – до світанку</small></p></div>
     <div class="rv" style="--d:.3s"><svg viewBox="0 0 40 40"><path d="M8 8h24L20 22zM20 22v12M13 34h14M26 10l4-5"/></svg><p>Місце<small>Casa Azul, Київ</small></p></div>
   </div>
 </div>
@@ -180,7 +180,7 @@ input[type=text],input[type=number],select{border:0;background:transparent url("
   <ul class="tl">
     <li class="rv"><b>19:00</b><span>Збір гостей<em class="hand" style="font-size:18px;opacity:.85">welcome-маргарита на терасі</em></span></li>
     <li class="rv"><b>19:30</b><span>Тако-бар<em class="hand" style="font-size:18px;opacity:.85">гуакамоле, начос і гаряче</em></span></li>
-    <li class="rv"><b>21:00</b><span>Піньята<em class="hand" style="font-size:18px;opacity:.85">хто перший — тому сюрприз</em></span></li>
+    <li class="rv"><b>21:00</b><span>Піньята<em class="hand" style="font-size:18px;opacity:.85">хто перший – тому сюрприз</em></span></li>
     <li class="rv"><b>22:00</b><span>Торт і тости<em class="hand" style="font-size:18px;opacity:.85">¡Salud! за іменинницю</em></span></li>
     <li class="rv"><b>22:30</b><span>Танці<em class="hand" style="font-size:18px;opacity:.85">латино до ранку</em></span></li>
   </ul>
@@ -191,7 +191,7 @@ input[type=text],input[type=number],select{border:0;background:transparent url("
   <p class="caps rv" style="font-size:16px">Fiesta dress code</p>
   <p class="rv hand" style="--d:.1s;font-size:24px;color:var(--pink)">Mexican chic · яскраві деталі</p>
   <div class="sw rv" style="--d:.2s"><i style="background:#1d3c7c"></i><i style="background:#6e8f3c"></i><i style="background:#d6457c"></i><i style="background:#efe4cc"></i></div>
-  <p class="rv" style="--d:.3s;font-size:14px">Сукні з квітами, льон, солом’яні капелюхи — і обов’язково гарний настрій.</p>
+  <p class="rv" style="--d:.3s;font-size:14px">Сукні з квітами, льон, солом’яні капелюхи – і обов’язково гарний настрій.</p>
   <div class="row"><img class="rv sway" src="fiesta/sombflow.webp" alt="" loading="lazy"><img class="rv sway" style="--d:.2s;animation-delay:-2s" src="fiesta/cactuspot.webp" alt="" loading="lazy"></div>
 </section>
 
@@ -237,7 +237,7 @@ els.forEach(function(e){if(e.classList.contains('dec')){var p=e.parentElement;if
 var par=[].slice.call(document.querySelectorAll('.dec:not(.hang)'));
 function pr(){var vh=innerHeight;par.forEach(function(e,i){var r=e.parentElement.getBoundingClientRect(),k=((r.top+r.height/2)-vh/2)/vh;e.style.marginTop=(k*(i%2?-18:18)).toFixed(1)+'px'})}
 addEventListener('scroll',function(){requestAnimationFrame(pr)},{passive:true});pr();
-// живий відлік; якщо дата минула — відлік від 120 днів
+// живий відлік; якщо дата минула – відлік від 120 днів
 var t=new Date('2027-06-12T19:00:00+03:00').getTime();if(t<Date.now())t=Date.now()+120*864e5;
 var b=document.querySelectorAll('#cd b');
 function tick(){var s=Math.max(0,Math.floor((t-Date.now())/1e3)),v=[Math.floor(s/86400),Math.floor(s/3600)%24,Math.floor(s/60)%60,s%60];v.forEach(function(x,i){b[i].textContent=i?String(x).padStart(2,'0'):x})}

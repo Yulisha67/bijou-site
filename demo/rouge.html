@@ -306,7 +306,7 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
           <div class=" leading-[0] relative shrink-0 text-[18.056px] text-[rgba(255,255,255,0.8)] text-center w-full whitespace-pre-wrap" data-node-id="1:26184" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
             <p class="leading-[1.35] mb-0">Кажуть, у 25 життя тільки починається. Перевіримо це разом?</p>
             <p class="leading-[1.35] mb-0">​</p>
-            <p class="leading-[1.35] mb-0">Запрошую вас відсвяткувати мій день народження — з хорошою компанією, смачною їжею, келихом чогось смачного та вечором, який не захочеться завершувати надто рано.</p>
+            <p class="leading-[1.35] mb-0">Запрошую вас відсвяткувати мій день народження – з хорошою компанією, смачною їжею, келихом чогось смачного та вечором, який не захочеться завершувати надто рано.</p>
             <p class="leading-[1.35] mb-0">​</p>
             <p class="leading-[1.35]">Дуже хочу зібрати всіх за одним столом і провести цей день разом із вами.</p>
           </div>
@@ -361,7 +361,7 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
           </p>
           <div class="[word-break:break-word]  leading-[0] min-w-full relative shrink-0 text-[#1c1c1c] text-[18.056px] text-center w-[min-content]" data-node-id="1:26204" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
             <p class="leading-[1.35] mb-0">Не забудьте купальники!</p>
-            <p class="leading-[1.35]">На нас чекає чан, тож буде можливість не лише святкувати, а й добряче розслабитися. Решта — за бажанням, гарним настроєм і погодою.</p>
+            <p class="leading-[1.35]">На нас чекає чан, тож буде можливість не лише святкувати, а й добряче розслабитися. Решта – за бажанням, гарним настроєм і погодою.</p>
           </div>
         </div>
         <div class="content-stretch flex flex-col gap-[24px] items-center relative shrink-0" data-node-id="1:26205">
@@ -381,9 +381,9 @@ body{margin:0;background:var(--bg);overflow-x:hidden}
                 Щодо подарунків
               </p>
               <div class=" leading-[0] relative shrink-0 text-[18.056px] text-[rgba(255,255,255,0.8)] w-full whitespace-pre-wrap" data-node-id="1:26213" style="font-family:'Cormorant Garamond';font-weight:400;font-style:normal">
-                <p class="leading-[1.35] mb-0">Найкращий подарунок — це ваша присутність і гарний настрій.</p>
+                <p class="leading-[1.35] mb-0">Найкращий подарунок – це ваша присутність і гарний настрій.</p>
                 <p class="leading-[1.35] mb-0">​</p>
-                <p class="leading-[1.35]">А якщо захочете додати до свята ще трішки радості, буду рада грошовому подарунку — нехай він стане внеском у мої майбутні маленькі й великі мрії.</p>
+                <p class="leading-[1.35]">А якщо захочете додати до свята ще трішки радості, буду рада грошовому подарунку – нехай він стане внеском у мої майбутні маленькі й великі мрії.</p>
               </div>
             </div>
             <div class="h-[97.861px] relative shrink-0 w-[229.667px]" data-node-id="1:26214" data-name="Гравюрна пачка грошей із пишним бантом 1">
@@ -541,7 +541,7 @@ var intro=document.querySelector('.bj-intro');
 if(intro){if(window.self!==window.top){intro.remove()}else{document.documentElement.style.overflow='hidden';var b=[].filter.call(intro.querySelectorAll('div'),function(d){return /Відкрити/.test(d.textContent)&&d.querySelectorAll('div').length==0})[0];if(b){b.style.cursor='pointer';b.setAttribute('role','button');b.tabIndex=0}
  function op(){if(intro.dataset.op)return;intro.dataset.op=1;intro.style.opacity=0;intro.style.pointerEvents='none';document.documentElement.style.overflow='';setTimeout(function(){intro.remove()},900)}
  intro.addEventListener('click',op);intro.addEventListener('wheel',function(e){if(e.deltaY>8)op()},{passive:true});var ty=0;intro.addEventListener('touchstart',function(e){ty=e.touches[0].clientY},{passive:true});intro.addEventListener('touchmove',function(e){if(ty-e.touches[0].clientY>30)op()},{passive:true});if(b)b.addEventListener('keydown',function(e){if(e.key=='Enter'||e.key==' ')op()})}}
-// ширина екрана менша за макет — зменшуємо все запрошення пропорційно
+// ширина екрана менша за макет – зменшуємо все запрошення пропорційно
 W=parseFloat(getComputedStyle(root).width)||390;
 function fit(){var cw=(window.innerWidth||document.documentElement.clientWidth),w=W<390?Math.min(cw,390):Math.min(cw,W);root.style.zoom=w!=W?(w/W).toFixed(4):'';}
 fit();addEventListener('resize',fit);
