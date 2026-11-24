@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Електронне запрошення на весілля — онлайн-сайт з RSVP | Bijou</title><link rel="icon" type="image/png" sizes="32x32" href="/img/bijou-icon-32.png?v=4"><link rel="icon" type="image/png" sizes="16x16" href="/img/bijou-icon-16.png?v=4"><link rel="icon" type="image/png" sizes="192x192" href="/img/bijou-icon-192.png?v=4"><link rel="shortcut icon" href="/favicon.ico?v=4"><link rel="apple-touch-icon" sizes="180x180" href="/img/bijou-apple-180.png?v=4"><link rel="manifest" href="/site.webmanifest?v=2"><meta name="description" content="Електронне запрошення на весілля від Bijou: сайт-запрошення з картою, таймінгом, дрес-кодом і RSVP. Гості відкривають за посиланням з телефона. Від 3 400 ₴, готово за 3 дні."><meta property="og:type" content="article"><meta property="og:site_name" content="Bijou"><meta property="og:locale" content="uk_UA"><meta property="og:title" content="Електронне запрошення на весілля — онлайн-сайт з RSVP | Bijou"><meta property="og:description" content="Електронне запрошення на весілля від Bijou: сайт-запрошення з картою, таймінгом, дрес-кодом і RSVP. Гості відкривають за посиланням з телефона. Від 3 400 ₴, готово за 3 дні."><meta property="og:url" content="https://www.bijou-invitations.com/elektronne-zaproshennia-na-vesillia/"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Bijou", "item": "https://www.bijou-invitations.com/"}, {"@type": "ListItem", "position": 2, "name": "Електронне запрошення на весілля", "item": "https://www.bijou-invitations.com/elektronne-zaproshennia-na-vesillia/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Електронне запрошення на весілля", "serviceType": "Електронне онлайн-запрошення", "provider": {"@id": "https://www.bijou-invitations.com/#org"}, "areaServed": {"@type": "Country", "name": "Ukraine"}, "url": "https://www.bijou-invitations.com/elektronne-zaproshennia-na-vesillia/", "offers": [{"@type": "Offer", "priceCurrency": "UAH", "price": "3400", "name": "Готовий шаблон"}, {"@type": "Offer", "priceCurrency": "UAH", "price": "6900", "name": "Індивідуальний дизайн"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Чи потрібно гостям щось встановлювати?", "acceptedAnswer": {"@type": "Answer", "text": "Ні. Запрошення відкривається в будь-якому браузері на телефоні чи комп'ютері."}}, {"@type": "Question", "name": "Скільки діє посилання?", "acceptedAnswer": {"@type": "Answer", "text": "12 місяців після свята. Потім можна продовжити або зберегти запрошення як спогад."}}, {"@type": "Question", "name": "Як я побачу відповіді гостей?", "acceptedAnswer": {"@type": "Answer", "text": "Усі відповіді RSVP збираються в одному місці: хто прийде, скільки людей і які побажання щодо меню."}}, {"@type": "Question", "name": "Чи можна змінити текст після відправлення?", "acceptedAnswer": {"@type": "Answer", "text": "Так. Ми оновлюємо запрошення, а посилання в гостей залишається тим самим."}}, {"@type": "Question", "name": "Який текст написати в запрошенні?", "acceptedAnswer": {"@type": "Answer", "text": "Ми зібрали 27 готових текстів запрошення на весілля — від класики до гумору."}}]}</script><link rel="canonical" href="https://www.bijou-invitations.com/elektronne-zaproshennia-na-vesillia/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600&family=Great+Vibes&display=swap" rel="stylesheet"><script>
+// Шаблон у екрані телефона гортається лише тоді, коли на нього навели мишку (повільно вниз,
+// в кінці — назад угору) або коли людина гортає його сама. Без наведення він стоїть на місці.
+window.bijouOpenBtn = function (box) {
+  // кнопка «Відкрити» під кожним телефоном у картці (одна на картку)
+  const card = box.closest('a'); const ph = box.closest('.phone');
+  if (!card || !ph || card.dataset.openBtn) return; card.dataset.openBtn = '1';
+  const bt = document.createElement('button'); bt.type = 'button';
+  bt.textContent = document.documentElement.lang === 'en' ? 'Open' : 'Відкрити';
+  bt.style.cssText = 'display:block;margin:14px auto 0;position:relative;transform:none;z-index:3;font:500 16px/1 var(--serif);letter-spacing:.06em;padding:15px 30px;min-height:48px;border:1px solid rgba(255,255,255,.6);border-radius:99px;background:var(--wine);color:#fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap';
+  bt.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); if (card.target === '_blank') window.open(card.href, '_blank', 'noopener'); else location.href = card.href; });
+  ph.insertAdjacentElement('afterend', bt);
+};
+window.bijouAutoscroll = function (box, { speed = 70 } = {}) {
+  if (box.dataset.bijouAs) return; // на головній ту саму рамку можуть передати двічі
+  box.dataset.bijouAs = '1';
+  window.bijouOpenBtn(box);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Замість знімка в телефоні показуємо живе анімоване запрошення (demo/<назва>.html),
+  // а знімок лишається, поки воно вантажиться. Вантажимо, лише коли телефон близько до екрана.
+  const img = box.querySelector('img');
+  let m = img && img.getAttribute('src').match(/^(.*?)covers\/([\w-]+)-full\.jpg/);
+
+  let doc = null; // документ живого запрошення, коли воно завантажилось
+  if (m) {
+    const W = 390, inLink = !!box.closest('a');
+    const fr = document.createElement('iframe');
+    fr.setAttribute('aria-label', img.alt); fr.tabIndex = -1; fr.setAttribute('scrolling', 'yes');
+    fr.style.cssText = `position:absolute;top:0;left:0;width:${W}px;border:0;transform-origin:0 0;opacity:0;transition:opacity .6s;pointer-events:auto`;
+    const fit = () => { const w = box.clientWidth, h = box.clientHeight; if (!w) return; const k = w / W; fr.style.height = h / k + 'px'; fr.style.transform = `scale(${k})`; };
+    fr.addEventListener('load', () => {
+      try {
+        doc = fr.contentDocument;
+        const st = doc.createElement('style');
+        st.textContent = '.bijou-back{display:none!important}html{scrollbar-width:none;scroll-behavior:auto!important}::-webkit-scrollbar{display:none}';
+        doc.head.appendChild(st);
+      } catch (e) { doc = null; }
+      fr.style.opacity = '1';
+      setTimeout(() => { img.style.visibility = 'hidden'; }, 600);
+    });
+    const io = new IntersectionObserver((es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      box.style.position = 'relative'; box.style.overflow = 'hidden'; box.scrollTop = 0;
+      fit(); new ResizeObserver(fit).observe(box);
+      fr.src = m[1] + 'demo/' + m[2] + '.html?v=c5';
+      box.appendChild(fr);
+      // на картці кейсу живе запрошення прокручується, а відкрити кейс можна кнопкою
+      window.bijouOpenBtn(box);
+    }, { rootMargin: '300px 0px' });
+    io.observe(box);
+    // коли відвідувач відійшов від запрошення, воно повертається на початок
+    const back = () => { try { fr.contentDocument.scrollingElement.scrollTop = 0; } catch (e) {} };
+    box.addEventListener('pointerleave', back);
+    new IntersectionObserver((es) => { if (es.some((e) => !e.isIntersecting)) back(); }).observe(box);
+  }
+  // запрошення стоїть на початку і гортається лише від руки відвідувача (колесо, палець)
+};
+// Каруселі (колекція, кейси) можна гортати вбік, перетягуючи мишкою — як свайп пальцем на телефоні
+window.bijouDrag = function (rail) {
+  let down = false, moved = false, x0 = 0, s0 = 0;
+  rail.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; moved = false; x0 = e.clientX; s0 = rail.scrollLeft; });
+  addEventListener('pointermove', (e) => {
+    if (!down) return;
+    const dx = e.clientX - x0;
+    if (!moved && Math.abs(dx) > 6) { moved = true; rail.style.scrollSnapType = 'none'; rail.style.cursor = 'grabbing'; }
+    if (moved) { rail.scrollLeft = s0 - dx; e.preventDefault(); }
+  });
+  addEventListener('pointerup', () => {
+    if (!down) return; down = false; rail.style.cursor = '';
+    if (!moved) return;
+    rail.style.scrollSnapType = '';
+    // доводимо до найближчої картки
+    const c = rail.children, step = c.length > 1 ? c[1].offsetLeft - c[0].offsetLeft : rail.clientWidth;
+    rail.scrollTo({ left: Math.round(rail.scrollLeft / step) * step, behavior: 'smooth' });
+  });
+  // після перетягування клік по картці не відкриває посилання
+  rail.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  rail.addEventListener('dragstart', (e) => e.preventDefault());
+};
+    </script><link rel="stylesheet" href="../css/Base.CXxfULg5.css?v=1107c"><style>
+.post{padding-top:var(--s6,32px)}
+.post__in{max-width:760px;margin:0 auto}
+.post .h{margin-bottom:28px}
+.post__meta{font:400 14px/1.4 var(--body);color:var(--wine);letter-spacing:.06em;margin:0 0 28px}
+.post__in p,.post__in li{font:300 18px/1.65 var(--body);color:var(--ink)}
+.post__lead{font-size:20px!important}
+.post__in h2{font:400 clamp(30px,3.6vw,42px)/1.1 var(--serif);color:var(--wine);margin:56px 0 16px;scroll-margin-top:90px}
+.post__in h3{font:500 24px/1.2 var(--serif);color:var(--wine);margin:32px 0 10px}
+.post__in ul{padding-left:1.2em}
+.post__in li{margin:6px 0}
+.post__in a{color:var(--wine)}
+.post__toc{border:1px solid var(--rule);padding:20px 26px;margin:32px 0}
+.post__toc-t{font:500 13px/1 var(--body)!important;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;color:var(--wine)!important}
+.post__toc ol{margin:0;padding-left:1.2em}.post__toc li{font-size:16px!important;margin:4px 0}
+.ex{position:relative;background:var(--paper);border-left:2px solid var(--wine);padding:18px 22px 18px;margin:14px 0}
+.ex p{font:italic 400 21px/1.45 var(--serif)!important;margin:0 0 8px}.ex p:last-of-type{margin:0}
+.ex__copy{position:absolute;top:10px;right:10px;font:500 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--wine);background:var(--bg);border:1px solid var(--rule);padding:7px 10px;cursor:pointer;opacity:.75}
+.ex__copy:hover{opacity:1}
+.ex:has(.ex__copy) p:first-child{padding-right:96px}
+.post__cta{background:var(--wine);color:#fff;padding:32px;margin:64px 0 0}
+.post__cta p{color:#fff!important}
+.post__cta-t{font:400 32px/1.1 var(--serif)!important;margin:0 0 12px}
+.post__cta-b{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 0}
+.post__cta .btn{border-color:#fff;color:#fff}.post__cta .btn--solid{background:#fff;color:var(--wine)}
+.bl{list-style:none;padding:0}.bl li{border-top:1px solid var(--rule);padding:22px 0}
+.bl a{font:400 30px/1.15 var(--serif);color:var(--wine);text-decoration:none}
+.bl p{margin:8px 0 0}
+@media(max-width:600px){.post__in p,.post__in li{font-size:17px}.ex p{font-size:19px!important}.ex:has(.ex__copy) p:first-child{padding-right:0;padding-top:26px}.post__cta{padding:24px}}
+</style><style>
+.post__cta-b--top{margin:8px 0 8px}.post__in .post__cta-b--top .btn--solid{color:#fff}
+.cmp{overflow-x:auto;margin:16px 0}
+.cmp table{width:100%;border-collapse:collapse;font:300 16px/1.45 var(--body);color:var(--ink)}
+.cmp th{font:500 13px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--wine);text-align:left;padding:12px 10px;border-bottom:1px solid var(--wine)}
+.cmp td{padding:12px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.cmp td:first-child{font-weight:500}
+.cmp td:nth-child(2){background:var(--paper)}
+.qa{border-top:1px solid var(--rule);padding:14px 0}
+.qa summary{font:400 22px/1.3 var(--serif);color:var(--wine);cursor:pointer}
+.qa p{margin:10px 0 0}
+.post__in ol li{margin:8px 0}
+</style></head><body><div class="page"><header class="hdr" data-astro-cid-nen7h5rs><div class="hdr__in" data-astro-cid-nen7h5rs><a href="../index.html" class="logo" aria-label="Bijou — на головну" data-astro-cid-nen7h5rs></a><nav class="nav" data-astro-cid-nen7h5rs><a href="../katalog/index.html" data-astro-cid-nen7h5rs>Шаблони</a><a href="../keisy/index.html" data-astro-cid-nen7h5rs>Кейси</a><a href="../index.html#how" data-astro-cid-nen7h5rs>Як це працює</a><a href="../tsiny/index.html" data-astro-cid-nen7h5rs>Вартість</a><a href="../index.html#faq" data-astro-cid-nen7h5rs>Питання</a></nav><div class="hdr__r" data-astro-cid-nen7h5rs><nav class="lang" aria-label="Мова" data-astro-cid-nen7h5rs><a href="../elektronne-zaproshennia-na-vesillia/index.html" hreflang="uk" aria-current="true" data-astro-cid-nen7h5rs>UA</a><span aria-hidden="true" data-astro-cid-nen7h5rs>·</span><a href="../en/index.html" hreflang="en" data-astro-cid-nen7h5rs>EN</a></nav><a href="../zamovlennia/index.html" class="btn btn--solid hdr__cta" data-astro-cid-nen7h5rs>Замовити</a></div></div></header><main><div class="wrap pageback"><a class="back" href="../index.html" data-back>‹ Назад</a></div><article class="sec post"><div class="wrap"><div class="post__in"><h1 class="h"><span class="h__script">електронне</span><span class="h__caps">запрошення на весілля</span></h1><p class="post__lead">Електронне запрошення на весілля — це не картинка в месенджері, а окремий маленький сайт вашого свята. Гості відкривають його за посиланням з телефона, бачать дату, місце на карті, програму дня і одразу підтверджують присутність.</p>
+
+<p class="post__cta-b post__cta-b--top"><a class="btn btn--solid" href="../katalog/index.html">Обрати дизайн</a><a class="btn" href="../tsiny/index.html">Ціни</a></p>
+
+<h2 id="shcho-tse">Що таке електронне запрошення</h2>
+<p>Це веб-сторінка з вашими іменами, текстом запрошення і всіма деталями весілля, оформлена в одному стилі з вашим святом. Ви надсилаєте гостям посилання в Telegram, Viber, Instagram чи будь-де ще — і їм не потрібно нічого встановлювати чи реєструватися.</p>
+
+<h2 id="shcho-vkhodyt">Що бачать гості</h2>
+<ul>
+<li><b>Персональне звертання</b> — кожен гість може отримати власне посилання зі своїм ім'ям.</li>
+<li><b>Дату і час</b> — у багатьох дизайнах зі зворотним відліком до свята.</li>
+<li><b>Карту з локаціями</b> — церемонія, банкет, парковка — з переходом у Google Maps.</li>
+<li><b>Таймінг дня</b>, щоб усі знали, коли збір, церемонія і перший танець.</li>
+<li><b>Дрес-код</b> і палітру кольорів.</li>
+<li><b>Кнопку RSVP</b> — гість відповідає, чи прийде, з ким, що бажає з меню і чи має алергії.</li>
+<li><b>Текст двома мовами</b>, якщо серед гостей є іноземці.</li>
+</ul>
+
+<h2 id="perevahy">Електронне чи паперове запрошення</h2>
+<div class="cmp">
+<table>
+<thead><tr><th></th><th>Електронне</th><th>Паперове</th></tr></thead>
+<tbody>
+<tr><td>Доставка гостям</td><td>Миттєво, за посиланням</td><td>Особисто або поштою</td></tr>
+<tr><td>Гості з інших міст і країн</td><td>Без проблем</td><td>Доставка складна й дорога</td></tr>
+<tr><td>Карта, таймінг, дрес-код</td><td>Усе в одному місці</td><td>Окремі вкладки або повідомлення</td></tr>
+<tr><td>Підтвердження присутності</td><td>Кнопка RSVP, відповіді збираються автоматично</td><td>Дзвінки й повідомлення кожному</td></tr>
+<tr><td>Якщо змінилася адреса чи час</td><td>Оновлюємо — посилання те саме</td><td>Передрук і повторна доставка</td></tr>
+<tr><td>Вартість</td><td>Не залежить від кількості гостей</td><td>Зростає з кожним запрошенням</td></tr>
+</tbody>
+</table>
+</div>
+<p>Паперові запрошення лишаються гарною традицією для бабусь і найближчих. Багато пар поєднують обидва варіанти: кілька друкованих листівок і електронне запрошення для всіх.</p>
+
+<h2 id="yak-zamovyty">Як замовити електронне запрошення в Bijou</h2>
+<ol>
+<li><b>Оберіть дизайн</b> у <a href="../katalog/index.html">каталозі шаблонів</a> або замовте індивідуальний.</li>
+<li><b>Заповніть анкету</b>: імена, дата, локації, текст, фото.</li>
+<li><b>Отримайте готове запрошення</b> — за 3 робочі дні для шаблону, від 10 для індивідуального дизайну.</li>
+<li><b>Надішліть посилання гостям</b> і стежте за відповідями.</li>
+</ol>
+
+<h2 id="tsina">Скільки коштує</h2>
+<ul>
+<li><b>Готовий шаблон</b> — 3 400 ₴: дизайн з колекції Bijou, ваші тексти, карта, RSVP, 1 раунд правок.</li>
+<li><b>Індивідуальний дизайн</b> — 6 900 ₴: унікальна концепція з нуля, анімації, 2–3 раунди правок.</li>
+</ul>
+<p>Ціна не залежить від кількості гостей, а зміна дати чи адреси — безкоштовна. Для днів народження, хрестин і ювілеїв є <a href="../tsiny/index.html">PDF-запрошення та сайт події</a>.</p>
+
+<h2 id="pytannia">Часті питання</h2>
+<details class="qa"><summary>Чи потрібно гостям щось встановлювати?</summary><p>Ні. Запрошення відкривається в будь-якому браузері на телефоні чи комп'ютері.</p></details>
+<details class="qa"><summary>Скільки діє посилання?</summary><p>12 місяців після свята. Потім можна продовжити або зберегти запрошення як спогад.</p></details>
+<details class="qa"><summary>Як я побачу відповіді гостей?</summary><p>Усі відповіді RSVP збираються в одному місці: хто прийде, скільки людей і які побажання щодо меню.</p></details>
+<details class="qa"><summary>Чи можна змінити текст після відправлення?</summary><p>Так. Ми оновлюємо запрошення, а посилання в гостей залишається тим самим.</p></details>
+<details class="qa"><summary>Який текст написати в запрошенні?</summary><p>Ми зібрали <a href="../blog/tekst-zaproshennia-na-vesillia/index.html">27 готових текстів запрошення на весілля</a> — від класики до гумору.</p></details>
+
+<div class="post__cta">
+<p class="post__cta-t">Готові запросити гостей?</p>
+<p>Оберіть дизайн — і вже за кілька днів ваше електронне запрошення буде в гостей.</p>
+<p class="post__cta-b"><a class="btn btn--solid" href="../katalog/index.html">Переглянути шаблони</a><a class="btn" href="../zamovlennia/index.html">Замовити</a></p>
+</div>
+</div></div></article></main><footer class="ftr" data-astro-cid-jo6i4kqk><div class="ftr__logo" aria-hidden="true" data-astro-cid-jo6i4kqk></div><div class="ftr__in" data-astro-cid-jo6i4kqk><p class="ftr__merci" data-astro-cid-jo6i4kqk>merci <span data-astro-cid-jo6i4kqk>♥</span></p><nav data-astro-cid-jo6i4kqk><a href="../katalog/index.html" data-astro-cid-jo6i4kqk>Шаблони</a><a href="../keisy/index.html" data-astro-cid-jo6i4kqk>Кейси</a><a href="../index.html#how" data-astro-cid-jo6i4kqk>Як це працює</a><a href="../tsiny/index.html" data-astro-cid-jo6i4kqk>Вартість</a><a href="../index.html#faq" data-astro-cid-jo6i4kqk>Питання</a><a href="../elektronne-zaproshennia-na-vesillia/index.html" data-astro-cid-jo6i4kqk>Електронне запрошення</a><a href="../blog/index.html" data-astro-cid-jo6i4kqk>Статті</a></nav><p class="ftr__soc" data-astro-cid-jo6i4kqk><a href="https://www.instagram.com/bijou_agency/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a><a href="https://www.facebook.com/share/1DtRrD6snh/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3.5h-2.2A3.8 3.8 0 0 0 9 7.3V10H6.5v3.5H9V21h3.5v-7.5H15l.6-3.5h-3.1V7.6c0-.6.5-1 1-1H15z"/></svg></a><a href="https://www.threads.com/@bijou_agency" target="_blank" rel="noopener" aria-label="Threads" title="Threads" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.2 8.3C16.2 5.9 14.300 4.5 11.7 4.5 7.6 4.5 5 7.4 5 12s2.6 7.5 6.8 7.5c3.700 0 6.200-2.100 6.200-5 0-2.800-2.300-4.100-5.300-4.100-2.200 0-3.600 1-3.600 2.400 0 1.300 1.100 2.200 2.600 2.200 2.400 0 3.700-2 3.700-5"/></svg></a></p><p class="ftr__copy" data-astro-cid-jo6i4kqk>© Bijou 2026 · <a href="mailto:bijou.invitations@gmail.com" data-astro-cid-jo6i4kqk>bijou.invitations@gmail.com</a></p></div></footer><div class="ftr__after"><p class="ftr__soc" data-astro-cid-jo6i4kqk><a href="https://www.instagram.com/bijou_agency/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a><a href="https://www.facebook.com/share/1DtRrD6snh/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3.5h-2.2A3.8 3.8 0 0 0 9 7.3V10H6.5v3.5H9V21h3.5v-7.5H15l.6-3.5h-3.1V7.6c0-.6.5-1 1-1H15z"/></svg></a><a href="https://www.threads.com/@bijou_agency" target="_blank" rel="noopener" aria-label="Threads" title="Threads" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.2 8.3C16.2 5.9 14.300 4.5 11.7 4.5 7.6 4.5 5 7.4 5 12s2.6 7.5 6.8 7.5c3.700 0 6.200-2.100 6.200-5 0-2.800-2.300-4.100-5.300-4.100-2.200 0-3.600 1-3.600 2.400 0 1.300 1.100 2.200 2.600 2.200 2.400 0 3.700-2 3.700-5"/></svg></a></p><p>© Bijou 2026 · <a href="mailto:bijou.invitations@gmail.com" data-astro-cid-jo6i4kqk>bijou.invitations@gmail.com</a></p></div></div><script type="module">var e=new IntersectionObserver(t=>t.forEach(t=>{t.isIntersecting&&(t.target.classList.add(`is-in`),e.unobserve(t.target))}),{threshold:.15});document.querySelectorAll(`.reveal`).forEach(t=>e.observe(t)),document.querySelectorAll(`[data-back]`).forEach(e=>e.addEventListener(`click`,e=>{history.length>1&&document.referrer&&new URL(document.referrer).host===location.host&&(e.preventDefault(),history.back())}));</script></body></html>
