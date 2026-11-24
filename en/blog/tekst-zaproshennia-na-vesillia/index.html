@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Wedding invitation wording: 27 examples — Bijou</title><link rel="icon" type="image/png" sizes="32x32" href="/img/bijou-icon-32.png?v=4"><link rel="icon" type="image/png" sizes="16x16" href="/img/bijou-icon-16.png?v=4"><link rel="icon" type="image/png" sizes="192x192" href="/img/bijou-icon-192.png?v=4"><link rel="shortcut icon" href="/favicon.ico?v=4"><link rel="apple-touch-icon" sizes="180x180" href="/img/bijou-apple-180.png?v=4"><link rel="manifest" href="/site.webmanifest?v=2"><meta name="description" content="Ready-made wedding invitation texts: classic, warm, short, funny and from the parents. Plus wording for online invitations, dress code, gifts, children and RSVP."><meta property="og:type" content="article"><meta property="og:site_name" content="Bijou"><meta property="og:locale" content="en_US"><meta property="og:title" content="Wedding invitation wording: 27 examples — Bijou"><meta property="og:description" content="Ready-made wedding invitation texts: classic, warm, short, funny and from the parents. Plus wording for online invitations, dress code, gifts, children and RSVP."><meta property="og:url" content="https://www.bijou-invitations.com/en/blog/tekst-zaproshennia-na-vesillia/"><meta property="og:image" content="https://www.bijou-invitations.com/img/bijou-og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Bijou", "item": "https://www.bijou-invitations.com/"}, {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://www.bijou-invitations.com/en/blog/"}, {"@type": "ListItem", "position": 3, "name": "Wedding invitation wording", "item": "https://www.bijou-invitations.com/en/blog/tekst-zaproshennia-na-vesillia/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Wedding invitation wording", "description": "Ready-made wedding invitation texts: classic, warm, short, funny and from the parents. Plus wording for online invitations, dress code, gifts, children and RSVP.", "inLanguage": "en", "datePublished": "2026-11-24", "dateModified": "2026-11-24", "mainEntityOfPage": "https://www.bijou-invitations.com/en/blog/tekst-zaproshennia-na-vesillia/", "image": "https://www.bijou-invitations.com/img/bijou-og.png", "author": {"@type": "Organization", "name": "Bijou", "url": "https://www.bijou-invitations.com/"}, "publisher": {"@type": "Organization", "name": "Bijou", "logo": {"@type": "ImageObject", "url": "https://www.bijou-invitations.com/img/bijou-icon-192.png"}}}</script><link rel="canonical" href="https://www.bijou-invitations.com/en/blog/tekst-zaproshennia-na-vesillia/"><link rel="alternate" hreflang="uk" href="https://www.bijou-invitations.com/blog/tekst-zaproshennia-na-vesillia/"><link rel="alternate" hreflang="en" href="https://www.bijou-invitations.com/en/blog/tekst-zaproshennia-na-vesillia/"><link rel="alternate" hreflang="x-default" href="https://www.bijou-invitations.com/blog/tekst-zaproshennia-na-vesillia/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600&family=Great+Vibes&display=swap" rel="stylesheet"><script>
+// Шаблон у екрані телефона гортається лише тоді, коли на нього навели мишку (повільно вниз,
+// в кінці — назад угору) або коли людина гортає його сама. Без наведення він стоїть на місці.
+window.bijouOpenBtn = function (box) {
+  // кнопка «Відкрити» під кожним телефоном у картці (одна на картку)
+  const card = box.closest('a'); const ph = box.closest('.phone');
+  if (!card || !ph || card.dataset.openBtn) return; card.dataset.openBtn = '1';
+  const bt = document.createElement('button'); bt.type = 'button';
+  bt.textContent = document.documentElement.lang === 'en' ? 'Open' : 'Відкрити';
+  bt.style.cssText = 'display:block;margin:14px auto 0;position:relative;transform:none;z-index:3;font:500 16px/1 var(--serif);letter-spacing:.06em;padding:15px 30px;min-height:48px;border:1px solid rgba(255,255,255,.6);border-radius:99px;background:var(--wine);color:#fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap';
+  bt.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); if (card.target === '_blank') window.open(card.href, '_blank', 'noopener'); else location.href = card.href; });
+  ph.insertAdjacentElement('afterend', bt);
+};
+window.bijouAutoscroll = function (box, { speed = 70 } = {}) {
+  if (box.dataset.bijouAs) return; // на головній ту саму рамку можуть передати двічі
+  box.dataset.bijouAs = '1';
+  window.bijouOpenBtn(box);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Замість знімка в телефоні показуємо живе анімоване запрошення (demo/<назва>.html),
+  // а знімок лишається, поки воно вантажиться. Вантажимо, лише коли телефон близько до екрана.
+  const img = box.querySelector('img');
+  let m = img && img.getAttribute('src').match(/^(.*?)covers\/([\w-]+)-full\.jpg/);
+
+  let doc = null; // документ живого запрошення, коли воно завантажилось
+  if (m) {
+    const W = 390, inLink = !!box.closest('a');
+    const fr = document.createElement('iframe');
+    fr.setAttribute('aria-label', img.alt); fr.tabIndex = -1; fr.setAttribute('scrolling', 'yes');
+    fr.style.cssText = `position:absolute;top:0;left:0;width:${W}px;border:0;transform-origin:0 0;opacity:0;transition:opacity .6s;pointer-events:auto`;
+    const fit = () => { const w = box.clientWidth, h = box.clientHeight; if (!w) return; const k = w / W; fr.style.height = h / k + 'px'; fr.style.transform = `scale(${k})`; };
+    fr.addEventListener('load', () => {
+      try {
+        doc = fr.contentDocument;
+        const st = doc.createElement('style');
+        st.textContent = '.bijou-back{display:none!important}html{scrollbar-width:none;scroll-behavior:auto!important}::-webkit-scrollbar{display:none}';
+        doc.head.appendChild(st);
+      } catch (e) { doc = null; }
+      fr.style.opacity = '1';
+      setTimeout(() => { img.style.visibility = 'hidden'; }, 600);
+    });
+    const io = new IntersectionObserver((es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      box.style.position = 'relative'; box.style.overflow = 'hidden'; box.scrollTop = 0;
+      fit(); new ResizeObserver(fit).observe(box);
+      fr.src = m[1] + 'demo/' + m[2] + '.html?v=c5';
+      box.appendChild(fr);
+      // на картці кейсу живе запрошення прокручується, а відкрити кейс можна кнопкою
+      window.bijouOpenBtn(box);
+    }, { rootMargin: '300px 0px' });
+    io.observe(box);
+    // коли відвідувач відійшов від запрошення, воно повертається на початок
+    const back = () => { try { fr.contentDocument.scrollingElement.scrollTop = 0; } catch (e) {} };
+    box.addEventListener('pointerleave', back);
+    new IntersectionObserver((es) => { if (es.some((e) => !e.isIntersecting)) back(); }).observe(box);
+  }
+  // запрошення стоїть на початку і гортається лише від руки відвідувача (колесо, палець)
+};
+// Каруселі (колекція, кейси) можна гортати вбік, перетягуючи мишкою — як свайп пальцем на телефоні
+window.bijouDrag = function (rail) {
+  let down = false, moved = false, x0 = 0, s0 = 0;
+  rail.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; moved = false; x0 = e.clientX; s0 = rail.scrollLeft; });
+  addEventListener('pointermove', (e) => {
+    if (!down) return;
+    const dx = e.clientX - x0;
+    if (!moved && Math.abs(dx) > 6) { moved = true; rail.style.scrollSnapType = 'none'; rail.style.cursor = 'grabbing'; }
+    if (moved) { rail.scrollLeft = s0 - dx; e.preventDefault(); }
+  });
+  addEventListener('pointerup', () => {
+    if (!down) return; down = false; rail.style.cursor = '';
+    if (!moved) return;
+    rail.style.scrollSnapType = '';
+    // доводимо до найближчої картки
+    const c = rail.children, step = c.length > 1 ? c[1].offsetLeft - c[0].offsetLeft : rail.clientWidth;
+    rail.scrollTo({ left: Math.round(rail.scrollLeft / step) * step, behavior: 'smooth' });
+  });
+  // після перетягування клік по картці не відкриває посилання
+  rail.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  rail.addEventListener('dragstart', (e) => e.preventDefault());
+};
+    </script><link rel="stylesheet" href="../../../css/Base.CXxfULg5.css?v=1107c"><link rel="stylesheet" href="../../../css/Faq.C5d_KYMf.css?v=1110b"><style>
+.art-hero{text-align:center;padding:12px 0 0}
+.art-kicker{font:italic 400 clamp(36px,4.4vw,58px)/1 var(--script);color:var(--blue-ink);display:block;margin-bottom:-6px}
+.art-title{font:300 clamp(40px,5.4vw,76px)/.92 var(--caps);letter-spacing:-.03em;text-transform:uppercase;color:var(--wine);margin:0 0 22px}
+.art-lead{font:italic 300 clamp(20px,2vw,24px)/1.5 var(--serif);color:var(--ink);max-width:640px;margin:0 auto}
+.art-meta{font:500 12px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--wine);margin:24px 0 0;opacity:.75}
+.art-orn{color:var(--blue-ink);letter-spacing:.9em;margin:28px 0 0;font-size:15px}
+.art-toc{margin:44px auto 0;max-width:720px}
+.art-toc ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.art-toc a{display:inline-block;border:1px solid var(--wine);color:var(--wine);text-decoration:none;font:500 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;padding:11px 16px;border-radius:99px;transition:background .2s,color .2s}
+.art-toc a:hover{background:var(--wine);color:#fff}
+.art-body{max-width:680px;margin:0 auto}
+.art-body p,.art-body li{font:300 18px/1.72 var(--body);color:var(--ink)}
+.art-body ul{padding-left:1.2em}
+.art-body li{margin:6px 0}
+.art-body a{color:var(--wine)}
+.art-body h2{text-align:center;font:300 clamp(30px,3.8vw,46px)/1 var(--caps);text-transform:uppercase;letter-spacing:-.02em;color:var(--wine);margin:84px 0 20px;scroll-margin-top:90px}
+.art-body h2::before{content:"♥";display:block;font:400 16px/1 var(--body);color:var(--blue-ink);margin-bottom:16px;letter-spacing:.4em}
+.art-body h3{text-align:center;font:italic 400 30px/1.2 var(--script);color:var(--blue-ink);margin:44px 0 6px}
+.art-body > p:first-of-type{text-align:center}
+.ex{position:relative;background:#fff;border:1px solid var(--rule);padding:40px 34px 30px;margin:26px 0;text-align:center;box-shadow:0 18px 36px -22px #48222d80}
+.ex::before{content:"";position:absolute;inset:8px;border:1px solid var(--rule);pointer-events:none}
+.ex p{font:italic 400 21px/1.5 var(--serif)!important;color:var(--wine)!important;margin:0 0 10px!important}
+.ex p:last-of-type{margin:0!important}
+.ex__copy{display:inline-block;margin-top:20px;font:500 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--wine);background:transparent;border:1px solid var(--wine);padding:10px 16px;border-radius:99px;cursor:pointer;transition:background .2s,color .2s}
+.ex__copy:hover{background:var(--wine);color:#fff}
+.art-cta{position:relative;margin:84px auto 0;max-width:680px;padding:64px 36px;text-align:center;color:#fff;background:url(../../../img/curtain-closed.jpg) center/cover no-repeat;overflow:hidden}
+.art-cta::before{content:"";position:absolute;inset:0;background:rgba(72,34,45,.84)}
+.art-cta > *{position:relative}
+.art-cta .art-cta-t{font:italic 400 clamp(34px,4vw,50px)/1.05 var(--script);color:#fff;margin:0 0 14px}
+.art-cta p{font:300 17px/1.6 var(--body);color:#fff!important;margin:0 0 10px}
+.art-cta .art-cta-b{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:26px 0 0}
+.art-cta .btn{border-color:#fff;color:#fff}.art-cta .btn--solid{background:#fff;color:var(--wine)}
+.bl{list-style:none;padding:0;max-width:680px;margin:40px auto 0}
+.bl li{background:#fff;border:1px solid var(--rule);padding:30px 32px;margin:0 0 18px;text-align:center}
+.bl a.bl-t{font:300 clamp(28px,3vw,38px)/1.1 var(--caps);text-transform:uppercase;letter-spacing:-.02em;color:var(--wine);text-decoration:none}
+.bl p{font:300 17px/1.6 var(--body);color:var(--ink);margin:12px 0 0}
+.bl .bl-more{display:inline-block;margin-top:16px;font:500 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--wine);text-decoration:none;border-bottom:1px solid var(--wine);padding-bottom:4px}
+@media(max-width:600px){.art-body p,.art-body li{font-size:17px}.ex{padding:34px 22px 24px}.ex p{font-size:19px!important}.art-cta{padding:44px 22px}.art-orn{letter-spacing:.6em}}
+</style></head><body><div class="page"><header class="hdr" data-astro-cid-nen7h5rs><div class="hdr__in" data-astro-cid-nen7h5rs><a href="../../../en/index.html" class="logo" aria-label="Bijou — на головну" data-astro-cid-nen7h5rs></a><nav class="nav" data-astro-cid-nen7h5rs><a href="../../../en/katalog/index.html" data-astro-cid-nen7h5rs>Templates</a><a href="../../../en/keisy/index.html" data-astro-cid-nen7h5rs>Cases</a><a href="../../../en/index.html#how" data-astro-cid-nen7h5rs>How it works</a><a href="../../../en/tsiny/index.html" data-astro-cid-nen7h5rs>Pricing</a><a href="../../../en/index.html#faq" data-astro-cid-nen7h5rs>FAQ</a></nav><div class="hdr__r" data-astro-cid-nen7h5rs><nav class="lang" aria-label="Language" data-astro-cid-nen7h5rs><a href="../../../blog/tekst-zaproshennia-na-vesillia/index.html" hreflang="uk" data-astro-cid-nen7h5rs>UA</a><span aria-hidden="true" data-astro-cid-nen7h5rs>·</span><a href="../../../en/blog/tekst-zaproshennia-na-vesillia/index.html" hreflang="en" aria-current="true" data-astro-cid-nen7h5rs>EN</a></nav><a href="../../../en/zamovlennia/index.html" class="btn btn--solid hdr__cta" data-astro-cid-nen7h5rs>Order</a></div></div></header><main><div class="wrap pageback"><a class="back" href="../../../en/blog/index.html" data-back>‹ Back</a></div><article class="sec art-page"><div class="wrap"><header class="art-hero"><span class="art-kicker">27 examples</span><h1 class="art-title">Wedding invitation wording</h1><p class="art-lead">Your invitation text is the first thing guests learn about your wedding. Below are ready-made texts in different moods, from classic to playful. Pick one, swap in your names and date, and you're done.</p><p class="art-meta">Bijou · 24 November 2026</p><p class="art-orn" aria-hidden="true">♥ ♥ ♥</p></header><nav class="art-toc" aria-label="Contents"><ul><li><a href="#what-to-include">What every invitation must say</a></li><li><a href="#classic">Classic texts</a></li><li><a href="#warm">Warm and heartfelt</a></li><li><a href="#short">Short and modern</a></li><li><a href="#funny">With a bit of humour</a></li><li><a href="#parents">From the parents</a></li><li><a href="#online">For an online invitation</a></li><li><a href="#extras">Dress code, gifts, kids and RSVP lines</a></li><li><a href="#mistakes">What to avoid</a></li></ul></nav><div class="art-body">
+
+
+
+<h2 id="what-to-include">What every invitation must say</h2>
+<p>Whatever the style, a guest should understand five things right away:</p>
+<ul>
+<li><b>Who is inviting</b> — your names (and the parents' names, if you like).</li>
+<li><b>Who is invited</b> — address guests by name: “Dear Olena and Andrii” feels warmer than “Dear guests”.</li>
+<li><b>When</b> — the date, the day of the week and the start time.</li>
+<li><b>Where</b> — the venue name and address. If the ceremony and the reception are in different places, list both.</li>
+<li><b>Reply by</b> — so you can confirm the headcount with the venue.</li>
+</ul>
+<p>Everything else — dress code, gift wishes, transfers, the schedule — can go in a separate block, so the main text stays short.</p>
+
+<h2 id="classic">Classic texts</h2>
+<p>Good for a formal wedding when you want something restrained and elegant.</p>
+
+<div class="ex"><p>Dear [guest names],</p><p>We invite you to share with us the day we become a family. We would be honoured to see you at our wedding on [date] at [time] at [venue].</p><p>With love, [Name] and [Name]</p></div>
+
+<div class="ex"><p>[Name] and [Name] request the pleasure of your company at their wedding ceremony on [date] at [time], [address].</p><p>The celebration continues at [venue].</p></div>
+
+<div class="ex"><p>Dear [guest names],</p><p>A special day is coming in our lives, and we want the people closest to us beside us. Please join us on [date]. The ceremony begins at [time] at [venue], and we would love to celebrate with you the evening after.</p></div>
+
+<div class="ex"><p>We are happy to announce that on [date] we are getting married! We would be grateful if you shared this day with us and witnessed the beginning of our story together.</p><p>[Name] and [Name]</p></div>
+
+<h2 id="warm">Warm and heartfelt</h2>
+<p>For couples who want the invitation to feel personal, like a letter from people who love their guests.</p>
+
+<div class="ex"><p>Dear ones,</p><p>We have waited a long time for this day, and now it is almost here. We really want the people who know us best, who laugh with us and support us, to be there. So we are waiting for you on [date] at [time] at [venue].</p><p>This day would not be complete without you.</p></div>
+
+<div class="ex"><p>Once we simply happened to meet. Now we have decided never to part again.</p><p>Please join us for our wedding on [date]. It will be warm, sincere and a little bit emotional — we promise.</p></div>
+
+<div class="ex"><p>Our story began with [a coffee / one message / a shared trip]. The next chapter is on [date], and we very much want you to see it.</p><p>We are waiting for you at [time] at [venue].</p></div>
+
+<div class="ex"><p>Dear [guest names],</p><p>They say happiness is having your own people nearby. So on the happiest day of our lives, we want to see exactly you. [Date], [time], [venue].</p></div>
+
+<h2 id="short">Short and modern</h2>
+<p>Few words, a lot of meaning. These work well in an online invitation, where the details sit in separate blocks.</p>
+
+<div class="ex"><p>We're getting married!</p><p>[Date] · [Venue]</p><p>We'd love to have you with us.</p></div>
+
+<div class="ex"><p>Save the date: [date].</p><p>[Name] + [Name]. Details coming soon.</p></div>
+
+<div class="ex"><p>One day. Two people. And you among the most important guests.</p><p>[Date], [time], [venue].</p></div>
+
+<div class="ex"><p>We said yes to each other. Now it's your turn — say yes to our invitation.</p><p>[Date] · [Venue]</p></div>
+
+<h2 id="funny">With a bit of humour</h2>
+<p>If your guests are friends who share your sense of humour.</p>
+
+<div class="ex"><p>We decided that together is more fun than apart. We're making it official on [date] and inviting you to witness this adventure.</p><p>Food, dancing and our happy faces — guaranteed.</p></div>
+
+<div class="ex"><p>After [number] years together, we've finally agreed who gets the bigger half of the bed. Let's celebrate this agreement on [date] at [time] at [venue].</p></div>
+
+<div class="ex"><p>Attention! On [date] two people voluntarily give up single life. Your presence is mandatory, and so is a good mood.</p></div>
+
+<div class="ex"><p>We're getting married, which means you have a legitimate excuse to wear your best outfit and dance until morning. See you on [date] at [venue].</p></div>
+
+<h2 id="parents">From the parents</h2>
+<p>The traditional option, when the parents of the couple host the wedding.</p>
+
+<div class="ex"><p>[Bride's parents' names] and [groom's parents' names] are delighted to invite you to the wedding of their children, [Name] and [Name], on [date] at [time] at [venue].</p></div>
+
+<div class="ex"><p>Dear [guest names],</p><p>Our children, [Name] and [Name], are starting a family. We ask you to share this joy with us on [date] at [time]. We would be truly glad to see you among our guests.</p><p>With respect, the [surname] and [surname] families</p></div>
+
+<h2 id="online">For an online invitation</h2>
+<p>Online invitations are a good place for a short, warm text, while the date, the map, the schedule and the RSVP button sit in their own blocks. Guests open everything from their phones, through one link.</p>
+
+<div class="ex"><p>Dear [guest names]!</p><p>We are getting married and we very much want you beside us. Below you'll find everything about our day: the location on the map, the schedule and the dress code. Please reply by [date].</p></div>
+
+<div class="ex"><p>[Name] and [Name] invite you to their wedding! Scroll down for the date, the venue and the button to confirm your attendance.</p></div>
+
+<h2 id="extras">Dress code, gifts, kids and RSVP lines</h2>
+<p>These are best kept apart from the main text, so it doesn't feel overloaded.</p>
+
+<h3>Dress code</h3>
+<div class="ex"><p>We would be grateful if you could match the colours of our celebration: [colours]. Please avoid white — that's the bride's colour.</p></div>
+<div class="ex"><p>Dress code: black tie. Gentlemen in a tuxedo or dark suit, ladies in an evening gown.</p></div>
+
+<h3>Gifts</h3>
+<div class="ex"><p>Your presence is the best gift. If you'd still like to treat us, we'll be grateful for a contribution to our new home.</p></div>
+<div class="ex"><p>Instead of flowers, which fade by the next day, we'd love a bottle of wine — we'll open it on our first anniversary.</p></div>
+
+<h3>Children</h3>
+<div class="ex"><p>We love your children dearly, but we're planning this evening as a celebration for adults. Thank you for understanding.</p></div>
+
+<h3>RSVP</h3>
+<div class="ex"><p>Please confirm your attendance by [date] — it helps us prepare everything well.</p></div>
+<div class="ex"><p>Let us know whether you'll be with us by [date]: just tap the button below and leave your reply.</p></div>
+
+<h2 id="mistakes">What to avoid</h2>
+<ul>
+<li><b>A generic “Dear guests”.</b> A personal greeting by name feels completely different.</li>
+<li><b>Requirements about the gift amount.</b> It's enough to gently mention that you'd appreciate a card.</li>
+<li><b>Overly long poems.</b> Four lines at most, and better your own than one copied from the internet.</li>
+<li><b>All the details in one paragraph.</b> Date, address, dress code and schedule are easier to read as separate blocks.</li>
+<li><b>No reply date.</b> Otherwise replies keep arriving until the last day.</li>
+</ul>
+
+<div class="art-cta"><p class="art-cta-t">Want your text to live beyond paper?</p><p>Bijou makes online wedding invitations: a beautiful website with your text, a map, the schedule and an RSVP button. Guests reply in one tap, and you see every answer in one place. Ready-made template from ₴3,400, delivered in 3 working days.</p><p class="art-cta-b"><a class="btn btn--solid" href="../../../en/katalog/index.html">Browse templates</a><a class="btn" href="../../../en/tsiny/index.html">Pricing</a></p></div></div></div></article></main><footer class="ftr" data-astro-cid-jo6i4kqk><div class="ftr__logo" aria-hidden="true" data-astro-cid-jo6i4kqk></div><div class="ftr__in" data-astro-cid-jo6i4kqk><p class="ftr__merci" data-astro-cid-jo6i4kqk>merci <span data-astro-cid-jo6i4kqk>♥</span></p><nav data-astro-cid-jo6i4kqk><a href="../../../en/katalog/index.html" data-astro-cid-jo6i4kqk>Templates</a><a href="../../../en/keisy/index.html" data-astro-cid-jo6i4kqk>Cases</a><a href="../../../en/index.html#how" data-astro-cid-jo6i4kqk>How it works</a><a href="../../../en/tsiny/index.html" data-astro-cid-jo6i4kqk>Pricing</a><a href="../../../en/index.html#faq" data-astro-cid-jo6i4kqk>FAQ</a><a href="../../../en/blog/index.html" data-astro-cid-jo6i4kqk>Articles</a></nav><p class="ftr__soc" data-astro-cid-jo6i4kqk><a href="https://www.instagram.com/bijou_agency/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a><a href="https://www.facebook.com/share/1DtRrD6snh/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3.5h-2.2A3.8 3.8 0 0 0 9 7.3V10H6.5v3.5H9V21h3.5v-7.5H15l.6-3.5h-3.1V7.6c0-.6.5-1 1-1H15z"/></svg></a><a href="https://www.threads.com/@bijou_agency" target="_blank" rel="noopener" aria-label="Threads" title="Threads" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.2 8.3C16.2 5.9 14.300 4.5 11.7 4.5 7.6 4.5 5 7.4 5 12s2.6 7.5 6.8 7.5c3.700 0 6.200-2.100 6.200-5 0-2.800-2.300-4.100-5.300-4.100-2.200 0-3.600 1-3.600 2.400 0 1.300 1.100 2.200 2.600 2.200 2.400 0 3.700-2 3.700-5"/></svg></a></p><p class="ftr__copy" data-astro-cid-jo6i4kqk>© Bijou 2026 · <a href="mailto:bijou.invitations@gmail.com" data-astro-cid-jo6i4kqk>bijou.invitations@gmail.com</a></p></div></footer><div class="ftr__after"><p class="ftr__soc" data-astro-cid-jo6i4kqk><a href="https://www.instagram.com/bijou_agency/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a><a href="https://www.facebook.com/share/1DtRrD6snh/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3.5h-2.2A3.8 3.8 0 0 0 9 7.3V10H6.5v3.5H9V21h3.5v-7.5H15l.6-3.5h-3.1V7.6c0-.6.5-1 1-1H15z"/></svg></a><a href="https://www.threads.com/@bijou_agency" target="_blank" rel="noopener" aria-label="Threads" title="Threads" data-astro-cid-jo6i4kqk><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.2 8.3C16.2 5.9 14.300 4.5 11.7 4.5 7.6 4.5 5 7.4 5 12s2.6 7.5 6.8 7.5c3.700 0 6.200-2.100 6.200-5 0-2.800-2.300-4.100-5.300-4.100-2.200 0-3.600 1-3.600 2.400 0 1.300 1.100 2.200 2.600 2.200 2.400 0 3.700-2 3.700-5"/></svg></a></p><p>© Bijou 2026 · <a href="mailto:bijou.invitations@gmail.com" data-astro-cid-jo6i4kqk>bijou.invitations@gmail.com</a></p></div></div><script>document.querySelectorAll('.ex').forEach(function(x){var b=document.createElement('button');b.type='button';b.className='ex__copy';b.textContent="Copy";b.addEventListener('click',function(){var t=Array.from(x.querySelectorAll('p')).map(function(p){return p.textContent}).join('\n\n');(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy"},1800)}).catch(function(){})});x.appendChild(b)});</script><script type="module">var e=new IntersectionObserver(t=>t.forEach(t=>{t.isIntersecting&&(t.target.classList.add(`is-in`),e.unobserve(t.target))}),{threshold:.15});document.querySelectorAll(`.reveal`).forEach(t=>e.observe(t)),document.querySelectorAll(`[data-back]`).forEach(e=>e.addEventListener(`click`,e=>{history.length>1&&document.referrer&&new URL(document.referrer).host===location.host&&(e.preventDefault(),history.back())}));</script></body></html>
