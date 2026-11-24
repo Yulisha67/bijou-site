@@ -1,0 +1,6 @@
+/* Mobile footer: the big script watermark sat behind the link list and made it unreadable. */
+@media (width<=600px){
+  .ftr__logo{display:none!important}
+  .ftr nav{gap:14px!important}
+  .ftr__in{position:relative;z-index:1}
+}
