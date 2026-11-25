@@ -1,0 +1,31 @@
+# Bijou (Bijou Invitation Agency)
+
+> Bijou — українська агенція електронних запрошень на весілля, дні народження, хрестини та інші події. Ми створюємо сайт-запрошення з текстом, картою, таймінгом і кнопкою RSVP, щоб гості відповідали в один клік.
+
+Сайт: https://www.bijou-invitations.com/
+Instagram: https://www.instagram.com/bijou_agency/
+Threads: https://www.threads.com/@bijou_agency
+
+## Послуги і ціни
+- Готовий шаблон: від 3 400 ₴, виготовлення за 3 робочі дні. Текст, карта, таймінг, RSVP, 1 раунд правок.
+- Індивідуальний дизайн: від 6 900 ₴, унікальна концепція з нуля, анімації, 2–3 раунди правок.
+- Зміна дати чи адреси після запуску безкоштовна. Ціна не залежить від кількості гостей.
+
+## Основні сторінки
+- [Електронне запрошення на весілля](https://www.bijou-invitations.com/elektronne-zaproshennia-na-vesillia/): як працює сайт-запрошення і що в ньому є
+- [Каталог шаблонів](https://www.bijou-invitations.com/katalog/): готові шаблони для весілля й подій
+- [Вартість](https://www.bijou-invitations.com/tsiny/): ціни на шаблони й індивідуальний дизайн
+- [Кейси](https://www.bijou-invitations.com/keisy/): приклади готових запрошень
+
+## Статті
+- [Текст запрошення на весілля: 27 прикладів](https://www.bijou-invitations.com/blog/tekst-zaproshennia-na-vesillia/)
+- [Save the date на весілля](https://www.bijou-invitations.com/blog/save-the-date-na-vesillia/)
+- [Дрес-код на весілля в запрошенні](https://www.bijou-invitations.com/blog/dres-kod-na-vesillia/)
+- [RSVP на весілля](https://www.bijou-invitations.com/blog/rsvp-na-vesillia/)
+
+## English
+- [Home (English)](https://www.bijou-invitations.com/en/)
+- [Wedding invitation wording](https://www.bijou-invitations.com/en/blog/tekst-zaproshennia-na-vesillia/)
+- [Save the date for a wedding](https://www.bijou-invitations.com/en/blog/save-the-date-na-vesillia/)
+- [Wedding dress code](https://www.bijou-invitations.com/en/blog/dres-kod-na-vesillia/)
+- [RSVP for a wedding](https://www.bijou-invitations.com/en/blog/rsvp-na-vesillia/)
